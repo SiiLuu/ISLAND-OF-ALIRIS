@@ -21,15 +21,27 @@ LFLAGS = -L./lib/my -lmy
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-		make -C lib/my
+		@echo "entering in the $(LFLAGS)..."
+		@make -C lib/my
 		$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LFLAGS) -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
+
+%.o : %.c
+		@echo "Compiling $@..."
+		@$(CC) -o $@ -c $< $(CFLAGS)
+
 clean:
-	rm -f lib/my/*.o
-	rm -f src/*.o
-	rm -f lib/my/libmy.a
-	rm -f *.o
+	@echo "removing *.o ..."
+	@echo "removing my libmy.a ..."
+	@rm -f lib/my/*.o
+	@rm -f src/*.o
+	@rm -f lib/my/libmy.a
+	@rm -f *.o
 
 fclean:	clean
-	rm -f $(NAME)
+	@echo "removing $(NAME) ..."
+	@rm -f $(NAME)
 
 re: 	fclean all
+
+debug:	CFLAGS += -g3
+debug:	fclean all

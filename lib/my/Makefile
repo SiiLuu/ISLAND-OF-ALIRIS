@@ -12,7 +12,12 @@ OBJ		=	$(SRC:.c=.o)
 NAME	=	libmy.a
 
 $(NAME):	$(OBJ)
-		ar rc $(NAME) $(OBJ)
+		@echo "Compiling the lib ..."
+		@ar rc $(NAME) $(OBJ)
+
+%.o : %.c
+		@echo "Compiling $@..."
+		@$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
 	rm -f $(OBJ)
