@@ -1,0 +1,70 @@
+/*
+** EPITECH PROJECT, 2019
+** my.h
+** File description:
+** my_defender
+*/
+
+#ifndef MY_H
+#define MY_H
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <time.h>
+#include <SFML/Graphics.h>
+#include <SFML/Window/Export.h>
+#include <SFML/Audio.h>
+#include <SFML/Config.h>
+#include <SFML/System.h>
+
+typedef struct menu {
+    sfSprite *wp;
+    sfSprite *start1;
+    sfSprite *quit1;
+    sfSprite *start2;
+    sfSprite *sounds;
+    sfSprite *nosound;
+    sfSprite *resume;
+    sfSprite *btfmenu;
+    sfSprite *quit;
+    sfTexture *resumet;
+    sfTexture *btfmenut;
+    sfTexture *quitt;
+    sfTexture *texture3;
+    sfTexture *texture4;
+    sfTexture *texture5;
+    sfTexture *texture6;
+    sfTexture *texture7;
+    sfTexture *texture8;
+    sfMusic *musique;
+    int sound;
+}menu_t;
+
+typedef struct global {
+    sfRenderWindow *window;
+    sfEvent event;
+    int xmouse;
+    int ymouse;
+}global_t;
+
+//In lib/my
+void my_putchar(char c);
+int my_putnbr(int nb);
+int my_putstr(char *str);
+char *convert_int_char(unsigned nbr);
+
+//In music.c
+void music_game(menu_t *menu);
+void music_destroy(menu_t *menu);
+
+//In menu.c
+int menu_start(global_t *global, menu_t *menu, int i);
+void menu_create(menu_t *menu);
+void menu_display(global_t *global, menu_t *menu);
+int destroy_menu(global_t *global);
+void change_start_btn(global_t *global, menu_t *menu);
+void check_mouse(global_t *global, menu_t *menu);
+void menu_set_position(menu_t *menu);
+
+#endif
