@@ -12,16 +12,32 @@ int main_loop(global_t *global, menu_t *menu)
     sfClock *clocks = sfClock_create();
 
     sfRenderWindow_setFramerateLimit(global->window, 60);
-    if (menu_start(global, menu, 0))
+    if (menu_start(global, menu, 0)) {
+        sfClock_destroy(clocks);
         return (0);
-    return (0);
+    }
     while (sfRenderWindow_isOpen(global->window)) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 5) {
             sfClock_restart(clocks);
         }
     }
-    sfClock_destroy(clocks);
     return (0);
+}
+
+void destroy_all(menu_t *menu)
+{
+    sfSprite_destroy(menu->wp);
+    sfSprite_destroy(menu->start1);
+    sfSprite_destroy(menu->quit1);
+    sfSprite_destroy(menu->start2);
+    sfSprite_destroy(menu->sounds);
+    sfSprite_destroy(menu->nosound);
+    sfTexture_destroy(menu->wpt);
+    sfTexture_destroy(menu->start1t);
+    sfTexture_destroy(menu->quit1t);
+    sfTexture_destroy(menu->start2t);
+    sfTexture_destroy(menu->soundt);
+    sfTexture_destroy(menu->no_soundt);
 }
 
 void main_function(void)
@@ -39,6 +55,7 @@ void main_function(void)
     main_loop(global, menu);
     music_destroy(menu);
     sfRenderWindow_destroy(global->window);
+    destroy_all(menu);
     free(global);
     free(menu);
 }

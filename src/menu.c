@@ -19,12 +19,12 @@ void menu_set_position(menu_t *menu)
     sfSprite_setScale(menu->start1, (sfVector2f){0.60, 0.60});
     sfSprite_setScale(menu->quit1, (sfVector2f){0.65, 0.65});
     sfSprite_setScale(menu->start2, (sfVector2f){0.60, 0.60});
-    sfSprite_setTexture(menu->sounds, menu->texture7, sfTrue);
-    sfSprite_setTexture(menu->nosound, menu->texture8, sfTrue);
-    sfSprite_setTexture(menu->wp, menu->texture3, sfTrue);
-    sfSprite_setTexture(menu->start1, menu->texture4, sfTrue);
-    sfSprite_setTexture(menu->quit1, menu->texture5, sfTrue);
-    sfSprite_setTexture(menu->start2, menu->texture6, sfTrue);
+    sfSprite_setTexture(menu->sounds, menu->soundt, sfTrue);
+    sfSprite_setTexture(menu->nosound, menu->no_soundt, sfTrue);
+    sfSprite_setTexture(menu->wp, menu->wpt, sfTrue);
+    sfSprite_setTexture(menu->start1, menu->start1t, sfTrue);
+    sfSprite_setTexture(menu->quit1, menu->quit1t, sfTrue);
+    sfSprite_setTexture(menu->start2, menu->start2t, sfTrue);
 }
 
 void sound_modif_sprite(global_t *global, menu_t *menu)

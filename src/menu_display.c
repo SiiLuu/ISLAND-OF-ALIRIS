@@ -15,17 +15,17 @@ void menu_create(menu_t *menu)
     menu->start2 = sfSprite_create();
     menu->sounds = sfSprite_create();
     menu->nosound = sfSprite_create();
-    menu->texture7 = sfTexture_createFromFile("resource/menu/sound.png",
+    menu->soundt = sfTexture_createFromFile("resource/menu/sound.png",
                                                 NULL);
-    menu->texture8 = sfTexture_createFromFile("resource/menu/no_sound.png",
+    menu->no_soundt = sfTexture_createFromFile("resource/menu/no_sound.png",
                                                 NULL);
-    menu->texture6 = sfTexture_createFromFile("resource/menu/s2.png",
+    menu->start2t = sfTexture_createFromFile("resource/menu/s2.png",
                                                 NULL);
-    menu->texture3 = sfTexture_createFromFile("resource/menu/wp.png",
+    menu->wpt = sfTexture_createFromFile("resource/menu/wp.png",
                                                 NULL);
-    menu->texture4 = sfTexture_createFromFile("resource/menu/s1.png",
+    menu->start1t = sfTexture_createFromFile("resource/menu/s1.png",
                                                 NULL);
-    menu->texture5 = sfTexture_createFromFile("resource/menu/q1.png",
+    menu->quit1t = sfTexture_createFromFile("resource/menu/q1.png",
                                                 NULL);
     menu_set_position(menu);
 }
