@@ -40,6 +40,12 @@ typedef struct menu {
     sfSprite *minus;
     sfTexture *minust;
     sfTexture *plust;
+    sfTexture *bart;
+    sfSprite *bar1;
+    sfSprite *bar2;
+    sfSprite *bar3;
+    sfSprite *bar4;
+    int nbr_bar;
     int sound;
 }menu_t;
 
