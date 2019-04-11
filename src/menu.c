@@ -15,7 +15,9 @@ void menu_set_position(menu_t *menu)
     sfSprite_setPosition(menu->start1, (sfVector2f){780, 150});
     sfSprite_setPosition(menu->quit1, (sfVector2f){780, 475});
     sfSprite_setPosition(menu->start2, (sfVector2f){780, 150});
-    sfSprite_setScale(menu->wp, (sfVector2f){1.90, 2.00});
+    sfSprite_setPosition(menu->settings, (sfVector2f){20, 100});
+    sfSprite_setScale(menu->settings, (sfVector2f){0.30, 0.30});
+    sfSprite_setScale(menu->wp, (sfVector2f){0.50, 0.50});
     sfSprite_setScale(menu->start1, (sfVector2f){0.60, 0.60});
     sfSprite_setScale(menu->quit1, (sfVector2f){0.65, 0.65});
     sfSprite_setScale(menu->start2, (sfVector2f){0.60, 0.60});
@@ -25,6 +27,7 @@ void menu_set_position(menu_t *menu)
     sfSprite_setTexture(menu->start1, menu->start1t, sfTrue);
     sfSprite_setTexture(menu->quit1, menu->quit1t, sfTrue);
     sfSprite_setTexture(menu->start2, menu->start2t, sfTrue);
+    sfSprite_setTexture(menu->settings, menu->settingst, sfTrue);
 }
 
 void sound_modif_sprite(global_t *global, menu_t *menu)
@@ -64,6 +67,8 @@ int menu_start(global_t *global, menu_t *menu, int i)
             global->xmouse = global->event.mouseButton.x;
             global->ymouse = global->event.mouseButton.y;
             sound_modif_sprite(global, menu);
+            if (settings(global, menu))
+                return (1);
             if (global->xmouse >= 795 && global->xmouse <= 1050
             && global->ymouse >= 237 && global->ymouse <= 350)
                 return (0);

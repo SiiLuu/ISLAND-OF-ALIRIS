@@ -25,13 +25,21 @@ typedef struct menu {
     sfSprite *start2;
     sfSprite *sounds;
     sfSprite *nosound;
+    sfSprite *settings;
     sfTexture *wpt;
     sfTexture *start1t;
     sfTexture *quit1t;
     sfTexture *start2t;
     sfTexture *soundt;
     sfTexture *no_soundt;
+    sfTexture *settingst;
     sfMusic *musique;
+    sfText* text_music;
+    sfFont* font;
+    sfSprite *plus;
+    sfSprite *minus;
+    sfTexture *minust;
+    sfTexture *plust;
     int sound;
 }menu_t;
 
@@ -60,5 +68,8 @@ int destroy_menu(global_t *global);
 void change_start_btn(global_t *global, menu_t *menu);
 void check_mouse(global_t *global, menu_t *menu);
 void menu_set_position(menu_t *menu);
+
+//In settings.c
+int settings(global_t *global, menu_t *menu);
 
 #endif

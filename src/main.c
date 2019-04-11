@@ -12,7 +12,7 @@ int main_loop(global_t *global, menu_t *menu)
     sfClock *clocks = sfClock_create();
 
     sfRenderWindow_setFramerateLimit(global->window, 60);
-    if (menu_start(global, menu, 0)) {
+    if (menu_start(global, menu, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(clocks);
         return (0);
     }
@@ -32,12 +32,14 @@ void destroy_all(menu_t *menu)
     sfSprite_destroy(menu->start2);
     sfSprite_destroy(menu->sounds);
     sfSprite_destroy(menu->nosound);
+    sfSprite_destroy(menu->settings);
     sfTexture_destroy(menu->wpt);
     sfTexture_destroy(menu->start1t);
     sfTexture_destroy(menu->quit1t);
     sfTexture_destroy(menu->start2t);
     sfTexture_destroy(menu->soundt);
     sfTexture_destroy(menu->no_soundt);
+    sfTexture_destroy(menu->settingst);
 }
 
 void main_function(void)

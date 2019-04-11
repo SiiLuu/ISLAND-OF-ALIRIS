@@ -8,13 +8,14 @@
 SRC 	=	src/main.c\
 			src/menu.c\
 			src/music.c\
-			src/menu_display.c
+			src/menu_display.c\
+			src/settings.c
 
 OBJ 	=	$(SRC:.c=.o)
 
 NAME 	=	my_rpg
 
-CFLAGS += -W -Wall -Wextra -g3 -pedantic -I./include
+CFLAGS += -W -Wall -Wextra -pedantic -I./include
 
 LFLAGS = -L./lib/my -lmy
 
