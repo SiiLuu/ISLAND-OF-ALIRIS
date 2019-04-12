@@ -53,7 +53,7 @@ void main_function(void)
     global->window = sfRenderWindow_create(mode, "my_RPG",
                                             sfResize | sfClose, NULL);
     menu->sound = 0;
-    menu->nbr_bar = 0;
+    menu->nbr_bar = 4;
     music_game(menu);
     main_loop(global, menu);
     music_destroy(menu);

@@ -77,5 +77,11 @@ void menu_set_position(menu_t *menu);
 
 //In settings.c
 int settings(global_t *global, menu_t *menu);
+void all_display_settings(global_t *global, menu_t *menu);
+
+//In sound_bar.c
+void display_score(global_t *global, menu_t *menu);
+void display_sound_settings(global_t *global, menu_t *menu);
+void display_sound_bar(global_t *global, menu_t *menu);
 
 #endif

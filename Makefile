@@ -6,10 +6,11 @@
 ##
 
 SRC 	=	src/main.c\
-			src/menu.c\
 			src/music.c\
-			src/menu_display.c\
-			src/settings.c
+			src/menu/menu.c\
+			src/menu/menu_display.c\
+			src/menu/settings.c\
+			src/menu/sound_bar.c
 
 OBJ 	=	$(SRC:.c=.o)
 
@@ -35,6 +36,7 @@ clean:
 	@echo "removing my libmy.a ..."
 	@rm -f lib/my/*.o
 	@rm -f src/*.o
+	@rm -f src/menu/*.o
 	@rm -f lib/my/libmy.a
 	@rm -f *.o
 

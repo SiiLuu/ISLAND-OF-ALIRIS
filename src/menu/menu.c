@@ -68,7 +68,7 @@ int menu_start(global_t *global, menu_t *menu, int i)
             global->ymouse = global->event.mouseButton.y;
             sound_modif_sprite(global, menu);
             if (settings(global, menu))
-                return (1);
+                return (0);
             if (global->xmouse >= 795 && global->xmouse <= 1050
             && global->ymouse >= 237 && global->ymouse <= 350)
                 return (0);
