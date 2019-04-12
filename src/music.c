@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "rpg.h"
 
 void music_game(menu_t *menu)
 {

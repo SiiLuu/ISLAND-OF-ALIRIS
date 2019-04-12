@@ -10,7 +10,8 @@ SRC 	=	src/main.c\
 			src/menu/menu.c\
 			src/menu/menu_display.c\
 			src/menu/settings.c\
-			src/menu/sound_bar.c
+			src/menu/sound_bar.c\
+			src/gameplay/character.c
 
 OBJ 	=	$(SRC:.c=.o)
 

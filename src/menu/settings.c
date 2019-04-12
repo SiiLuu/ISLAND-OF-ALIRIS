@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "rpg.h"
 
 void destroy_all_settings(menu_t *menu)
 {

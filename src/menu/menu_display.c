@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "rpg.h"
 
 void menu_create(menu_t *menu)
 {

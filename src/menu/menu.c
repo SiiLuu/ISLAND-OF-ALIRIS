@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "rpg.h"
 
 void menu_set_position(menu_t *menu)
 {

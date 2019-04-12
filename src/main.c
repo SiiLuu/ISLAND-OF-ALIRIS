@@ -6,8 +6,15 @@
 */
 
 #include "my.h"
+#include "rpg.h"
 
-int main_loop(global_t *global, menu_t *menu)
+void game_parameters(gameplay_t *gameplay, global_t *global)
+{
+    draw_sprites(gameplay, global);
+}
+
+
+int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
 {
     sfClock *clocks = sfClock_create();
 
@@ -16,8 +23,11 @@ int main_loop(global_t *global, menu_t *menu)
         sfClock_destroy(clocks);
         return (0);
     }
+    init_texture(gameplay);
     while (sfRenderWindow_isOpen(global->window)) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 5) {
+            game_parameters(gameplay, global);
+            //printf("a\n");
             sfClock_restart(clocks);
         }
     }
@@ -46,7 +56,9 @@ void main_function(void)
 {
     global_t *global;
     menu_t *menu;
+    gameplay_t *gameplay;
 
+    gameplay = malloc(sizeof(gameplay_t) * 1);
     menu = malloc(sizeof(menu_t) * 1);
     global = malloc(sizeof(global_t) * 1);
     sfVideoMode mode = {1920, 1080, 32};
@@ -55,11 +67,12 @@ void main_function(void)
     menu->sound = 0;
     menu->nbr_bar = 4;
     music_game(menu);
-    main_loop(global, menu);
+    main_loop(global, menu, gameplay);
     music_destroy(menu);
     sfRenderWindow_destroy(global->window);
     destroy_all(menu);
     free(global);
+    free(gameplay);
     free(menu);
 }
 

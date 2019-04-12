@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "rpg.h"
 
 void sound_bar(global_t *global, menu_t *menu)
 {
