@@ -50,6 +50,7 @@ typedef struct gameplay {
     sfSprite *sprite_backg;
     sfTexture *man;
     sfSprite *sprite_man;
+    sfIntRect rect_man;
 }gameplay_t;
 
 typedef struct global {
@@ -83,6 +84,8 @@ void display_sound_settings(global_t *global, menu_t *menu);
 void display_sound_bar(global_t *global, menu_t *menu);
 
 //In src/move_character/character.c
+void set_my_rect(gameplay_t *gameplay);
+int check_events(global_t *global, gameplay_t *gameplay);
 void draw_sprites(gameplay_t *gameplay, global_t *global);
 void init_texture(gameplay_t *gameplay);
 

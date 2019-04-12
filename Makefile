@@ -38,6 +38,7 @@ clean:
 	@rm -f lib/my/*.o
 	@rm -f src/*.o
 	@rm -f src/menu/*.o
+	@rm -f src/gameplay/*.o
 	@rm -f lib/my/libmy.a
 	@rm -f *.o
 

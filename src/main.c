@@ -10,6 +10,8 @@
 
 void game_parameters(gameplay_t *gameplay, global_t *global)
 {
+    check_events(global, gameplay);
+    move_rect(gameplay);
     draw_sprites(gameplay, global);
 }
 
@@ -18,16 +20,15 @@ int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
 {
     sfClock *clocks = sfClock_create();
 
+    init_texture(gameplay);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, menu, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(clocks);
         return (0);
     }
-    init_texture(gameplay);
     while (sfRenderWindow_isOpen(global->window)) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 5) {
             game_parameters(gameplay, global);
-            //printf("a\n");
             sfClock_restart(clocks);
         }
     }
