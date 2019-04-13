@@ -8,36 +8,89 @@
 #include "my.h"
 #include "rpg.h"
 
-int check_events(global_t *global, gameplay_t *gameplay)
-{
-    while (sfRenderWindow_pollEvent(global->window, &global->event)) {
-        if (global->event.type == sfEvtClosed)
-            sfRenderWindow_close(global->window);
-        if (global->event.key.code == sfKeyUp) {
-            sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){300, 200});
-            gameplay->rect_man.top = 0;
-        }
-        if (global->event.key.code == sfKeyDown) {
-            sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){300, 400});
-            gameplay->rect_man.top = 128;
-        }
-        if (global->event.key.code == sfKeyLeft) {
-            sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){200, 300});
-            gameplay->rect_man.top = 64;
-        }
-        if (global->event.key.code == sfKeyRight) {
-            sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){400, 300});
-            gameplay->rect_man.top = 192;
-        }
-    }
-    return (0);
-}
-
 void move_rect(gameplay_t *gameplay)
 {
     gameplay->rect_man.left += 64;
     if (gameplay->rect_man.left > 512)
         gameplay->rect_man.left = 0;
+}
+
+void move_up(gameplay_t *gameplay, global_t *global)
+{
+    gameplay->rect_man.top = 0;
+    while (sfKeyboard_isKeyPressed(sfKeyUp)) {
+        move_rect(gameplay);
+        sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
+        sfRenderWindow_display(global->window);
+        gameplay->x -= 5;
+    }
+}
+
+void move_down(gameplay_t *gameplay, global_t *global)
+{
+    gameplay->rect_man.top = 128;
+    while (sfKeyboard_isKeyPressed(sfKeyDown)) {
+        move_rect(gameplay);
+        sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
+        sfRenderWindow_display(global->window);
+        gameplay->x += 5;
+    }
+}
+
+void move_left(gameplay_t *gameplay, global_t *global)
+{
+    gameplay->rect_man.top = 64;
+    while (sfKeyboard_isKeyPressed(sfKeyLeft)) {
+        move_rect(gameplay);
+        sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
+        sfRenderWindow_display(global->window);
+        gameplay->y -= 5;
+    }
+}
+
+void move_right(gameplay_t *gameplay, global_t *global)
+{
+    gameplay->rect_man.top = 192;
+    while (sfKeyboard_isKeyPressed(sfKeyRight)) {
+        move_rect(gameplay);
+        sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
+        sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
+        sfRenderWindow_display(global->window);
+        gameplay->y += 5;
+    }
+}
+
+void move_character(gameplay_t *gameplay, global_t *global)
+{
+    if (global->event.key.code == sfKeyUp)
+        move_up(gameplay, global);
+    if (global->event.key.code == sfKeyDown)
+        move_down(gameplay, global);
+    if (global->event.key.code == sfKeyLeft)
+        move_left(gameplay, global);
+    if (global->event.key.code == sfKeyRight)
+        move_right(gameplay, global);
+}
+
+int check_events(global_t *global, gameplay_t *gameplay)
+{
+    while (sfRenderWindow_pollEvent(global->window, &global->event)) {
+        if (global->event.type == sfEvtClosed)
+            sfRenderWindow_close(global->window);
+        move_character(gameplay, global);
+    }
+    return (0);
 }
 
 void set_my_rect(gameplay_t *gameplay)
@@ -50,7 +103,7 @@ void set_my_rect(gameplay_t *gameplay)
 
 void set_position(gameplay_t *gameplay)
 {
-    sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){300, 300});
+    sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
     sfSprite_setScale(gameplay->sprite_man, (sfVector2f){2, 2});
 }
 

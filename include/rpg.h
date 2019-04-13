@@ -51,6 +51,8 @@ typedef struct gameplay {
     sfTexture *man;
     sfSprite *sprite_man;
     sfIntRect rect_man;
+    int x;
+    int y;
 }gameplay_t;
 
 typedef struct global {
