@@ -11,7 +11,6 @@
 void game_parameters(gameplay_t *gameplay, global_t *global)
 {
     check_events(global, gameplay);
-    move_rect(gameplay);
     draw_sprites(gameplay, global);
 }
 
