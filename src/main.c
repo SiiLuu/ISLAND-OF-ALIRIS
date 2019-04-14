@@ -18,7 +18,10 @@ void game_parameters(gameplay_t *gameplay, global_t *global)
 int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
 {
     gameplay->clocks = sfClock_create();
+    gameplay->view = sfView_create();
 
+    gameplay->x = (1080 / 2) - 64;
+    gameplay->y = (1920 / 2) - 64;
     init_texture(gameplay);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, menu, 0) || global->event.type == sfEvtClosed) {
@@ -61,7 +64,7 @@ void main_function(void)
     gameplay = malloc(sizeof(gameplay_t) * 1);
     menu = malloc(sizeof(menu_t) * 1);
     global = malloc(sizeof(global_t) * 1);
-    sfVideoMode mode = {1920, 1080, 32};
+    sfVideoMode mode = {3008, 2000, 32};
     global->window = sfRenderWindow_create(mode, "my_RPG",
                                             sfResize | sfClose, NULL);
     menu->sound = 0;

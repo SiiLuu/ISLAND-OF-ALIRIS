@@ -8,6 +8,14 @@
 #include "my.h"
 #include "rpg.h"
 
+void move_vue(gameplay_t *gameplay, global_t *global)
+{
+    sfView_reset(gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
+    sfView_reset(gameplay->view, (sfFloatRect){gameplay->y - ((1920 / 2) - 64),
+    gameplay->x - ((1080 / 2) - 64), 1920, 1080});
+    sfRenderWindow_setView(global->window, gameplay->view);
+}
+
 void move_rect(gameplay_t *gameplay)
 {
     if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 80) {
@@ -23,6 +31,7 @@ void move_up(gameplay_t *gameplay, global_t *global)
     gameplay->rect_man.top = 144;
     while (sfKeyboard_isKeyPressed(sfKeyUp)) {
         move_rect(gameplay);
+        move_vue(gameplay, global);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
         sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
@@ -37,6 +46,7 @@ void move_down(gameplay_t *gameplay, global_t *global)
     gameplay->rect_man.top = 0;
     while (sfKeyboard_isKeyPressed(sfKeyDown)) {
         move_rect(gameplay);
+        move_vue(gameplay, global);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
         sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
@@ -51,6 +61,7 @@ void move_left(gameplay_t *gameplay, global_t *global)
     gameplay->rect_man.top = 48;
     while (sfKeyboard_isKeyPressed(sfKeyLeft)) {
         move_rect(gameplay);
+        move_vue(gameplay, global);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
         sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
@@ -65,6 +76,7 @@ void move_right(gameplay_t *gameplay, global_t *global)
     gameplay->rect_man.top = 96;
     while (sfKeyboard_isKeyPressed(sfKeyRight)) {
         move_rect(gameplay);
+        move_vue(gameplay, global);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
         sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->y, gameplay->x});
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
@@ -116,7 +128,7 @@ void init_texture(gameplay_t *gameplay)
 {
     gameplay->sprite_backg = sfSprite_create();
     gameplay->sprite_man = sfSprite_create();
-    gameplay->backg = sfTexture_createFromFile("resource/test.jpg", NULL);
+    gameplay->backg = sfTexture_createFromFile("resource/m.jpg", NULL);
     gameplay->man = sfTexture_createFromFile("resource/characters/Actor1.png", NULL);
     set_my_rect(gameplay);
     sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);

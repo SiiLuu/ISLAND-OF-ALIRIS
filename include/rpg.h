@@ -52,6 +52,7 @@ typedef struct gameplay {
     sfSprite *sprite_man;
     sfIntRect rect_man;
     sfClock *clocks;
+    sfView * view;
     int x;
     int y;
 }gameplay_t;
