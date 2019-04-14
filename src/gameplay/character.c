@@ -10,14 +10,17 @@
 
 void move_rect(gameplay_t *gameplay)
 {
-    gameplay->rect_man.left += 64;
-    if (gameplay->rect_man.left > 512)
-        gameplay->rect_man.left = 0;
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 80) {
+        gameplay->rect_man.left += 48;
+        sfClock_restart(gameplay->clocks);
+    }
+    if (gameplay->rect_man.left > 528)
+        gameplay->rect_man.left = 432;
 }
 
 void move_up(gameplay_t *gameplay, global_t *global)
 {
-    gameplay->rect_man.top = 0;
+    gameplay->rect_man.top = 144;
     while (sfKeyboard_isKeyPressed(sfKeyUp)) {
         move_rect(gameplay);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
@@ -31,7 +34,7 @@ void move_up(gameplay_t *gameplay, global_t *global)
 
 void move_down(gameplay_t *gameplay, global_t *global)
 {
-    gameplay->rect_man.top = 128;
+    gameplay->rect_man.top = 0;
     while (sfKeyboard_isKeyPressed(sfKeyDown)) {
         move_rect(gameplay);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
@@ -45,7 +48,7 @@ void move_down(gameplay_t *gameplay, global_t *global)
 
 void move_left(gameplay_t *gameplay, global_t *global)
 {
-    gameplay->rect_man.top = 64;
+    gameplay->rect_man.top = 48;
     while (sfKeyboard_isKeyPressed(sfKeyLeft)) {
         move_rect(gameplay);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
@@ -59,7 +62,7 @@ void move_left(gameplay_t *gameplay, global_t *global)
 
 void move_right(gameplay_t *gameplay, global_t *global)
 {
-    gameplay->rect_man.top = 192;
+    gameplay->rect_man.top = 96;
     while (sfKeyboard_isKeyPressed(sfKeyRight)) {
         move_rect(gameplay);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
@@ -88,6 +91,8 @@ int check_events(global_t *global, gameplay_t *gameplay)
     while (sfRenderWindow_pollEvent(global->window, &global->event)) {
         if (global->event.type == sfEvtClosed)
             sfRenderWindow_close(global->window);
+        if (global->event.key.code == sfKeyEscape)
+            sfRenderWindow_close(global->window);
         move_character(gameplay, global);
     }
     return (0);
@@ -95,9 +100,9 @@ int check_events(global_t *global, gameplay_t *gameplay)
 
 void set_my_rect(gameplay_t *gameplay)
 {
-    gameplay->rect_man.height = 64;
-    gameplay->rect_man.width = 64;
-    gameplay->rect_man.left = 0;
+    gameplay->rect_man.height = 48;
+    gameplay->rect_man.width = 48;
+    gameplay->rect_man.left = 432;
     gameplay->rect_man.top = 0;
 }
 
@@ -112,7 +117,7 @@ void init_texture(gameplay_t *gameplay)
     gameplay->sprite_backg = sfSprite_create();
     gameplay->sprite_man = sfSprite_create();
     gameplay->backg = sfTexture_createFromFile("resource/test.jpg", NULL);
-    gameplay->man = sfTexture_createFromFile("resource/char.png", NULL);
+    gameplay->man = sfTexture_createFromFile("resource/characters/Actor1.png", NULL);
     set_my_rect(gameplay);
     sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
     sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);

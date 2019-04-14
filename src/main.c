@@ -17,18 +17,18 @@ void game_parameters(gameplay_t *gameplay, global_t *global)
 
 int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
 {
-    sfClock *clocks = sfClock_create();
+    gameplay->clocks = sfClock_create();
 
     init_texture(gameplay);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, menu, 0) || global->event.type == sfEvtClosed) {
-        sfClock_destroy(clocks);
+        sfClock_destroy(gameplay->clocks);
         return (0);
     }
     while (sfRenderWindow_isOpen(global->window)) {
-        if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 5) {
+        if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 5) {
             game_parameters(gameplay, global);
-            sfClock_restart(clocks);
+            sfClock_restart(gameplay->clocks);
         }
     }
     return (0);
