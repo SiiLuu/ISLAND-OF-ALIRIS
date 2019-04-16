@@ -55,6 +55,8 @@ typedef struct gameplay {
     sfView * view;
     int x;
     int y;
+    int camera_x;
+    int camera_y;
 }gameplay_t;
 
 typedef struct global {
@@ -92,5 +94,21 @@ void set_my_rect(gameplay_t *gameplay);
 int check_events(global_t *global, gameplay_t *gameplay);
 void draw_sprites(gameplay_t *gameplay, global_t *global);
 void init_texture(gameplay_t *gameplay);
+void move_vue(gameplay_t *gameplay, global_t *global);
+void move_rect(gameplay_t *gameplay);
+
+//In src/gameplay/move_character.c
+void move_character(gameplay_t *gameplay, global_t *global);
+void move_right(gameplay_t *gameplay, global_t *global);
+void move_up(gameplay_t *gameplay, global_t *global);
+void move_down(gameplay_t *gameplay, global_t *global);
+void move_left(gameplay_t *gameplay, global_t *global);
+
+//In src/gameplay/map_border.c
+void camera_center(gameplay_t *gameplay);
+void camera_horizontal(gameplay_t *gameplay);
+void vertical_camera(gameplay_t *gameplay);
+void bottom_right_corner(gameplay_t *gameplay);
+void top_right_corner(gameplay_t *gameplay);
 
 #endif
