@@ -10,27 +10,27 @@
 
 void bottom_left_corner(gameplay_t *gameplay)
 {
-    sfView_reset(gameplay->view, (sfFloatRect){3008 - 1920, 0,
+    sfView_reset(gameplay->view, (sfFloatRect){6000 - 1920, 0,
     1920, 1080});
 }
 
 void move_vue(gameplay_t *gameplay, global_t *global)
 {
-    if ((gameplay->x > 3008 - 1920 / 2 - 48) && (gameplay->y < 1080 / 2 - 48))
+    if ((gameplay->x > 6000 - 1920 / 2 - 48) && (gameplay->y < 1080 / 2 - 48))
         bottom_left_corner(gameplay);
     else if ((gameplay->x < 0 + 1920 / 2 - 48) &&
             (gameplay->y < 1080 / 2 - 48))
         sfView_reset(gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
     else if ((gameplay->x < 0 + 1920 / 2 - 48) &&
-            (gameplay->y > 2000 - 1080 / 2 - 48))
+            (gameplay->y > 6000 - 1080 / 2 - 48))
         top_right_corner(gameplay);
-    else if ((gameplay->x > 3008 - 1920 / 2 - 48) &&
-            (gameplay->y > 2000 - 1080 / 2 - 48))
+    else if ((gameplay->x > 6000 - 1920 / 2 - 48) &&
+            (gameplay->y > 6000 - 1080 / 2 - 48))
         bottom_right_corner(gameplay);
-    else if (gameplay->x > 3008 - (1920 / 2) - 48 ||
+    else if (gameplay->x > 6000 - (1920 / 2) - 48 ||
             gameplay->x < (1920 / 2) - 48)
         camera_horizontal(gameplay);
-    else if (gameplay->y > 2000 - (1080 / 2) - 48 ||
+    else if (gameplay->y > 6000 - (1080 / 2) - 48 ||
            gameplay->y < (1080 / 2) - 48)
         vertical_camera(gameplay);
     else
@@ -38,9 +38,19 @@ void move_vue(gameplay_t *gameplay, global_t *global)
     sfRenderWindow_setView(global->window, gameplay->view);
 }
 
+void move_rect_running(gameplay_t *gameplay)
+{
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 70) {
+        gameplay->rect_man.left += 48;
+        sfClock_restart(gameplay->clocks);
+    }
+    if (gameplay->rect_man.left > 528)
+        gameplay->rect_man.left = 432;
+}
+
 void move_rect(gameplay_t *gameplay)
 {
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 80) {
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 100) {
         gameplay->rect_man.left += 48;
         sfClock_restart(gameplay->clocks);
     }
@@ -78,7 +88,7 @@ void init_texture(gameplay_t *gameplay)
 {
     gameplay->sprite_backg = sfSprite_create();
     gameplay->sprite_man = sfSprite_create();
-    gameplay->backg = sfTexture_createFromFile("resource/m.jpg", NULL);
+    gameplay->backg = sfTexture_createFromFile("resource/p.jpg", NULL);
     gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
     set_my_rect(gameplay);
     sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);

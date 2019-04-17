@@ -97,6 +97,7 @@ int check_events(global_t *global, gameplay_t *gameplay);
 void draw_sprites(gameplay_t *gameplay, global_t *global);
 void init_texture(gameplay_t *gameplay);
 void move_vue(gameplay_t *gameplay, global_t *global);
+void move_rect_running(gameplay_t *gameplay);
 void move_rect(gameplay_t *gameplay);
 
 //In src/gameplay/move_character.c

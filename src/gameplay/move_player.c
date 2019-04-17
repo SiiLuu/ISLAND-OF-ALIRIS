@@ -19,7 +19,14 @@ void move_up(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        gameplay->y -= 5;
+        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+            move_rect_running(gameplay);
+            gameplay->y -= 8;
+        }
+        else {
+            move_rect(gameplay);
+            gameplay->y -= 5;
+        }
     }
 }
 
@@ -34,7 +41,14 @@ void move_down(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        gameplay->y += 5;
+        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+            move_rect_running(gameplay);
+            gameplay->y += 8;
+        }
+        else {
+            move_rect(gameplay);
+            gameplay->y += 5;
+        }
     }
 }
 
@@ -49,7 +63,14 @@ void move_left(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        gameplay->x -= 5;
+        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+            move_rect_running(gameplay);
+            gameplay->x -= 8;
+        }
+        else {
+            move_rect(gameplay);
+            gameplay->x -= 5;
+        }
     }
 }
 
@@ -57,14 +78,20 @@ void move_right(gameplay_t *gameplay, global_t *global)
 {
     gameplay->rect_man.top = 96;
     while (sfKeyboard_isKeyPressed(sfKeyRight)) {
-        move_rect(gameplay);
         move_vue(gameplay, global);
         sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
         sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x, gameplay->y});
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        gameplay->x += 5;
+        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+            move_rect_running(gameplay);
+            gameplay->x += 8;
+        }
+        else {
+            move_rect(gameplay);
+            gameplay->x += 5;
+        }
     }
 }
 

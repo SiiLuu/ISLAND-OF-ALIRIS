@@ -4,7 +4,6 @@
 ** File description:
 ** my_defender, main function
 */
-
 #include "my.h"
 #include "rpg.h"
 
@@ -21,7 +20,7 @@ int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
     gameplay->view = sfView_create();
 
     gameplay->x = (1920 / 2) - 64;
-    gameplay->y = (1082 / 2) - 64;
+    gameplay->y = (1080 / 2) - 64;
     init_texture(gameplay);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, menu, 0) || global->event.type == sfEvtClosed) {
