@@ -62,7 +62,7 @@ void display_sound_settings(global_t *global, menu_t *menu)
     sfRenderWindow_drawSprite(global->window, menu->plus, NULL);
 }
 
-void display_score(global_t *global, menu_t *menu)
+void display_sound(global_t *global, menu_t *menu)
 {
     menu->font = sfFont_createFromFile("resource/font/text.ttf");
     menu->text_music = sfText_create();

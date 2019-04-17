@@ -47,7 +47,7 @@ void check_plus_minus(global_t *global, menu_t *menu)
 void all_display_settings(global_t *global, menu_t *menu)
 {
     sfRenderWindow_drawSprite(global->window, menu->wp, NULL);
-    display_score(global, menu);
+    display_sound(global, menu);
     display_sound_settings(global, menu);
     display_sound_bar(global, menu);
     sfRenderWindow_display(global->window);

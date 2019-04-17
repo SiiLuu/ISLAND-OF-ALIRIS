@@ -87,7 +87,7 @@ int settings(global_t *global, menu_t *menu, int x, int y);
 void all_display_settings(global_t *global, menu_t *menu);
 
 //In sound_bar.c
-void display_score(global_t *global, menu_t *menu);
+void display_sound(global_t *global, menu_t *menu);
 void display_sound_settings(global_t *global, menu_t *menu);
 void display_sound_bar(global_t *global, menu_t *menu);
 
