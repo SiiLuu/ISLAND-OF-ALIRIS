@@ -4,6 +4,7 @@
 ** File description:
 ** protoype for the rpg function
 */
+
 #ifndef RPG_H
 #define RPG_H
 
@@ -28,6 +29,7 @@ typedef struct menu {
     sfTexture *start2t;
     sfTexture *soundt;
     sfTexture *no_soundt;
+
     sfTexture *settingst;
     sfMusic *musique;
     sfText* text_music;
@@ -62,8 +64,8 @@ typedef struct gameplay {
 typedef struct global {
     sfRenderWindow *window;
     sfEvent event;
-    int xmouse;
-    int ymouse;
+    //menu_t *menu;
+    //gameplay_t *gameplay;
 }global_t;
 
 
@@ -81,7 +83,7 @@ void check_mouse(global_t *global, menu_t *menu);
 void menu_set_position(menu_t *menu);
 
 //In settings.c
-int settings(global_t *global, menu_t *menu);
+int settings(global_t *global, menu_t *menu, int x, int y);
 void all_display_settings(global_t *global, menu_t *menu);
 
 //In sound_bar.c

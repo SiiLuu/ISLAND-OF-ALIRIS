@@ -62,11 +62,15 @@ void change_start_btn(global_t *global, menu_t *menu)
 
 void check_mouse(global_t *global, menu_t *menu)
 {
+    int xmouse = 0;
+    int ymouse = 0;
+
+    sfRenderWindow_pollEvent(global->window, &global->event);
     if (global->event.type == sfEvtMouseMoved) {
-        global->xmouse = global->event.mouseMove.x;
-        global->ymouse = global->event.mouseMove.y;
-        if (global->xmouse >= 795 && global->xmouse <= 1050
-        && global->ymouse >= 237 && global->ymouse <= 350)
+        xmouse = global->event.mouseMove.x;
+        ymouse = global->event.mouseMove.y;
+        if (xmouse >= 795 && xmouse <= 1050
+        && ymouse >= 237 && ymouse <= 350)
             change_start_btn(global, menu);
         else
             menu_display(global, menu);

@@ -13,6 +13,7 @@ void top_right_corner(gameplay_t *gameplay)
     sfView_reset(gameplay->view, (sfFloatRect){0, 2000 - 1080,
     1920, 1080});
 }
+
 void bottom_right_corner(gameplay_t *gameplay)
 {
     sfView_reset(gameplay->view, (sfFloatRect){3008 - 1920, 2000 - 1080,

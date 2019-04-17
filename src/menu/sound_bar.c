@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void sound_bar(global_t *global, menu_t *menu)
+void sound_bar(menu_t *menu)
 {
     menu->bar1 = sfSprite_create();
     menu->bar2 = sfSprite_create();
@@ -32,7 +32,7 @@ void sound_bar(global_t *global, menu_t *menu)
 
 void display_sound_bar(global_t *global, menu_t *menu)
 {
-    sound_bar(global, menu);
+    sound_bar(menu);
     if (menu->nbr_bar == 1 || menu->nbr_bar == 2 || menu->nbr_bar == 3
         || menu->nbr_bar == 4)
         sfRenderWindow_drawSprite(global->window, menu->bar1, NULL);

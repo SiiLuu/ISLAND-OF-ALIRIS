@@ -64,9 +64,9 @@ void main_function(void)
     gameplay = malloc(sizeof(gameplay_t) * 1);
     menu = malloc(sizeof(menu_t) * 1);
     global = malloc(sizeof(global_t) * 1);
-    sfVideoMode mode = {3008, 2000, 32};
+    sfVideoMode mode = {1920, 1080, 32};
     global->window = sfRenderWindow_create(mode, "my_RPG",
-                                            sfResize | sfClose, NULL);
+                                            sfFullscreen | sfClose, NULL);
     menu->sound = 0;
     menu->nbr_bar = 4;
     music_game(menu);

@@ -31,10 +31,9 @@ void menu_set_position(menu_t *menu)
     sfSprite_setTexture(menu->settings, menu->settingst, sfTrue);
 }
 
-void sound_modif_sprite(global_t *global, menu_t *menu)
+void sound_modif_sprite(global_t *global, menu_t *menu, int x, int y)
 {
-    if (global->xmouse >= 1750 && global->xmouse <= 1878
-        && global->ymouse >= 100 && global->ymouse <= 228) {
+    if (x >= 1750 && x <= 1878 && y >= 100 && y <= 228) {
         if (menu->sound == 1) {
             menu->sound = 0;
             sfRenderWindow_display(global->window);
@@ -60,21 +59,24 @@ void menu_choose_create_display(global_t *global, menu_t *menu, int i)
 
 int menu_start(global_t *global, menu_t *menu, int i)
 {
+    int x = 0;
+    int y = 0;
+    
     sfRenderWindow_pollEvent(global->window, &global->event);
     menu_choose_create_display(global, menu, i);
     while (global->event.type != sfEvtClosed) {
         check_mouse(global, menu);
         if (global->event.type == sfEvtMouseButtonPressed) {
-            global->xmouse = global->event.mouseButton.x;
-            global->ymouse = global->event.mouseButton.y;
-            sound_modif_sprite(global, menu);
-            if (settings(global, menu))
+            x = global->event.mouseButton.x;
+            y = global->event.mouseButton.y;
+            sound_modif_sprite(global, menu, x, y);
+            if (settings(global, menu, x, y))
                 return (0);
-            if (global->xmouse >= 795 && global->xmouse <= 1050
-            && global->ymouse >= 237 && global->ymouse <= 350)
+            else
+                menu_choose_create_display(global, menu, 1);
+            if (x >= 795 && x <= 1050 && y >= 237 && y <= 350)
                 return (0);
-            if (global->xmouse >= 800 && global->xmouse <= 1050 &&
-                global->ymouse >= 562 && global->ymouse <= 694) {
+            if (x >= 800 && x <= 1050 && y >= 562 && y <= 694) {
                 if (destroy_menu(global) == 1)
                     return (0);
                 return (1);
