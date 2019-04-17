@@ -79,7 +79,7 @@ void init_texture(gameplay_t *gameplay)
     gameplay->sprite_backg = sfSprite_create();
     gameplay->sprite_man = sfSprite_create();
     gameplay->backg = sfTexture_createFromFile("resource/m.jpg", NULL);
-    gameplay->man = sfTexture_createFromFile("resource/characters/Actor1.png", NULL);
+    gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
     set_my_rect(gameplay);
     sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
     sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);
