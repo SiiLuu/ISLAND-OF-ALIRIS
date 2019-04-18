@@ -44,14 +44,14 @@ void destroy_all(global_t *global)
     sfSprite_destroy(global->menu->start2);
     sfSprite_destroy(global->menu->sounds);
     sfSprite_destroy(global->menu->nosound);
-    sfSprite_destroy(global->menu->settings);
+    sfSprite_destroy(global->menu->settingsa);
     sfTexture_destroy(global->menu->wpt);
     sfTexture_destroy(global->menu->start1t);
     sfTexture_destroy(global->menu->quit1t);
     sfTexture_destroy(global->menu->start2t);
     sfTexture_destroy(global->menu->soundt);
     sfTexture_destroy(global->menu->no_soundt);
-    sfTexture_destroy(global->menu->settingst);
+    sfTexture_destroy(global->menu->settings->settingst);
 }
 
 void main_function(gameplay_t *gameplay)
@@ -60,16 +60,18 @@ void main_function(gameplay_t *gameplay)
 
     global = malloc(sizeof(global_t) * 1);
     global->menu = malloc(sizeof(menu_t) * 1);
+    global->menu->settings = malloc(sizeof(settings_t) * 1);
     sfVideoMode mode = {1920, 1080, 32};
     global->window = sfRenderWindow_create(mode, "my_RPG",
                                             sfFullscreen | sfClose, NULL);
-    global->menu->sound = 0;
-    global->menu->nbr_bar = 4;
+    global->menu->settings->sound = 0;
+    global->menu->settings->nbr_bar = 4;
     music_game(global);
     main_loop(global, gameplay);
     music_destroy(global);
     sfRenderWindow_destroy(global->window);
     destroy_all(global);
+    free(global->menu->settings);
     free(global->menu);
     free(global);
 }

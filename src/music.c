@@ -12,13 +12,13 @@ void music_game(global_t *global)
 {
     const char *te = "resource/music.flac";
 
-    global->menu->musique = sfMusic_createFromFile(te);
-    sfMusic_play(global->menu->musique);
-    sfMusic_setLoop(global->menu->musique, 1);
+    global->menu->settings->musique = sfMusic_createFromFile(te);
+    sfMusic_play(global->menu->settings->musique);
+    sfMusic_setLoop(global->menu->settings->musique, 1);
 }
 
 void music_destroy(global_t *global)
 {
-    sfMusic_stop(global->menu->musique);
-    sfMusic_destroy(global->menu->musique);
+    sfMusic_stop(global->menu->settings->musique);
+    sfMusic_destroy(global->menu->settings->musique);
 }

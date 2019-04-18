@@ -17,21 +17,7 @@
 #include <SFML/Config.h>
 #include <SFML/System.h>
 
-typedef struct menu {
-    sfSprite *wp;
-    sfSprite *start1;
-    sfSprite *quit1;
-    sfSprite *start2;
-    sfSprite *sounds;
-    sfSprite *nosound;
-    sfSprite *settings;
-    sfTexture *wpt;
-    sfTexture *start1t;
-    sfTexture *quit1t;
-    sfTexture *start2t;
-    sfTexture *soundt;
-    sfTexture *no_soundt;
-
+typedef struct settings {
     sfTexture *settingst;
     sfMusic *musique;
     sfText* text_music;
@@ -47,6 +33,23 @@ typedef struct menu {
     sfSprite *bar4;
     int nbr_bar;
     int sound;
+}settings_t;
+
+typedef struct menu {
+    sfSprite *wp;
+    sfSprite *start1;
+    sfSprite *quit1;
+    sfSprite *start2;
+    sfSprite *sounds;
+    sfSprite *nosound;
+    sfSprite *settingsa;
+    sfTexture *wpt;
+    sfTexture *start1t;
+    sfTexture *quit1t;
+    sfTexture *start2t;
+    sfTexture *soundt;
+    sfTexture *no_soundt;
+    settings_t *settings;
 }menu_t;
 
 typedef struct gameplay {
@@ -79,11 +82,11 @@ typedef struct global {
 }global_t;
 
 
-//In music.c
+//In src/menu/music.c
 void music_game(global_t *global);
 void music_destroy(global_t *global);
 
-//In menu.c
+//In src/menu/menu.c
 int menu_start(global_t *global, int i);
 void menu_create(global_t *global);
 void menu_display(global_t *global);
@@ -91,15 +94,20 @@ int destroy_menu(global_t *global);
 void change_start_btn(global_t *global);
 void check_mouse(global_t *global);
 void menu_set_position(global_t *global);
+void menu_create2(global_t *global);
+void menu_choose_create_display(global_t *global, int i);
 
-//In settings.c
+//In src/menu/settings.c
 int settings(global_t *global, int x, int y);
 void all_display_settings(global_t *global);
 
-//In sound_bar.c
+//In src/menu/sound_bar.c
 void display_sound(global_t *global);
 void display_sound_settings(global_t *global);
 void display_sound_bar(global_t *global);
+
+// In src/menu/check_menu.c
+int check_menu(global_t *global, int x, int y);
 
 //In src/move_character/character.c
 void set_my_rect(gameplay_t *gameplay);

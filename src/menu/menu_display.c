@@ -10,27 +10,21 @@
 
 void menu_create(global_t *global)
 {
+    char *res1 = "resource/menu/no_sound.png";
+    char *res2 = "resource/menu/settings.png";
+
     global->menu->wp = sfSprite_create();
     global->menu->start1 = sfSprite_create();
     global->menu->quit1 = sfSprite_create();
     global->menu->start2 = sfSprite_create();
     global->menu->sounds = sfSprite_create();
     global->menu->nosound = sfSprite_create();
-    global->menu->settings = sfSprite_create();
+    global->menu->settingsa = sfSprite_create();
     global->menu->soundt = sfTexture_createFromFile("resource/menu/sound.png",
                                                 NULL);
-    global->menu->no_soundt = sfTexture_createFromFile("resource/menu/no_sound.png",
-                                                NULL);
-    global->menu->start2t = sfTexture_createFromFile("resource/menu/s2.png",
-                                                NULL);
-    global->menu->wpt = sfTexture_createFromFile("resource/menu/wp.jpg",
-                                                NULL);
-    global->menu->start1t = sfTexture_createFromFile("resource/menu/s1.png",
-                                                NULL);
-    global->menu->quit1t = sfTexture_createFromFile("resource/menu/q1.png",
-                                                NULL);
-    global->menu->settingst = sfTexture_createFromFile("resource/menu/settings.png",
-                                                NULL);
+    global->menu->no_soundt = sfTexture_createFromFile(res1, NULL);
+    global->menu->settings->settingst = sfTexture_createFromFile(res2, NULL);
+    menu_create2(global);
     menu_set_position(global);
 }
 
@@ -39,8 +33,8 @@ void menu_display(global_t *global)
     sfRenderWindow_drawSprite(global->window, global->menu->wp, NULL);
     sfRenderWindow_drawSprite(global->window, global->menu->start1, NULL);
     sfRenderWindow_drawSprite(global->window, global->menu->quit1, NULL);
-    sfRenderWindow_drawSprite(global->window, global->menu->settings, NULL);
-    if (global->menu->sound == 0)
+    sfRenderWindow_drawSprite(global->window, global->menu->settingsa, NULL);
+    if (global->menu->settings->sound == 0)
         sfRenderWindow_drawSprite(global->window, global->menu->sounds, NULL);
     else
         sfRenderWindow_drawSprite(global->window, global->menu->nosound, NULL);

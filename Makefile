@@ -15,7 +15,8 @@ SRC 	=	src/main.c						\
 			src/gameplay/move_player.c		\
 			src/gameplay/map_border.c		\
 			src/gameplay/camera_border.c	\
-			src/gameplay/buffer_in_array.c
+			src/gameplay/buffer_in_array.c  \
+			src/menu/check_menu.c
 
 OBJ 	=	$(SRC:.c=.o)
 

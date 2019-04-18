@@ -10,35 +10,35 @@
 
 void destroy_all_settings(global_t *global)
 {
-    sfText_destroy(global->menu->text_music);
-    sfFont_destroy(global->menu->font);
-    sfSprite_destroy(global->menu->plus);
-    sfSprite_destroy(global->menu->minus);
-    sfTexture_destroy(global->menu->plust);
-    sfTexture_destroy(global->menu->minust);
-    sfTexture_destroy(global->menu->bart);
-    sfSprite_destroy(global->menu->bar1);
-    sfSprite_destroy(global->menu->bar2);
-    sfSprite_destroy(global->menu->bar3);
-    sfSprite_destroy(global->menu->bar4);
+    sfText_destroy(global->menu->settings->text_music);
+    sfFont_destroy(global->menu->settings->font);
+    sfSprite_destroy(global->menu->settings->plus);
+    sfSprite_destroy(global->menu->settings->minus);
+    sfTexture_destroy(global->menu->settings->plust);
+    sfTexture_destroy(global->menu->settings->minust);
+    sfTexture_destroy(global->menu->settings->bart);
+    sfSprite_destroy(global->menu->settings->bar1);
+    sfSprite_destroy(global->menu->settings->bar2);
+    sfSprite_destroy(global->menu->settings->bar3);
+    sfSprite_destroy(global->menu->settings->bar4);
 }
 
 void check_plus_minus(global_t *global)
 {
     int x = 0;
     int y = 0;
-    
+
     if (global->event.type == sfEvtMouseButtonPressed) {
         x = global->event.mouseButton.x;
         y = global->event.mouseButton.y;
         if (x >= 704 && x <= 750 && y >= 422 && y <= 470) {
-            if (global->menu->nbr_bar > 0)
-                global->menu->nbr_bar -= 1;
+            if (global->menu->settings->nbr_bar > 0)
+                global->menu->settings->nbr_bar -= 1;
             all_display_settings(global);
         }
         if (x >= 1104 && x <= 1156 && y >= 420 && y <= 472) {
-            if (global->menu->nbr_bar < 4)
-                global->menu->nbr_bar += 1;
+            if (global->menu->settings->nbr_bar < 4)
+                global->menu->settings->nbr_bar += 1;
             all_display_settings(global);
         }
     }
@@ -53,9 +53,23 @@ void all_display_settings(global_t *global)
     sfRenderWindow_display(global->window);
 }
 
+int check_quit(global_t *global)
+{
+    if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
+        destroy_all_settings(global);
+        return (0);
+    }
+    if (global->event.type == sfEvtClosed) {
+        destroy_all_settings(global);
+        return (1);
+    }
+    return (3);
+}
+
 int settings(global_t *global, int x, int y)
 {
     sfClock *clocks = sfClock_create();
+    int i = 0;
 
     if (x >= 20 && x <= 180 && y >= 100 && y <= 250) {
         all_display_settings(global);
@@ -65,15 +79,12 @@ int settings(global_t *global, int x, int y)
                 check_plus_minus(global);
                 sfClock_restart(clocks);
             }
-            if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
-                destroy_all_settings(global);
+            if ((i = check_quit(global)) == 0)
                 return (0);
-            }
-            if (global->event.type == sfEvtClosed) {
-                destroy_all_settings(global);
+            else if (i == 1)
                 return (1);
-            }
-            sfMusic_setVolume(global->menu->musique, (global->menu->nbr_bar * 25));
+            sfMusic_setVolume(global->menu->settings->musique,
+                                (global->menu->settings->nbr_bar * 25));
         }
         destroy_all_settings(global);
     }
