@@ -7,7 +7,6 @@
 
 #include "my.h"
 #include "rpg.h"
-
 void bottom_left_corner(gameplay_t *gameplay)
 {
     sfView_reset(gameplay->view, (sfFloatRect){6000 - 1920, 0,
@@ -18,8 +17,8 @@ void move_vue(gameplay_t *gameplay, global_t *global)
 {
     if ((gameplay->x > 6000 - 1920 / 2 - 48) && (gameplay->y < 1080 / 2 - 48))
         bottom_left_corner(gameplay);
-    else if ((gameplay->x < 0 + 1920 / 2 - 48) &&
-            (gameplay->y < 1080 / 2 - 48))
+    else if ((gameplay->x < 0 + (1920 / 2) - 48) &&
+            (gameplay->y < (1080 / 2) - 48))
         sfView_reset(gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
     else if ((gameplay->x < 0 + 1920 / 2 - 48) &&
             (gameplay->y > 6000 - 1080 / 2 - 48))
@@ -38,26 +37,6 @@ void move_vue(gameplay_t *gameplay, global_t *global)
     sfRenderWindow_setView(global->window, gameplay->view);
 }
 
-void move_rect_running(gameplay_t *gameplay)
-{
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 70) {
-        gameplay->rect_man.left += 48;
-        sfClock_restart(gameplay->clocks);
-    }
-    if (gameplay->rect_man.left > 528)
-        gameplay->rect_man.left = 432;
-}
-
-void move_rect(gameplay_t *gameplay)
-{
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 100) {
-        gameplay->rect_man.left += 48;
-        sfClock_restart(gameplay->clocks);
-    }
-    if (gameplay->rect_man.left > 528)
-        gameplay->rect_man.left = 432;
-}
-
 int check_events(global_t *global, gameplay_t *gameplay)
 {
     while (sfRenderWindow_pollEvent(global->window, &global->event)) {
@@ -68,22 +47,6 @@ int check_events(global_t *global, gameplay_t *gameplay)
         move_character(gameplay, global);
     }
     return (0);
-}
-
-void set_my_rect_p1(gameplay_t *gameplay)
-{
-    gameplay->rect_man.height = 48;
-    gameplay->rect_man.width = 48;
-    gameplay->rect_man.left = 432;
-    gameplay->rect_man.top = 0;
-}
-
-void set_my_rect_p2(gameplay_t *gameplay)
-{
-    gameplay->rect_man.height = 48;
-    gameplay->rect_man.width = 48;
-    gameplay->rect_man.left = 144;
-    gameplay->rect_man.top = 0;
 }
 
 void set_position(gameplay_t *gameplay)
@@ -104,15 +67,26 @@ void create_sprite(gameplay_t *gameplay)
 
 void init_texture(gameplay_t *gameplay)
 {
-    int i = 1;
-
+    gameplay->player_nb = 2;
     create_sprite(gameplay);
-    if (i == 1) {
+    if (gameplay->player_nb == 1) {
         gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
         set_my_rect_p1(gameplay);
-        sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
-        sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);
     }
+    if (gameplay->player_nb == 2) {
+        gameplay->man = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
+        set_my_rect_p2(gameplay);
+    }
+    if (gameplay->player_nb == 3) {
+        gameplay->man = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
+        set_my_rect_p3(gameplay);
+    }
+    if (gameplay->player_nb == 4) {
+        gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
+        set_my_rect_p4(gameplay);
+    }
+    sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
+    sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);
     set_position(gameplay);
 }
 

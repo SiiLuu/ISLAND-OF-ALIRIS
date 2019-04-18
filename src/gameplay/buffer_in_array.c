@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "my.h"
 
-int get_len_file(gameplay_t *gameplay)
+static int get_len_file(gameplay_t *gameplay)
 {
     int i = 0;
 
@@ -18,7 +18,7 @@ int get_len_file(gameplay_t *gameplay)
     return (i - 1);
 }
 
-int get_len_line(gameplay_t *gameplay)
+static int get_len_line(gameplay_t *gameplay)
 {
     int i = 0;
 
@@ -26,7 +26,7 @@ int get_len_line(gameplay_t *gameplay)
     return (i);
 }
 
-int get_line_nbr(char *str)
+static int get_line_nbr(char *str)
 {
     int i = 0;
     int count = 0;
@@ -38,7 +38,7 @@ int get_line_nbr(char *str)
     return (count + 1);
 }
 
-void set_line(gameplay_t *gameplay, int height, int len)
+static void set_line(gameplay_t *gameplay, int height, int len)
 {
     int i = 0;
     int j = 0;

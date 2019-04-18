@@ -19,14 +19,16 @@ int main_loop(global_t *global, gameplay_t *gameplay)
     gameplay->clocks = sfClock_create();
     gameplay->view = sfView_create();
 
-    gameplay->x = (1920 / 2) - 64;
-    gameplay->y = (1080 / 2) - 64;
+    gameplay->x = 300;
+    gameplay->y = 600;
     init_texture(gameplay);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(gameplay->clocks);
         return (0);
     }
+    sfView_reset(gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
+    sfRenderWindow_setView(global->window, gameplay->view);
     while (sfRenderWindow_isOpen(global->window)) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 5) {
             game_parameters(gameplay, global);

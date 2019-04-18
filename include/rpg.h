@@ -72,6 +72,7 @@ typedef struct gameplay {
     int y;
     int camera_x;
     int camera_y;
+    int player_nb;
 }gameplay_t;
 
 typedef struct global {
@@ -140,5 +141,41 @@ void check_position_down(gameplay_t *gameplay);
 
 //In src/gameplay/buffer_in_array.c
 void string_to_tab(gameplay_t *gameplay);
+
+//In src/gameplay/buffer_in_array.c
+void string_to_tab(gameplay_t *gameplay);
+
+//In src/Gameplay/rect_in_movement.c
+void set_rect_runing(gameplay_t * gameplay);
+void set_rect_moving(gameplay_t *gameplay);
+void set_rect_left(gameplay_t *gameplay);
+void move_rect(gameplay_t *gameplay);
+void set_rect_down(gameplay_t *gameplay);
+void set_rect_top(gameplay_t *gameplay);
+void set_rect_right(gameplay_t *gameplay);
+
+//In src/gameplay/set_player_running.c
+void move_rect_running(gameplay_t *gameplay);
+void move_rect_running_p2(gameplay_t *gameplay);
+void move_rect_running_p3(gameplay_t *gameplay);
+void move_rect_running_p4(gameplay_t *gameplay);
+
+//In src/gameplay/movement_player/set_player_moving.c
+void move_rect_p1(gameplay_t *gameplay);
+void move_rect_p2(gameplay_t *gameplay);
+void move_rect_p3(gameplay_t *gameplay);
+void move_rect_p4(gameplay_t *gameplay);
+
+//In src/gameplay/movement_player/set_player_direction.c
+void set_rect_right(gameplay_t *gameplay);
+void set_rect_left(gameplay_t *gameplay);
+void set_rect_top(gameplay_t *gameplay);
+void set_rect_down(gameplay_t *gameplay);
+
+//In src/gameplay/movement_player/set_player_rect.c
+void set_my_rect_p1(gameplay_t *gameplay);
+void set_my_rect_p2(gameplay_t *gameplay);
+void set_my_rect_p3(gameplay_t *gameplay);
+void set_my_rect_p4(gameplay_t *gameplay);
 
 #endif
