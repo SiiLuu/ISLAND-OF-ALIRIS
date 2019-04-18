@@ -5,15 +5,17 @@
 ## makefile for the minishell1
 ##
 
-SRC 	=	src/main.c					\
-			src/music.c					\
-			src/menu/menu.c				\
-			src/menu/menu_display.c		\
-			src/menu/settings.c			\
-			src/menu/sound_bar.c		\
-			src/gameplay/character.c	\
-			src/gameplay/move_player.c	\
-			src/gameplay/map_border.c
+SRC 	=	src/main.c						\
+			src/music.c						\
+			src/menu/menu.c					\
+			src/menu/menu_display.c			\
+			src/menu/settings.c				\
+			src/menu/sound_bar.c			\
+			src/gameplay/character.c		\
+			src/gameplay/move_player.c		\
+			src/gameplay/map_border.c		\
+			src/gameplay/camera_border.c	\
+			src/gameplay/buffer_in_array.c
 
 OBJ 	=	$(SRC:.c=.o)
 

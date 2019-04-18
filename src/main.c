@@ -54,13 +54,11 @@ void destroy_all(menu_t *menu)
     sfTexture_destroy(menu->settingst);
 }
 
-void main_function(void)
+void main_function(gameplay_t *gameplay)
 {
     global_t *global;
     menu_t *menu;
-    gameplay_t *gameplay;
 
-    gameplay = malloc(sizeof(gameplay_t) * 1);
     menu = malloc(sizeof(menu_t) * 1);
     global = malloc(sizeof(global_t) * 1);
     sfVideoMode mode = {1920, 1080, 32};
@@ -74,12 +72,36 @@ void main_function(void)
     sfRenderWindow_destroy(global->window);
     destroy_all(menu);
     free(global);
-    free(gameplay);
     free(menu);
+}
+
+int open_file(char **av, gameplay_t *gameplay)
+{
+    struct stat filepath;
+    char *buffer = NULL;
+    int fd = 0;
+    int i = 0;
+
+    stat(av[1], &filepath);
+    fd = open(av[1], O_RDONLY);
+    if (fd == -1)
+        return (84);
+    i = filepath.st_size;
+    buffer = malloc(sizeof(char) * i);
+    if (buffer == NULL)
+        return (84);
+    read(fd, buffer, i);
+    close(fd);
+    gameplay->buffer = buffer;
+    string_to_tab(gameplay);
+    return (0);
 }
 
 int main(int ac, char **av)
 {
+    gameplay_t *gameplay;
+
+    gameplay = malloc(sizeof(gameplay_t) * 1);
     if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h' && av[1][2] == '\0') {
         my_putstr("USAGE:\n        ./my_defender\n");
         my_putstr("DESCRIPTION:\n\tto win prevent the enemies to save\n");
@@ -89,7 +111,12 @@ int main(int ac, char **av)
         my_putstr("\twith different abilities. GOOD LUCK TO YOU !\n");
         return (1);
     }
+    if (ac != 2)
+        return (84);
+    if (open_file(av, gameplay) == 84)
+        return (84);
     else
-        main_function();
+        main_function(gameplay);
+    free(gameplay);
     return (1);
 }

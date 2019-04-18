@@ -17,5 +17,6 @@ void my_putchar(char c);
 int my_putnbr(int nb);
 int my_putstr(char *str);
 char *convert_int_char(unsigned nbr);
+int my_strlen(char const *str);
 
 #endif

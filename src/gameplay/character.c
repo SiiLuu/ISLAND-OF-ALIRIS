@@ -70,11 +70,19 @@ int check_events(global_t *global, gameplay_t *gameplay)
     return (0);
 }
 
-void set_my_rect(gameplay_t *gameplay)
+void set_my_rect_p1(gameplay_t *gameplay)
 {
     gameplay->rect_man.height = 48;
     gameplay->rect_man.width = 48;
     gameplay->rect_man.left = 432;
+    gameplay->rect_man.top = 0;
+}
+
+void set_my_rect_p2(gameplay_t *gameplay)
+{
+    gameplay->rect_man.height = 48;
+    gameplay->rect_man.width = 48;
+    gameplay->rect_man.left = 144;
     gameplay->rect_man.top = 0;
 }
 
@@ -84,15 +92,27 @@ void set_position(gameplay_t *gameplay)
     sfSprite_setScale(gameplay->sprite_man, (sfVector2f){2.08333, 2.08333});
 }
 
-void init_texture(gameplay_t *gameplay)
+void create_sprite(gameplay_t *gameplay)
 {
     gameplay->sprite_backg = sfSprite_create();
     gameplay->sprite_man = sfSprite_create();
-    gameplay->backg = sfTexture_createFromFile("resource/p.jpg", NULL);
-    gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
-    set_my_rect(gameplay);
-    sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
-    sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);
+    gameplay->sprite_man2 = sfSprite_create();
+    gameplay->sprite_man3 = sfSprite_create();
+    gameplay->sprite_man4 = sfSprite_create();
+    gameplay->backg = sfTexture_createFromFile("resource/World Map.png", NULL);
+}
+
+void init_texture(gameplay_t *gameplay)
+{
+    int i = 1;
+
+    create_sprite(gameplay);
+    if (i == 1) {
+        gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
+        set_my_rect_p1(gameplay);
+        sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
+        sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);
+    }
     set_position(gameplay);
 }
 

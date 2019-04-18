@@ -10,6 +10,8 @@
 
 #include <time.h>
 #include <SFML/Graphics.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <SFML/Window/Export.h>
 #include <SFML/Audio.h>
 #include <SFML/Config.h>
@@ -52,9 +54,17 @@ typedef struct gameplay {
     sfSprite *sprite_backg;
     sfTexture *man;
     sfSprite *sprite_man;
+    sfTexture *man2;
+    sfSprite *sprite_man2;
+    sfTexture *man3;
+    sfSprite *sprite_man3;
+    sfTexture *man4;
+    sfSprite *sprite_man4;
     sfIntRect rect_man;
     sfClock *clocks;
     sfView * view;
+    char *buffer;
+    char **map;
     int x;
     int y;
     int camera_x;
@@ -107,11 +117,20 @@ void move_up(gameplay_t *gameplay, global_t *global);
 void move_down(gameplay_t *gameplay, global_t *global);
 void move_left(gameplay_t *gameplay, global_t *global);
 
-//In src/gameplay/map_border.c
+//In src/gameplay/camera_border.c
 void camera_center(gameplay_t *gameplay);
 void camera_horizontal(gameplay_t *gameplay);
 void vertical_camera(gameplay_t *gameplay);
 void bottom_right_corner(gameplay_t *gameplay);
 void top_right_corner(gameplay_t *gameplay);
+
+//In src/gameplay/map_border.c
+void check_position_right(gameplay_t *gameplay);
+void check_position_left(gameplay_t *gameplay);
+void check_position_top(gameplay_t *gameplay);
+void check_position_down(gameplay_t *gameplay);
+
+//In src/gameplay/buffer_in_array.c
+void string_to_tab(gameplay_t *gameplay);
 
 #endif

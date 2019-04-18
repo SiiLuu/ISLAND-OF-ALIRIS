@@ -2,42 +2,44 @@
 ** EPITECH PROJECT, 2019
 ** my_rpg
 ** File description:
-** set the map border
+** map_border.c
 */
 
-#include "my.h"
 #include "rpg.h"
+#include "my.h"
 
-void top_right_corner(gameplay_t *gameplay)
+void check_position_left(gameplay_t *gameplay)
 {
-    sfView_reset(gameplay->view, (sfFloatRect){0, 6000 - 1080,
-    1920, 1080});
+    if (gameplay->x <= 0) {
+        gameplay->x = 0;
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
+        gameplay->y});
+    }
 }
 
-void bottom_right_corner(gameplay_t *gameplay)
+void check_position_right(gameplay_t *gameplay)
 {
-    sfView_reset(gameplay->view, (sfFloatRect){6000 - 1920, 6000 - 1080,
-    1920, 1080});
+    if (gameplay->x >= 6000 - 100) {
+        gameplay->x = 6000 - 100;
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
+        gameplay->y});
+    }
 }
 
-void vertical_camera(gameplay_t *gameplay)
+void check_position_top(gameplay_t *gameplay)
 {
-    gameplay->camera_x = gameplay->x - (1920 / 2) + 48;
-    sfView_reset(gameplay->view, (sfFloatRect){gameplay->x - (1920 / 2) + 48,
-    gameplay->camera_y, 1920, 1080});
+    if (gameplay->y <= 0) {
+        gameplay->y = 0;
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
+        gameplay->y});
+    }
 }
 
-void camera_horizontal(gameplay_t *gameplay)
+void check_position_down(gameplay_t *gameplay)
 {
-    gameplay->camera_y = gameplay->y - (1080 / 2) + 48;
-    sfView_reset(gameplay->view, (sfFloatRect){gameplay->camera_x,
-    gameplay->y - (1080 / 2) + 48, 1920, 1080});
-}
-
-void camera_center(gameplay_t *gameplay)
-{
-    gameplay->camera_x = gameplay->x - (1920 / 2) + 48;
-    gameplay->camera_y = gameplay->y - (1080 / 2) + 48;
-    sfView_reset(gameplay->view, (sfFloatRect){gameplay->x - ((1920 / 2) - 48),
-    gameplay->y - ((1080 / 2) - 48), 1920, 1080});
+    if (gameplay->y >= 6000 - 100) {
+        gameplay->y = 6000 - 100;
+        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
+        gameplay->y});
+    }
 }
