@@ -8,17 +8,17 @@
 #include "my.h"
 #include "rpg.h"
 
-void music_game(menu_t *menu)
+void music_game(global_t *global)
 {
     const char *te = "resource/music.flac";
 
-    menu->musique = sfMusic_createFromFile(te);
-    sfMusic_play(menu->musique);
-    sfMusic_setLoop(menu->musique, 1);
+    global->menu->musique = sfMusic_createFromFile(te);
+    sfMusic_play(global->menu->musique);
+    sfMusic_setLoop(global->menu->musique, 1);
 }
 
-void music_destroy(menu_t *menu)
+void music_destroy(global_t *global)
 {
-    sfMusic_stop(menu->musique);
-    sfMusic_destroy(menu->musique);
+    sfMusic_stop(global->menu->musique);
+    sfMusic_destroy(global->menu->musique);
 }

@@ -8,42 +8,42 @@
 #include "my.h"
 #include "rpg.h"
 
-void menu_create(menu_t *menu)
+void menu_create(global_t *global)
 {
-    menu->wp = sfSprite_create();
-    menu->start1 = sfSprite_create();
-    menu->quit1 = sfSprite_create();
-    menu->start2 = sfSprite_create();
-    menu->sounds = sfSprite_create();
-    menu->nosound = sfSprite_create();
-    menu->settings = sfSprite_create();
-    menu->soundt = sfTexture_createFromFile("resource/menu/sound.png",
+    global->menu->wp = sfSprite_create();
+    global->menu->start1 = sfSprite_create();
+    global->menu->quit1 = sfSprite_create();
+    global->menu->start2 = sfSprite_create();
+    global->menu->sounds = sfSprite_create();
+    global->menu->nosound = sfSprite_create();
+    global->menu->settings = sfSprite_create();
+    global->menu->soundt = sfTexture_createFromFile("resource/menu/sound.png",
                                                 NULL);
-    menu->no_soundt = sfTexture_createFromFile("resource/menu/no_sound.png",
+    global->menu->no_soundt = sfTexture_createFromFile("resource/menu/no_sound.png",
                                                 NULL);
-    menu->start2t = sfTexture_createFromFile("resource/menu/s2.png",
+    global->menu->start2t = sfTexture_createFromFile("resource/menu/s2.png",
                                                 NULL);
-    menu->wpt = sfTexture_createFromFile("resource/menu/wp.jpg",
+    global->menu->wpt = sfTexture_createFromFile("resource/menu/wp.jpg",
                                                 NULL);
-    menu->start1t = sfTexture_createFromFile("resource/menu/s1.png",
+    global->menu->start1t = sfTexture_createFromFile("resource/menu/s1.png",
                                                 NULL);
-    menu->quit1t = sfTexture_createFromFile("resource/menu/q1.png",
+    global->menu->quit1t = sfTexture_createFromFile("resource/menu/q1.png",
                                                 NULL);
-    menu->settingst = sfTexture_createFromFile("resource/menu/settings.png",
+    global->menu->settingst = sfTexture_createFromFile("resource/menu/settings.png",
                                                 NULL);
-    menu_set_position(menu);
+    menu_set_position(global);
 }
 
-void menu_display(global_t *global, menu_t *menu)
+void menu_display(global_t *global)
 {
-    sfRenderWindow_drawSprite(global->window, menu->wp, NULL);
-    sfRenderWindow_drawSprite(global->window, menu->start1, NULL);
-    sfRenderWindow_drawSprite(global->window, menu->quit1, NULL);
-    sfRenderWindow_drawSprite(global->window, menu->settings, NULL);
-    if (menu->sound == 0)
-        sfRenderWindow_drawSprite(global->window, menu->sounds, NULL);
+    sfRenderWindow_drawSprite(global->window, global->menu->wp, NULL);
+    sfRenderWindow_drawSprite(global->window, global->menu->start1, NULL);
+    sfRenderWindow_drawSprite(global->window, global->menu->quit1, NULL);
+    sfRenderWindow_drawSprite(global->window, global->menu->settings, NULL);
+    if (global->menu->sound == 0)
+        sfRenderWindow_drawSprite(global->window, global->menu->sounds, NULL);
     else
-        sfRenderWindow_drawSprite(global->window, menu->nosound, NULL);
+        sfRenderWindow_drawSprite(global->window, global->menu->nosound, NULL);
     sfRenderWindow_display(global->window);
 }
 
@@ -54,13 +54,13 @@ int destroy_menu(global_t *global)
     return (0);
 }
 
-void change_start_btn(global_t *global, menu_t *menu)
+void change_start_btn(global_t *global)
 {
-    sfRenderWindow_drawSprite(global->window, menu->start2, NULL);
+    sfRenderWindow_drawSprite(global->window, global->menu->start2, NULL);
     sfRenderWindow_display(global->window);
 }
 
-void check_mouse(global_t *global, menu_t *menu)
+void check_mouse(global_t *global)
 {
     int xmouse = 0;
     int ymouse = 0;
@@ -71,8 +71,8 @@ void check_mouse(global_t *global, menu_t *menu)
         ymouse = global->event.mouseMove.y;
         if (xmouse >= 795 && xmouse <= 1050
         && ymouse >= 237 && ymouse <= 350)
-            change_start_btn(global, menu);
+            change_start_btn(global);
         else
-            menu_display(global, menu);
+            menu_display(global);
     }
 }

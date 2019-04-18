@@ -14,7 +14,7 @@ void game_parameters(gameplay_t *gameplay, global_t *global)
 }
 
 
-int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
+int main_loop(global_t *global, gameplay_t *gameplay)
 {
     gameplay->clocks = sfClock_create();
     gameplay->view = sfView_create();
@@ -23,7 +23,7 @@ int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
     gameplay->y = (1080 / 2) - 64;
     init_texture(gameplay);
     sfRenderWindow_setFramerateLimit(global->window, 60);
-    if (menu_start(global, menu, 0) || global->event.type == sfEvtClosed) {
+    if (menu_start(global, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(gameplay->clocks);
         return (0);
     }
@@ -36,43 +36,42 @@ int main_loop(global_t *global, menu_t *menu, gameplay_t *gameplay)
     return (0);
 }
 
-void destroy_all(menu_t *menu)
+void destroy_all(global_t *global)
 {
-    sfSprite_destroy(menu->wp);
-    sfSprite_destroy(menu->start1);
-    sfSprite_destroy(menu->quit1);
-    sfSprite_destroy(menu->start2);
-    sfSprite_destroy(menu->sounds);
-    sfSprite_destroy(menu->nosound);
-    sfSprite_destroy(menu->settings);
-    sfTexture_destroy(menu->wpt);
-    sfTexture_destroy(menu->start1t);
-    sfTexture_destroy(menu->quit1t);
-    sfTexture_destroy(menu->start2t);
-    sfTexture_destroy(menu->soundt);
-    sfTexture_destroy(menu->no_soundt);
-    sfTexture_destroy(menu->settingst);
+    sfSprite_destroy(global->menu->wp);
+    sfSprite_destroy(global->menu->start1);
+    sfSprite_destroy(global->menu->quit1);
+    sfSprite_destroy(global->menu->start2);
+    sfSprite_destroy(global->menu->sounds);
+    sfSprite_destroy(global->menu->nosound);
+    sfSprite_destroy(global->menu->settings);
+    sfTexture_destroy(global->menu->wpt);
+    sfTexture_destroy(global->menu->start1t);
+    sfTexture_destroy(global->menu->quit1t);
+    sfTexture_destroy(global->menu->start2t);
+    sfTexture_destroy(global->menu->soundt);
+    sfTexture_destroy(global->menu->no_soundt);
+    sfTexture_destroy(global->menu->settingst);
 }
 
 void main_function(gameplay_t *gameplay)
 {
     global_t *global;
-    menu_t *menu;
 
-    menu = malloc(sizeof(menu_t) * 1);
     global = malloc(sizeof(global_t) * 1);
+    global->menu = malloc(sizeof(menu_t) * 1);
     sfVideoMode mode = {1920, 1080, 32};
     global->window = sfRenderWindow_create(mode, "my_RPG",
                                             sfFullscreen | sfClose, NULL);
-    menu->sound = 0;
-    menu->nbr_bar = 4;
-    music_game(menu);
-    main_loop(global, menu, gameplay);
-    music_destroy(menu);
+    global->menu->sound = 0;
+    global->menu->nbr_bar = 4;
+    music_game(global);
+    main_loop(global, gameplay);
+    music_destroy(global);
     sfRenderWindow_destroy(global->window);
-    destroy_all(menu);
+    destroy_all(global);
+    free(global->menu);
     free(global);
-    free(menu);
 }
 
 int open_file(char **av, gameplay_t *gameplay)

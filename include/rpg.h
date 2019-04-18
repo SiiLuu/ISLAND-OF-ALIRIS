@@ -74,32 +74,32 @@ typedef struct gameplay {
 typedef struct global {
     sfRenderWindow *window;
     sfEvent event;
-    //menu_t *menu;
+    menu_t *menu;
     //gameplay_t *gameplay;
 }global_t;
 
 
 //In music.c
-void music_game(menu_t *menu);
-void music_destroy(menu_t *menu);
+void music_game(global_t *global);
+void music_destroy(global_t *global);
 
 //In menu.c
-int menu_start(global_t *global, menu_t *menu, int i);
-void menu_create(menu_t *menu);
-void menu_display(global_t *global, menu_t *menu);
+int menu_start(global_t *global, int i);
+void menu_create(global_t *global);
+void menu_display(global_t *global);
 int destroy_menu(global_t *global);
-void change_start_btn(global_t *global, menu_t *menu);
-void check_mouse(global_t *global, menu_t *menu);
-void menu_set_position(menu_t *menu);
+void change_start_btn(global_t *global);
+void check_mouse(global_t *global);
+void menu_set_position(global_t *global);
 
 //In settings.c
-int settings(global_t *global, menu_t *menu, int x, int y);
-void all_display_settings(global_t *global, menu_t *menu);
+int settings(global_t *global, int x, int y);
+void all_display_settings(global_t *global);
 
 //In sound_bar.c
-void display_sound(global_t *global, menu_t *menu);
-void display_sound_settings(global_t *global, menu_t *menu);
-void display_sound_bar(global_t *global, menu_t *menu);
+void display_sound(global_t *global);
+void display_sound_settings(global_t *global);
+void display_sound_bar(global_t *global);
 
 //In src/move_character/character.c
 void set_my_rect(gameplay_t *gameplay);
