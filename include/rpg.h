@@ -9,6 +9,7 @@
 #define RPG_H
 
 #include <time.h>
+#include <stdbool.h>
 #include <SFML/Graphics.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -177,5 +178,13 @@ void set_my_rect_p1(gameplay_t *gameplay);
 void set_my_rect_p2(gameplay_t *gameplay);
 void set_my_rect_p3(gameplay_t *gameplay);
 void set_my_rect_p4(gameplay_t *gameplay);
+
+//In src/gameplay/collision.c
+bool check_collision_up(gameplay_t *gameplay, int distance);
+bool check_collision_down(gameplay_t *gameplay, int distance);
+bool check_collision_left(gameplay_t *gameplay, int distance);
+bool check_collision_right(gameplay_t *gameplay, int distance);
+bool manage_col_left(gameplay_t *gameplay);
+bool manage_col_right(gameplay_t *gameplay);
 
 #endif

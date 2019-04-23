@@ -12,6 +12,7 @@ SRC 	=	src/main.c						\
 			src/menu/settings.c				\
 			src/menu/sound_bar.c			\
 			src/menu/check_menu.c								\
+			src/gameplay/collision.c							\
 			src/gameplay/character.c							\
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\

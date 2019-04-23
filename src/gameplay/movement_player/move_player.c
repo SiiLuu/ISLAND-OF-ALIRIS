@@ -5,6 +5,7 @@
 ** function to move the player on the map
 */
 
+#include <stdbool.h>
 #include "my.h"
 #include "rpg.h"
 
@@ -20,13 +21,17 @@ void move_up(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_up(gameplay, 8) == true) {
             set_rect_runing(gameplay);
             gameplay->y -= 8;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->y += 8;
         }
-        else {
+        else if (check_collision_up(gameplay, 5) == true) {
             set_rect_moving(gameplay);
             gameplay->y -= 5;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->y += 5;
         }
     }
 }
@@ -43,13 +48,17 @@ void move_down(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_down(gameplay, 8) == true) {
             set_rect_runing(gameplay);
             gameplay->y += 8;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->y -= 8;
         }
-        else {
+        else if (check_collision_down(gameplay, 5) == true) {
             set_rect_moving(gameplay);
             gameplay->y += 5;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->y -= 5;
         }
     }
 }
@@ -66,13 +75,17 @@ void move_left(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_left(gameplay, 8) == true) {
             set_rect_runing(gameplay);
             gameplay->x -= 8;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->x += 8;
         }
-        else {
+        else if (check_collision_left(gameplay, 5) == true) {
             set_rect_moving(gameplay);
             gameplay->x -= 5;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->x += 5;
         }
     }
 }
@@ -88,13 +101,17 @@ void move_right(gameplay_t *gameplay, global_t *global)
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift)) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_right(gameplay, 8) == true) {
             set_rect_runing(gameplay);
             gameplay->x += 8;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->x -= 8;
         }
-        else {
+        else if (check_collision_right(gameplay, 5) == true) {
             set_rect_moving(gameplay);
             gameplay->x += 5;
+            if (gameplay->map[gameplay->y / 100][gameplay->x / 100] != '0')
+                gameplay->x -= 5;
         }
     }
 }
