@@ -179,12 +179,16 @@ void set_my_rect_p2(gameplay_t *gameplay);
 void set_my_rect_p3(gameplay_t *gameplay);
 void set_my_rect_p4(gameplay_t *gameplay);
 
-//In src/gameplay/collision.c
+//In src/gameplay/check_collision.c
 bool check_collision_up(gameplay_t *gameplay, int distance);
 bool check_collision_down(gameplay_t *gameplay, int distance);
 bool check_collision_left(gameplay_t *gameplay, int distance);
 bool check_collision_right(gameplay_t *gameplay, int distance);
-bool manage_col_left(gameplay_t *gameplay);
-bool manage_col_right(gameplay_t *gameplay);
+
+//In src/gameplay/manage_collision.c
+bool manage_col_up(gameplay_t *gameplay, int pos_x, int mpos_y);
+bool manage_col_left(gameplay_t *gameplay, int pos_x, int pos_y);
+bool manage_col_right(gameplay_t *gameplay, int mpos_x, int pos_y);
+bool manage_col_down(gameplay_t *gameplay, int pos_x, int mpos_y);
 
 #endif
