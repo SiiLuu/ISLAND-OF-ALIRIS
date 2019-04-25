@@ -7,6 +7,7 @@
 
 #include "my.h"
 #include "rpg.h"
+
 void bottom_left_corner(global_t *global)
 {
     sfView_reset(global->gameplay->view, (sfFloatRect){6000 - 1920, 0,
@@ -42,6 +43,8 @@ int check_events(global_t *global)
     while (sfRenderWindow_pollEvent(global->window, &global->event)) {
         if (global->event.type == sfEvtClosed)
             sfRenderWindow_close(global->window);
+        if (global->event.key.code == sfKeyEscape)
+            exit (0);
         move_character(global);
     }
     return (0);

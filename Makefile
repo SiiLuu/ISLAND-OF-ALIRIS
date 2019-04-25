@@ -6,7 +6,6 @@
 ##
 
 SRC 	=	src/main.c						\
-			src/choose_character.c			\
 			src/music.c						\
 			src/menu/menu.c					\
 			src/menu/menu_display.c			\
@@ -25,6 +24,8 @@ SRC 	=	src/main.c						\
 			src/gameplay/movement_player/set_player_rect.c		\
 			src/gameplay/movement_player/set_player_moving.c	\
 			src/gameplay/movement_player/set_player_running.c	\
+			src/choose_character/choose_character.c				\
+			src/choose_character/choose_character_display.c
 
 OBJ 	=	$(SRC:.c=.o)
 
@@ -51,6 +52,7 @@ clean:
 	@rm -f lib/my/*.o
 	@rm -f src/*.o
 	@rm -f src/menu/*.o
+	@rm -f src/choose_character/*.o
 	@rm -f src/gameplay/*.o
 	@rm -f src/gameplay/movement_player/*.o
 	@rm -f lib/my/libmy.a

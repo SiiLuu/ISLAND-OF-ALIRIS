@@ -8,19 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-void choose_display(global_t *global)
-{
-    sfRenderWindow_drawSprite(global->window,
-                                global->choose_char->player1_sprite, NULL);
-    sfRenderWindow_drawSprite(global->window,
-                                global->choose_char->player2_sprite, NULL);
-    sfRenderWindow_drawSprite(global->window,
-                                global->choose_char->player3_sprite, NULL);
-    sfRenderWindow_drawSprite(global->window,
-                                global->choose_char->player4_sprite, NULL);
-    sfRenderWindow_display(global->window);
-}
-
 void choose_create2(global_t *global)
 {
     sfSprite_setTexture(global->choose_char->player1_sprite,
@@ -63,19 +50,56 @@ void choose_create(global_t *global)
     choose_create2(global);
 }
 
+int choose_character1(global_t *global, int x, int y)
+{
+    if (x >= 50 && x <= 325 && y >= 390 && y <= 652) {
+        global->gameplay->player_nb = 1;
+        return (1);
+    }
+    else if (x >= 550 && x <= 791 && y >= 390 && y <= 644) {
+        global->gameplay->player_nb = 2;
+        return (1);
+    }
+    else if (x >= 1050 && x <= 1313 && y >= 390 && y <= 673) {
+        global->gameplay->player_nb = 3;
+        return (1);
+    }
+    else if (x >= 1550 && x <= 1852 && y >= 390 && y <= 662) {
+        global->gameplay->player_nb = 4;
+        return (1);
+    }
+    else
+        return (0);
+}
+
+void character_choose_create_display(global_t *global)
+{
+    static bool i = 0;    
+
+    if (i == 1)
+        choose_display(global);
+    else {
+        choose_create(global);
+        choose_display(global);
+        i = 1;
+    }
+}
+
 int choose_character(global_t *global)
 {
     int x = 0;
     int y = 0;
 
-    choose_create(global);
-    choose_display(global);
+    character_choose_create_display(global);
     while (global->event.type != sfEvtClosed) {
-        if (global->event.key.code == sfKeyEscape) {
+        if (global->event.type == sfEvtMouseButtonPressed) {
             x = global->event.mouseButton.x;
             y = global->event.mouseButton.y;
-            return (0);
+            if (choose_character1(global, x, y))
+                return (0);
         }
+        if (global->event.key.code == sfKeyEscape)
+            exit (0);
         sfRenderWindow_pollEvent(global->window, &global->event);
     }
 }

@@ -199,8 +199,10 @@ bool manage_col_left(gameplay_t *gameplay, int pos_x, int pos_y);
 bool manage_col_right(gameplay_t *gameplay, int mpos_x, int pos_y);
 bool manage_col_down(gameplay_t *gameplay, int pos_x, int mpos_y);
 
-
-// In src/choose_character.c
+// In src/choose_character/choose_character.c
 int choose_character(global_t *global);
+
+// In src/choose_character/choose_character_display.c
+void choose_display(global_t *global);
 
 #endif
