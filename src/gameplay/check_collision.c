@@ -21,7 +21,7 @@ bool check_collision_up(gameplay_t *gameplay, int distance)
             manage_col_up(gameplay, pos_x, mpos_y) == true)
             return (true);
     }
-    return (false); 
+    return (false);
 }
 
 bool check_collision_down(gameplay_t *gameplay, int distance)
@@ -51,7 +51,7 @@ bool check_collision_left(gameplay_t *gameplay, int distance)
             manage_col_left(gameplay, mpos_x, pos_y) == true)
             return (true);
     }
-    return (false); 
+    return (false);
 }
 
 bool check_collision_right(gameplay_t *gameplay, int distance)
@@ -66,5 +66,5 @@ bool check_collision_right(gameplay_t *gameplay, int distance)
         manage_col_right(gameplay, mpos_x, pos_y) == true)
         return (true);
     }
-    return (false); 
+    return (false);
 }

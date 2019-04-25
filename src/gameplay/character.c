@@ -7,93 +7,91 @@
 
 #include "my.h"
 #include "rpg.h"
-void bottom_left_corner(gameplay_t *gameplay)
+void bottom_left_corner(global_t *global)
 {
-    sfView_reset(gameplay->view, (sfFloatRect){6000 - 1920, 0,
+    sfView_reset(global->gameplay->view, (sfFloatRect){6000 - 1920, 0,
     1920, 1080});
 }
 
-void move_vue(gameplay_t *gameplay, global_t *global)
+void move_vue(global_t *global)
 {
-    if ((gameplay->x > 6000 - 1920 / 2 - 48) && (gameplay->y < 1080 / 2 - 48))
-        bottom_left_corner(gameplay);
-    else if ((gameplay->x < 0 + (1920 / 2) - 48) &&
-            (gameplay->y < (1080 / 2) - 48))
-        sfView_reset(gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
-    else if ((gameplay->x < 0 + 1920 / 2 - 48) &&
-            (gameplay->y > 6000 - 1080 / 2 - 48))
-        top_right_corner(gameplay);
-    else if ((gameplay->x > 6000 - 1920 / 2 - 48) &&
-            (gameplay->y > 6000 - 1080 / 2 - 48))
-        bottom_right_corner(gameplay);
-    else if (gameplay->x > 6000 - (1920 / 2) - 48 ||
-            gameplay->x < (1920 / 2) - 48)
-        camera_horizontal(gameplay);
-    else if (gameplay->y > 6000 - (1080 / 2) - 48 ||
-           gameplay->y < (1080 / 2) - 48)
-        vertical_camera(gameplay);
+    if ((global->gameplay->x > 6000 - 1920 / 2 - 48) && (global->gameplay->y < 1080 / 2 - 48))
+        bottom_left_corner(global);
+    else if ((global->gameplay->x < 0 + (1920 / 2) - 48) &&
+            (global->gameplay->y < (1080 / 2) - 48))
+        sfView_reset(global->gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
+    else if ((global->gameplay->x < 0 + 1920 / 2 - 48) &&
+            (global->gameplay->y > 6000 - 1080 / 2 - 48))
+        top_right_corner(global);
+    else if ((global->gameplay->x > 6000 - 1920 / 2 - 48) &&
+            (global->gameplay->y > 6000 - 1080 / 2 - 48))
+        bottom_right_corner(global);
+    else if (global->gameplay->x > 6000 - (1920 / 2) - 48 ||
+            global->gameplay->x < (1920 / 2) - 48)
+        camera_horizontal(global);
+    else if (global->gameplay->y > 6000 - (1080 / 2) - 48 ||
+           global->gameplay->y < (1080 / 2) - 48)
+        vertical_camera(global);
     else
-        camera_center(gameplay);
-    sfRenderWindow_setView(global->window, gameplay->view);
+        camera_center(global);
+    sfRenderWindow_setView(global->window, global->gameplay->view);
 }
 
-int check_events(global_t *global, gameplay_t *gameplay)
+int check_events(global_t *global)
 {
     while (sfRenderWindow_pollEvent(global->window, &global->event)) {
         if (global->event.type == sfEvtClosed)
             sfRenderWindow_close(global->window);
-        if (global->event.key.code == sfKeyEscape)
-            sfRenderWindow_close(global->window);
-        move_character(gameplay, global);
+        move_character(global);
     }
     return (0);
 }
 
-void set_position(gameplay_t *gameplay)
+void set_position(global_t *global)
 {
-    sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x, gameplay->y});
-    sfSprite_setScale(gameplay->sprite_man, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
+    sfSprite_setScale(global->gameplay->sprite_man, (sfVector2f){2.08333, 2.08333});
 }
 
-void create_sprite(gameplay_t *gameplay)
+void create_sprite(global_t *global)
 {
-    gameplay->sprite_backg = sfSprite_create();
-    gameplay->sprite_man = sfSprite_create();
-    gameplay->sprite_man2 = sfSprite_create();
-    gameplay->sprite_man3 = sfSprite_create();
-    gameplay->sprite_man4 = sfSprite_create();
-    gameplay->backg = sfTexture_createFromFile("resource/World Map.png", NULL);
+    global->gameplay->sprite_backg = sfSprite_create();
+    global->gameplay->sprite_man = sfSprite_create();
+    global->gameplay->sprite_man2 = sfSprite_create();
+    global->gameplay->sprite_man3 = sfSprite_create();
+    global->gameplay->sprite_man4 = sfSprite_create();
+    global->gameplay->backg = sfTexture_createFromFile("resource/World Map.png", NULL);
 }
 
-void init_texture(gameplay_t *gameplay)
+void init_texture(global_t *global)
 {
-    gameplay->player_nb = 2;
-    create_sprite(gameplay);
-    if (gameplay->player_nb == 1) {
-        gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
-        set_my_rect_p1(gameplay);
+    global->gameplay->player_nb = 1;
+    create_sprite(global);
+    if (global->gameplay->player_nb == 1) {
+        global->gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
+        set_my_rect_p1(global);
     }
-    if (gameplay->player_nb == 2) {
-        gameplay->man = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
-        set_my_rect_p2(gameplay);
+    if (global->gameplay->player_nb == 2) {
+        global->gameplay->man = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
+        set_my_rect_p2(global);
     }
-    if (gameplay->player_nb == 3) {
-        gameplay->man = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
-        set_my_rect_p3(gameplay);
+    if (global->gameplay->player_nb == 3) {
+        global->gameplay->man = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
+        set_my_rect_p3(global);
     }
-    if (gameplay->player_nb == 4) {
-        gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
-        set_my_rect_p4(gameplay);
+    if (global->gameplay->player_nb == 4) {
+        global->gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
+        set_my_rect_p4(global);
     }
-    sfSprite_setTexture(gameplay->sprite_backg, gameplay->backg, sfTrue);
-    sfSprite_setTexture(gameplay->sprite_man, gameplay->man, sfTrue);
-    set_position(gameplay);
+    sfSprite_setTexture(global->gameplay->sprite_backg, global->gameplay->backg, sfTrue);
+    sfSprite_setTexture(global->gameplay->sprite_man, global->gameplay->man, sfTrue);
+    set_position(global);
 }
 
-void draw_sprites(gameplay_t *gameplay, global_t *global)
+void draw_sprites(global_t *global)
 {
-    sfSprite_setTextureRect(gameplay->sprite_man, gameplay->rect_man);
-    sfRenderWindow_drawSprite(global->window, gameplay->sprite_backg, NULL);
-    sfRenderWindow_drawSprite(global->window, gameplay->sprite_man, NULL);
+    sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
     sfRenderWindow_display(global->window);
 }

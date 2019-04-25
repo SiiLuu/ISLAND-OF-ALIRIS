@@ -8,38 +8,38 @@
 #include "rpg.h"
 #include "my.h"
 
-void check_position_left(gameplay_t *gameplay)
+void check_position_left(global_t *global)
 {
-    if (gameplay->x <= 0) {
-        gameplay->x = 0;
-        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
-        gameplay->y});
+    if (global->gameplay->x <= 0) {
+        global->gameplay->x = 0;
+        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x,
+        global->gameplay->y});
     }
 }
 
-void check_position_right(gameplay_t *gameplay)
+void check_position_right(global_t *global)
 {
-    if (gameplay->x >= 6000 - 100) {
-        gameplay->x = 6000 - 100;
-        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
-        gameplay->y});
+    if (global->gameplay->x >= 6000 - 100) {
+        global->gameplay->x = 6000 - 100;
+        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x,
+        global->gameplay->y});
     }
 }
 
-void check_position_top(gameplay_t *gameplay)
+void check_position_top(global_t *global)
 {
-    if (gameplay->y <= 0) {
-        gameplay->y = 0;
-        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
-        gameplay->y});
+    if (global->gameplay->y <= 0) {
+        global->gameplay->y = 0;
+        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x,
+        global->gameplay->y});
     }
 }
 
-void check_position_down(gameplay_t *gameplay)
+void check_position_down(global_t *global)
 {
-    if (gameplay->y >= 6000 - 100) {
-        gameplay->y = 6000 - 100;
-        sfSprite_setPosition(gameplay->sprite_man, (sfVector2f){gameplay->x,
-        gameplay->y});
+    if (global->gameplay->y >= 6000 - 100) {
+        global->gameplay->y = 6000 - 100;
+        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x,
+        global->gameplay->y});
     }
 }

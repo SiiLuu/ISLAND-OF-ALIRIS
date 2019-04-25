@@ -8,36 +8,36 @@
 #include "my.h"
 #include "rpg.h"
 
-void top_right_corner(gameplay_t *gameplay)
+void top_right_corner(global_t *global)
 {
-    sfView_reset(gameplay->view, (sfFloatRect){0, 6000 - 1080,
+    sfView_reset(global->gameplay->view, (sfFloatRect){0, 6000 - 1080,
     1920, 1080});
 }
 
-void bottom_right_corner(gameplay_t *gameplay)
+void bottom_right_corner(global_t *global)
 {
-    sfView_reset(gameplay->view, (sfFloatRect){6000 - 1920, 6000 - 1080,
+    sfView_reset(global->gameplay->view, (sfFloatRect){6000 - 1920, 6000 - 1080,
     1920, 1080});
 }
 
-void vertical_camera(gameplay_t *gameplay)
+void vertical_camera(global_t *global)
 {
-    gameplay->camera_x = gameplay->x - (1920 / 2) + 48;
-    sfView_reset(gameplay->view, (sfFloatRect){gameplay->x - (1920 / 2) + 48,
-    gameplay->camera_y, 1920, 1080});
+    global->gameplay->camera_x = global->gameplay->x - (1920 / 2) + 48;
+    sfView_reset(global->gameplay->view, (sfFloatRect){global->gameplay->x - (1920 / 2) + 48,
+    global->gameplay->camera_y, 1920, 1080});
 }
 
-void camera_horizontal(gameplay_t *gameplay)
+void camera_horizontal(global_t *global)
 {
-    gameplay->camera_y = gameplay->y - (1080 / 2) + 48;
-    sfView_reset(gameplay->view, (sfFloatRect){gameplay->camera_x,
-    gameplay->y - (1080 / 2) + 48, 1920, 1080});
+    global->gameplay->camera_y = global->gameplay->y - (1080 / 2) + 48;
+    sfView_reset(global->gameplay->view, (sfFloatRect){global->gameplay->camera_x,
+    global->gameplay->y - (1080 / 2) + 48, 1920, 1080});
 }
 
-void camera_center(gameplay_t *gameplay)
+void camera_center(global_t *global)
 {
-    gameplay->camera_x = gameplay->x - (1920 / 2) + 48;
-    gameplay->camera_y = gameplay->y - (1080 / 2) + 48;
-    sfView_reset(gameplay->view, (sfFloatRect){gameplay->x - ((1920 / 2) - 48),
-    gameplay->y - ((1080 / 2) - 48), 1920, 1080});
+    global->gameplay->camera_x = global->gameplay->x - (1920 / 2) + 48;
+    global->gameplay->camera_y = global->gameplay->y - (1080 / 2) + 48;
+    sfView_reset(global->gameplay->view, (sfFloatRect){global->gameplay->x - ((1920 / 2) - 48),
+    global->gameplay->y - ((1080 / 2) - 48), 1920, 1080});
 }

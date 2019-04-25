@@ -7,32 +7,32 @@
 #include "my.h"
 #include "rpg.h"
 
-void game_parameters(gameplay_t *gameplay, global_t *global)
+void game_parameters(global_t *global)
 {
-    check_events(global, gameplay);
-    draw_sprites(gameplay, global);
+    check_events(global);
+    draw_sprites(global);
 }
 
 
-int main_loop(global_t *global, gameplay_t *gameplay)
+int main_loop(global_t *global)
 {
-    gameplay->clocks = sfClock_create();
-    gameplay->view = sfView_create();
+    global->gameplay->clocks = sfClock_create();
+    global->gameplay->view = sfView_create();
 
-    gameplay->x = 300;
-    gameplay->y = 600;
-    init_texture(gameplay);
+    global->gameplay->x = 300;
+    global->gameplay->y = 600;
+    init_texture(global);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, 0) || global->event.type == sfEvtClosed) {
-        sfClock_destroy(gameplay->clocks);
+        sfClock_destroy(global->gameplay->clocks);
         return (0);
     }
-    sfView_reset(gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
-    sfRenderWindow_setView(global->window, gameplay->view);
+    sfView_reset(global->gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
+    sfRenderWindow_setView(global->window, global->gameplay->view);
     while (sfRenderWindow_isOpen(global->window)) {
-        if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 5) {
-            game_parameters(gameplay, global);
-            sfClock_restart(gameplay->clocks);
+        if (sfTime_asMilliseconds(sfClock_getElapsedTime(global->gameplay->clocks)) > 5) {
+            game_parameters(global);
+            sfClock_restart(global->gameplay->clocks);
         }
     }
     return (0);
@@ -56,30 +56,38 @@ void destroy_all(global_t *global)
     sfTexture_destroy(global->menu->settings->settingst);
 }
 
-void main_function(gameplay_t *gameplay)
+void clean_bytes(global_t *global, char status)
 {
-    global_t *global;
+    if (status == 'm') {
+        global->menu = malloc(sizeof(menu_t) * 1);
+        global->choose_char = malloc(sizeof(choose_char_t) * 1);
+        global->menu->settings = malloc(sizeof(settings_t) * 1);
+    }
+    if (status == 'f') {
+        free(global->menu->settings);
+        free(global->menu);
+        free(global);
+    }
+}
 
-    global = malloc(sizeof(global_t) * 1);
-    global->menu = malloc(sizeof(menu_t) * 1);
-    global->choose_char = malloc(sizeof(choose_char_t) * 1);
-    global->menu->settings = malloc(sizeof(settings_t) * 1);
+void main_function(global_t *global)
+{
+    clean_bytes(global, 'm');
     sfVideoMode mode = {1920, 1080, 32};
     global->window = sfRenderWindow_create(mode, "my_RPG",
                                             sfFullscreen | sfClose, NULL);
     global->menu->settings->sound = 0;
     global->menu->settings->nbr_bar = 4;
     music_game(global);
-    main_loop(global, gameplay);
+    main_loop(global);
     music_destroy(global);
     sfRenderWindow_destroy(global->window);
     destroy_all(global);
-    free(global->menu->settings);
-    free(global->menu);
-    free(global);
+    clean_bytes(global, 'f');
+
 }
 
-int open_file(char **av, gameplay_t *gameplay)
+int open_file(char **av, global_t *global)
 {
     struct stat filepath;
     char *buffer = NULL;
@@ -96,16 +104,16 @@ int open_file(char **av, gameplay_t *gameplay)
         return (84);
     read(fd, buffer, i);
     close(fd);
-    gameplay->buffer = buffer;
-    string_to_tab(gameplay);
+    global->gameplay->buffer = buffer;
+    string_to_tab(global->gameplay);
     return (0);
 }
 
 int main(int ac, char **av)
 {
-    gameplay_t *gameplay;
+    global_t *global = malloc(sizeof(global_t) * 1);
 
-    gameplay = malloc(sizeof(gameplay_t) * 1);
+    global->gameplay = malloc(sizeof(gameplay_t) * 1);
     if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h' && av[1][2] == '\0') {
         my_putstr("USAGE:\n        ./my_defender\n");
         my_putstr("DESCRIPTION:\n\tto win prevent the enemies to save\n");
@@ -117,10 +125,10 @@ int main(int ac, char **av)
     }
     if (ac != 2)
         return (84);
-    if (open_file(av, gameplay) == 84)
+    if (open_file(av, global) == 84)
         return (84);
     else
-        main_function(gameplay);
-    free(gameplay);
+        main_function(global);
+    free(global->gameplay);
     return (1);
 }
