@@ -87,8 +87,10 @@ int menu_start(global_t *global, int i)
             sound_modif_sprite(global, x, y);
             if ((j = check_menu(global, x, y)) == 1)
                 return (1);
-            else if (j == 0)
+            else if (j == 0) {
+                choose_character(global);
                 return (0);
+            }
         }
         sfRenderWindow_pollEvent(global->window, &global->event);
     }

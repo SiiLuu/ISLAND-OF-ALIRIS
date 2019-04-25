@@ -62,6 +62,7 @@ void main_function(gameplay_t *gameplay)
 
     global = malloc(sizeof(global_t) * 1);
     global->menu = malloc(sizeof(menu_t) * 1);
+    global->choose_char = malloc(sizeof(choose_char_t) * 1);
     global->menu->settings = malloc(sizeof(settings_t) * 1);
     sfVideoMode mode = {1920, 1080, 32};
     global->window = sfRenderWindow_create(mode, "my_RPG",

@@ -6,6 +6,7 @@
 ##
 
 SRC 	=	src/main.c						\
+			src/choose_character.c			\
 			src/music.c						\
 			src/menu/menu.c					\
 			src/menu/menu_display.c			\

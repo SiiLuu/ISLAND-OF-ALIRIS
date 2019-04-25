@@ -18,6 +18,17 @@
 #include <SFML/Config.h>
 #include <SFML/System.h>
 
+typedef struct choose_char {
+    sfTexture *player1_texture;
+    sfSprite *player1_sprite;
+    sfTexture *player2_texture;
+    sfSprite *player2_sprite;
+    sfTexture *player3_texture;
+    sfSprite *player3_sprite;
+    sfTexture *player4_texture;
+    sfSprite *player4_sprite;
+}choose_char_t;
+
 typedef struct settings {
     sfTexture *settingst;
     sfMusic *musique;
@@ -81,6 +92,7 @@ typedef struct global {
     sfEvent event;
     menu_t *menu;
     //gameplay_t *gameplay;
+    choose_char_t *choose_char;
 }global_t;
 
 
@@ -190,5 +202,8 @@ bool manage_col_up(gameplay_t *gameplay, int pos_x, int mpos_y);
 bool manage_col_left(gameplay_t *gameplay, int pos_x, int pos_y);
 bool manage_col_right(gameplay_t *gameplay, int mpos_x, int pos_y);
 bool manage_col_down(gameplay_t *gameplay, int pos_x, int mpos_y);
+
+// In src/choose_character.c
+int choose_character(global_t *global);
 
 #endif
