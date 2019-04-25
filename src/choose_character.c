@@ -69,7 +69,7 @@ int choose_character(global_t *global)
     int y = 0;
 
     choose_create(global);
-    //choose_display(global);
+    choose_display(global);
     while (global->event.type != sfEvtClosed) {
         if (global->event.key.code == sfKeyEscape) {
             x = global->event.mouseButton.x;

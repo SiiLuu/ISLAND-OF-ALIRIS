@@ -11,7 +11,7 @@
 
 bool check_collision_up(gameplay_t *gameplay, int distance)
 {
-    int pos_x = gameplay->x;
+    int pos_x = gameplay->x + 20;
     int pos_y = gameplay->y - distance;
     int mpos_x = pos_x / 100;
     int mpos_y = pos_y / 100;
@@ -26,7 +26,7 @@ bool check_collision_up(gameplay_t *gameplay, int distance)
 
 bool check_collision_down(gameplay_t *gameplay, int distance)
 {
-    int pos_x = gameplay->x;
+    int pos_x = gameplay->x + 20;
     int pos_y = (gameplay->y + distance) + 99;
     int mpos_x = pos_x / 100;
     int mpos_y = pos_y / 100;
@@ -41,7 +41,7 @@ bool check_collision_down(gameplay_t *gameplay, int distance)
 
 bool check_collision_left(gameplay_t *gameplay, int distance)
 {
-    int pos_x = (gameplay->x - distance);
+    int pos_x = (gameplay->x - distance) + 10;
     int pos_y = gameplay->y;
     int mpos_x = pos_x / 100;
     int mpos_y = pos_y / 100;
@@ -56,7 +56,7 @@ bool check_collision_left(gameplay_t *gameplay, int distance)
 
 bool check_collision_right(gameplay_t *gameplay, int distance)
 {
-    int pos_x = (gameplay->x + distance) + 99;
+    int pos_x = (gameplay->x + distance) + 89;
     int pos_y = gameplay->y;
     int mpos_x = pos_x / 100;
     int mpos_y = pos_y / 100;
