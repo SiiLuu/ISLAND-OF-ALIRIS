@@ -45,6 +45,8 @@ int check_events(global_t *global)
             sfRenderWindow_close(global->window);
         if (global->event.key.code == sfKeyEscape)
             exit (0);
+        if (global->event.key.code == sfKeySpace && global->scn == 1)
+            global->scn = 2;
         move_character(global);
     }
     return (0);
@@ -93,8 +95,15 @@ void init_texture(global_t *global)
 
 void draw_sprites(global_t *global)
 {
-    sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
-    sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
-    sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-    sfRenderWindow_display(global->window);
+    if (global->scn == 1) {
+        sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
+        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
+        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
+        sfRenderWindow_display(global->window);
+    }
+    if (global->scn == 2) {
+        sfRenderWindow_clear(global->window, sfBlack);
+        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
+        sfRenderWindow_display(global->window);
+    }
 }

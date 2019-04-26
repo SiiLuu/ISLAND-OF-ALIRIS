@@ -25,7 +25,8 @@ SRC 	=	src/main.c						\
 			src/gameplay/movement_player/set_player_moving.c	\
 			src/gameplay/movement_player/set_player_running.c	\
 			src/choose_character/choose_character.c				\
-			src/choose_character/choose_character_display.c
+			src/choose_character/choose_character_display.c     \
+			src/pause/pause.c
 
 OBJ 	=	$(SRC:.c=.o)
 

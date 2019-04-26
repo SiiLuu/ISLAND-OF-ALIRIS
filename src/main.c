@@ -19,6 +19,7 @@ int main_loop(global_t *global)
     global->gameplay->clocks = sfClock_create();
     global->gameplay->view = sfView_create();
 
+    global->scn = 0;
     global->gameplay->x = 300;
     global->gameplay->y = 600;
     init_texture(global);
@@ -27,6 +28,7 @@ int main_loop(global_t *global)
         sfClock_destroy(global->gameplay->clocks);
         return (0);
     }
+    global->scn = 1;
     sfView_reset(global->gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
     sfRenderWindow_setView(global->window, global->gameplay->view);
     while (sfRenderWindow_isOpen(global->window)) {

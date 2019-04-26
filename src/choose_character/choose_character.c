@@ -102,4 +102,5 @@ int choose_character(global_t *global)
             exit (0);
         sfRenderWindow_pollEvent(global->window, &global->event);
     }
+    return (0);
 }

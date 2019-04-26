@@ -87,12 +87,19 @@ typedef struct gameplay {
     int player_nb;
 }gameplay_t;
 
+typedef struct pause {
+    sfTexture *s_txt;
+    sfSprite *s_spr;
+}pause_t;
+
 typedef struct global {
     sfRenderWindow *window;
     sfEvent event;
     menu_t *menu;
     gameplay_t *gameplay;
+    pause_t *pause;
     choose_char_t *choose_char;
+    int scn;
 }global_t;
 
 
@@ -204,5 +211,8 @@ int choose_character(global_t *global);
 
 // In src/choose_character/choose_character_display.c
 void choose_display(global_t *global);
+
+// In src/pause/pause.c
+
 
 #endif
