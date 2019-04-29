@@ -22,12 +22,12 @@ int main_loop(global_t *global)
     global->scn = 0;
     global->gameplay->x = 300;
     global->gameplay->y = 600;
-    init_texture(global);
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(global->gameplay->clocks);
         return (0);
     }
+    init_texture(global);
     global->scn = 1;
     sfView_reset(global->gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
     sfRenderWindow_setView(global->window, global->gameplay->view);

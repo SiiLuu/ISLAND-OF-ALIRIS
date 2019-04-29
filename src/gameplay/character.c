@@ -70,7 +70,6 @@ void create_sprite(global_t *global)
 
 void init_texture(global_t *global)
 {
-    global->gameplay->player_nb = 1;
     create_sprite(global);
     if (global->gameplay->player_nb == 1) {
         global->gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
