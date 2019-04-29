@@ -225,12 +225,12 @@ int choose_character(global_t *global);
 void choose_display(global_t *global);
 
 // In src/pause/pause.c
-int but_is_c(sfEvent event, sfSprite *spr);
 void pause_create(global_t *global);
 void display_player_inv(global_t *global, sfSprite *spr);
+
+// In src/pause/inv.c
 void chose_good_char(global_t *global);
 void display_pause(global_t *global);
-
-
+int but_is_c(sfEvent event, sfSprite *spr);
 
 #endif
