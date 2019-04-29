@@ -54,7 +54,7 @@ int check_events(global_t *global)
         if ((but_is_c(global->event, global->pause->inv) == 1) &&
             (global->scn == 2))
             global->scn = 3;
-        if (global->event.key.code == sfKeyEscape && global->scn != 0)
+        if (global->event.key.code == sfKeyEscape && (global->scn == 1 || global->scn == 3))
             global->scn = 2;
         move_character(global);
     }
@@ -109,22 +109,5 @@ void draw_sprites(global_t *global)
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
         sfRenderWindow_display(global->window);
     }
-    if (global->scn == 2) {
-        sfRenderWindow_clear(global->window, sfBlack);
-        sfView_reset(global->gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
-        sfRenderWindow_setView(global->window, global->gameplay->view);
-        sfRenderWindow_drawSprite(global->window, global->pause->back, NULL);
-        sfSprite_setPosition(global->menu->start1, (sfVector2f){780, 150});
-        sfRenderWindow_drawSprite(global->window, global->menu->start1, NULL);
-        sfSprite_setPosition(global->menu->quit1, (sfVector2f){780, 650});
-        sfRenderWindow_drawSprite(global->window, global->menu->quit1, NULL);
-        sfSprite_setPosition(global->pause->inv, (sfVector2f){780, 400});
-        sfRenderWindow_drawSprite(global->window, global->pause->inv, NULL);
-        sfRenderWindow_display(global->window);
-    }
-    if (global->scn == 3) {
-        sfRenderWindow_clear(global->window, sfBlack);
-        sfRenderWindow_drawSprite(global->window, global->pause->st_inv->wp_inv, NULL);
-        sfRenderWindow_display(global->window);
-    }
+    display_pause(global);
 }

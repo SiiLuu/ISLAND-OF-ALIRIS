@@ -91,6 +91,8 @@ typedef struct gameplay {
 typedef struct inv {
     sfTexture *wp_invt;
     sfSprite *wp_inv;
+    sfTexture *equipt;
+    sfSprite *equip;
 }inv_t;
 
 typedef struct pause {
@@ -225,6 +227,10 @@ void choose_display(global_t *global);
 // In src/pause/pause.c
 int but_is_c(sfEvent event, sfSprite *spr);
 void pause_create(global_t *global);
+void display_player_inv(global_t *global, sfSprite *spr);
+void chose_good_char(global_t *global);
+void display_pause(global_t *global);
+
 
 
 #endif
