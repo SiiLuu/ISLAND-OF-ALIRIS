@@ -46,8 +46,7 @@ int check_events(global_t *global)
         if ((but_is_c(global->event, global->menu->start1) == 1) &&
             (global->scn == 2)) {
             global->scn = 1;
-            sfView_reset(global->gameplay->view,(sfFloatRect){global->gameplay->x - 1920 / 2 + 48, global->gameplay->y - 1080 / 2 + 48, 1920, 1080});
-            sfRenderWindow_setView(global->window, global->gameplay->view);
+            move_vue(global);
         }
         if ((but_is_c(global->event, global->menu->quit1) == 1) &&
             (global->scn == 2))
