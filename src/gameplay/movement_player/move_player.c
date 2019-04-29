@@ -16,11 +16,8 @@ void move_up(global_t *global)
         check_position_top(global);
         move_rect(global->gameplay);
         move_vue(global);
-        sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
-        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-        sfRenderWindow_display(global->window);
+        check_interaction(global);
+        draw_sprites(global);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_up(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->y -= 10;
@@ -39,11 +36,7 @@ void move_down(global_t *global)
         check_position_down(global);
         move_rect(global->gameplay);
         move_vue(global);
-        sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
-        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-        sfRenderWindow_display(global->window);
+        draw_sprites(global);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_down(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->y += 10;
@@ -62,11 +55,7 @@ void move_left(global_t *global)
         check_position_left(global);
         move_rect(global->gameplay);
         move_vue(global);
-        sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
-        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-        sfRenderWindow_display(global->window);
+        draw_sprites(global);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_left(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->x -= 10;
@@ -85,11 +74,7 @@ void move_right(global_t *global)
         check_position_right(global);
         move_rect(global->gameplay);
         move_vue(global);
-        sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
-        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-        sfRenderWindow_display(global->window);
+        draw_sprites(global);
         //printf("y = %d, x = %d\n", global->gameplay->y, global->gameplay->x);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_right(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);

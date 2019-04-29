@@ -41,6 +41,7 @@ void move_vue(global_t *global)
 int check_events(global_t *global)
 {
     while (sfRenderWindow_pollEvent(global->window, &global->event)) {
+        check_interaction(global);
         if (global->event.type == sfEvtClosed)
             sfRenderWindow_close(global->window);
         if ((but_is_c(global->event, global->menu->start1) == 1) &&
@@ -54,27 +55,46 @@ int check_events(global_t *global)
         if ((but_is_c(global->event, global->pause->inv) == 1) &&
             (global->scn == 2))
             global->scn = 3;
-        if (global->event.key.code == sfKeyEscape && (global->scn == 1 || global->scn == 3))
+        if (global->event.key.code == sfKeyEscape && global->scn != 0)
             global->scn = 2;
         move_character(global);
     }
     return (0);
 }
 
+void init_rect_pnj(global_t *global)
+{
+    global->gameplay->rect_pnj_1.height = 48;
+    global->gameplay->rect_pnj_1.width = 48;
+    global->gameplay->rect_pnj_1.left = 480;
+    global->gameplay->rect_pnj_1.top = 144;
+}
+
 void set_position(global_t *global)
 {
+    init_rect_pnj(global);
+    sfSprite_setTextureRect(global->gameplay->pnj->sprite_pnj_1, global->gameplay->rect_pnj_1);
+    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){5010, 5000});
+    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){2.08333, 2.08333});
     sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
     sfSprite_setScale(global->gameplay->sprite_man, (sfVector2f){2.08333, 2.08333});
 }
 
 void create_sprite(global_t *global)
 {
+    global->gameplay->pnj->p_text = 0;
     global->gameplay->sprite_backg = sfSprite_create();
     global->gameplay->sprite_man = sfSprite_create();
-    global->gameplay->sprite_man2 = sfSprite_create();
-    global->gameplay->sprite_man3 = sfSprite_create();
-    global->gameplay->sprite_man4 = sfSprite_create();
+    global->gameplay->pnj->sprite_pnj_1 = sfSprite_create();
+    global->gameplay->pnj->pnj_1 = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
     global->gameplay->backg = sfTexture_createFromFile("resource/World Map.png", NULL);
+}
+
+void set_textures(global_t *global)
+{
+    sfSprite_setTexture(global->gameplay->pnj->sprite_pnj_1, global->gameplay->pnj->pnj_1, sfTrue);
+    sfSprite_setTexture(global->gameplay->sprite_backg, global->gameplay->backg, sfTrue);
+    sfSprite_setTexture(global->gameplay->sprite_man, global->gameplay->man, sfTrue);
 }
 
 void init_texture(global_t *global)
@@ -96,17 +116,20 @@ void init_texture(global_t *global)
         global->gameplay->man = sfTexture_createFromFile("resource/Sprite player/Actor.png", NULL);
         set_my_rect_p4(global);
     }
-    sfSprite_setTexture(global->gameplay->sprite_backg, global->gameplay->backg, sfTrue);
-    sfSprite_setTexture(global->gameplay->sprite_man, global->gameplay->man, sfTrue);
+    set_textures(global);
     set_position(global);
 }
 
 void draw_sprites(global_t *global)
 {
     if (global->scn == 1) {
+        sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
+        sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_1, NULL);
+        if (global->gameplay->pnj->p_text == 1)
+            display_score(global);
         sfRenderWindow_display(global->window);
     }
     display_pause(global);

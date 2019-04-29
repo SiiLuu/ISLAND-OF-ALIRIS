@@ -65,18 +65,23 @@ typedef struct menu {
     settings_t *settings;
 }menu_t;
 
+typedef struct pnj {
+    sfSprite *sprite_pnj_1;
+    sfTexture *pnj_1;
+    sfTexture *text_box;
+    sfSprite *s_text_box;
+    sfText *text;
+    sfFont *font;
+    int p_text;
+}pnj_t;
+
 typedef struct gameplay {
     sfTexture *backg;
     sfSprite *sprite_backg;
     sfTexture *man;
     sfSprite *sprite_man;
-    sfTexture *man2;
-    sfSprite *sprite_man2;
-    sfTexture *man3;
-    sfSprite *sprite_man3;
-    sfTexture *man4;
-    sfSprite *sprite_man4;
     sfIntRect rect_man;
+    sfIntRect rect_pnj_1;
     sfClock *clocks;
     sfView * view;
     char *buffer;
@@ -86,6 +91,7 @@ typedef struct gameplay {
     int camera_x;
     int camera_y;
     int player_nb;
+    pnj_t *pnj;
 }gameplay_t;
 
 typedef struct inv {
@@ -232,5 +238,9 @@ void display_player_inv(global_t *global, sfSprite *spr);
 void chose_good_char(global_t *global);
 void display_pause(global_t *global);
 int but_is_c(sfEvent event, sfSprite *spr);
+
+//In src/gameplay/pnj_interaction.c
+int check_interaction(global_t *global);
+void display_score(global_t *global);
 
 #endif
