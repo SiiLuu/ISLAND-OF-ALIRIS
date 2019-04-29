@@ -88,9 +88,18 @@ typedef struct gameplay {
     int player_nb;
 }gameplay_t;
 
+typedef struct inv {
+    sfTexture *wp_invt;
+    sfSprite *wp_inv;
+}inv_t;
+
 typedef struct pause {
-    sfTexture *s_txt;
-    sfSprite *s_spr;
+    sfRectangleShape *rct;
+    sfTexture *invt;
+    sfSprite *inv;
+    sfTexture *backt;
+    sfSprite *back;
+    inv_t *st_inv;
 }pause_t;
 
 typedef struct global {
@@ -214,6 +223,8 @@ int choose_character(global_t *global);
 void choose_display(global_t *global);
 
 // In src/pause/pause.c
+int but_is_c(sfEvent event, sfSprite *spr);
+void pause_create(global_t *global);
 
 
 #endif
