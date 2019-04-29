@@ -48,6 +48,7 @@ typedef struct settings {
 }settings_t;
 
 typedef struct menu {
+    sfClock *clocks;
     sfSprite *wp;
     sfSprite *start1;
     sfSprite *quit1;

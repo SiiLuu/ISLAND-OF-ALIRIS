@@ -12,7 +12,7 @@ void menu_create2(global_t *global)
 {
     global->menu->start2t = sfTexture_createFromFile("resource/menu/s2.png",
                                                 NULL);
-    global->menu->wpt = sfTexture_createFromFile("resource/menu/wp.jpg",
+    global->menu->wpt = sfTexture_createFromFile("resource/m.jpg",
                                                 NULL);
     global->menu->start1t = sfTexture_createFromFile("resource/menu/s1.png",
                                                 NULL);
@@ -30,7 +30,7 @@ void menu_set_position(global_t *global)
     sfSprite_setPosition(global->menu->start2, (sfVector2f){780, 150});
     sfSprite_setPosition(global->menu->settingsa, (sfVector2f){20, 100});
     sfSprite_setScale(global->menu->settingsa, (sfVector2f){0.30, 0.30});
-    sfSprite_setScale(global->menu->wp, (sfVector2f){0.50, 0.50});
+    sfSprite_setScale(global->menu->wp, (sfVector2f){1.00, 1.00});
     sfSprite_setScale(global->menu->start1, (sfVector2f){0.60, 0.60});
     sfSprite_setScale(global->menu->quit1, (sfVector2f){0.65, 0.65});
     sfSprite_setScale(global->menu->start2, (sfVector2f){0.60, 0.60});
@@ -47,17 +47,21 @@ void menu_set_position(global_t *global)
 
 void sound_modif_sprite(global_t *global, int x, int y)
 {
-    if (x >= 1750 && x <= 1878 && y >= 100 && y <= 228) {
-        if (global->menu->settings->sound == 1) {
-            global->menu->settings->sound = 0;
-            sfRenderWindow_display(global->window);
-            sfMusic_play(global->menu->settings->musique);
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(global->menu->clocks)) >
+        150) {
+        if (x >= 1750 && x <= 1878 && y >= 100 && y <= 228) {
+            if (global->menu->settings->sound == 1) {
+                global->menu->settings->sound = 0;
+                sfRenderWindow_display(global->window);
+                sfMusic_play(global->menu->settings->musique);
+            }
+            else {
+                global->menu->settings->sound = 1;
+                sfRenderWindow_display(global->window);
+                sfMusic_pause(global->menu->settings->musique);
+            }
         }
-        else {
-            global->menu->settings->sound = 1;
-            sfRenderWindow_display(global->window);
-            sfMusic_pause(global->menu->settings->musique);
-        }
+        sfClock_restart(global->menu->clocks);
     }
 }
 
@@ -79,6 +83,7 @@ int menu_start(global_t *global, int i)
 
     sfRenderWindow_pollEvent(global->window, &global->event);
     menu_choose_create_display(global, i);
+    global->menu->clocks = sfClock_create();
     while (global->event.type != sfEvtClosed) {
         check_mouse(global);
         if (global->event.type == sfEvtMouseButtonPressed) {
