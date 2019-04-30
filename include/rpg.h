@@ -104,6 +104,8 @@ typedef struct inv {
     sfTexture *invt;
     sfSprite *inv;
     sfText *eq;
+    sfText *eq2;
+    sfText *eq3;
     sfFont *eqf;
 }inv_t;
 
