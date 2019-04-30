@@ -19,10 +19,13 @@ sfText *create_text(sfText *text, sfFont *fon)
 
 void init_texts(global_t *global)
 {
-    global->pause->st_inv->eq = create_text(global->pause->st_inv->eq, global->pause->st_inv->eqf);
-    global->pause->st_inv->eq2 = create_text(global->pause->st_inv->eq2, global->pause->st_inv->eqf);
-    global->pause->st_inv->eq3 = create_text(global->pause->st_inv->eq3, global->pause->st_inv->eqf);
-    sfText_setString(global->pause->st_inv->eq, "INVENTAIRE");
+    global->pause->st_inv->eq = create_text(global->pause->st_inv->eq,
+        global->pause->st_inv->eqf);
+    global->pause->st_inv->eq2 = create_text(global->pause->st_inv->eq2,
+         global->pause->st_inv->eqf);
+    global->pause->st_inv->eq3 = create_text(global->pause->st_inv->eq3,
+         global->pause->st_inv->eqf);
+    sfText_setString(global->pause->st_inv->eq, "INVENTORY");
     sfText_setString(global->pause->st_inv->eq2,
     "Main Weapon\t\t\t\t\t\t\t\t\t\t   \
     Secondary Weapon\n\n\n\n\n\n\n\nMain Defense\t\t\t\t\t\t\t\t\t\t \
@@ -31,10 +34,22 @@ void init_texts(global_t *global)
     sfText_setCharacterSize(global->pause->st_inv->eq, 75);
     sfText_setCharacterSize(global->pause->st_inv->eq2, 20);
     sfText_setCharacterSize(global->pause->st_inv->eq3, 30);
+    init_texts_quest(global);
+}
+
+void pause_create3(global_t *global)
+{
+    global->pause->st_quest->board = sfSprite_create();
+    global->pause->st_quest->boardt = sfTexture_createFromFile(
+        "resource/menu/quest.png", NULL);
+    sfSprite_setTexture(global->pause->st_quest->board,
+        global->pause->st_quest->boardt, sfTrue);
+    sfSprite_setScale(global->pause->st_quest->board, (sfVector2f){2.3, 2.3});
 }
 
 void pause_create2(global_t *global)
 {
+    pause_create3(global);
     global->pause->st_inv->comp = sfSprite_create();
     global->pause->st_inv->compt = sfTexture_createFromFile(
         "resource/menu/comp.png", NULL);

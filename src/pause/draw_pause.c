@@ -56,6 +56,18 @@ void draw_quest(global_t *global)
     sfRenderWindow_clear(global->window, sfBlack);
     sfRenderWindow_drawSprite(global->window,
         global->pause->st_inv->wp_inv, NULL);
+    sfSprite_setPosition(global->pause->st_quest->board,
+        (sfVector2f){270, 10});
+    sfRenderWindow_drawSprite(global->window,
+        global->pause->st_quest->board, NULL);
+    sfText_setPosition(global->pause->st_quest->tquest,
+        (sfVector2f){420, 150});
+    sfRenderWindow_drawText(global->window, global->pause->st_quest->tquest,
+        NULL);
+    sfText_setPosition(global->pause->st_quest->tquest2,
+        (sfVector2f){430, 475});
+    sfRenderWindow_drawText(global->window, global->pause->st_quest->tquest2,
+        NULL);
     sfRenderWindow_display(global->window);
 }
 

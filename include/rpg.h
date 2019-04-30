@@ -109,6 +109,13 @@ typedef struct inv {
     sfFont *eqf;
 }inv_t;
 
+typedef struct quest {
+    sfTexture *boardt;
+    sfSprite *board;
+    sfText *tquest;
+    sfText *tquest2;
+}quest_t;
+
 typedef struct pause {
     sfRectangleShape *rct;
     sfTexture *invt;
@@ -118,6 +125,7 @@ typedef struct pause {
     sfTexture *backt;
     sfSprite *back;
     inv_t *st_inv;
+    quest_t *st_quest;
 }pause_t;
 
 typedef struct global {
@@ -250,6 +258,10 @@ int but_is_c(sfEvent event, sfSprite *spr);
 
 // In src/pause/draw_pause.c
 void display_pause(global_t *global);
+sfText *create_text(sfText *text, sfFont *fon);
+
+// In src/pause/quest.c
+void init_texts_quest(global_t *global);
 
 //In src/gameplay/pnj_interaction.c
 int check_interaction(global_t *global);
