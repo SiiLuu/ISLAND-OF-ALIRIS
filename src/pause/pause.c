@@ -47,6 +47,11 @@ void pause_create2(global_t *global)
     sfSprite_setTexture(global->pause->st_inv->inv,
         global->pause->st_inv->invt, sfTrue);
     sfSprite_setScale(global->pause->st_inv->inv, (sfVector2f){2.75, 2.75});
+    global->pause->quest = sfSprite_create();
+    global->pause->questt = sfTexture_createFromFile("resource/menu/s1.png",
+        NULL);
+    sfSprite_setTexture(global->pause->quest, global->pause->questt, sfTrue);
+    sfSprite_setScale(global->pause->quest, (sfVector2f){0.60, 0.60});
     init_texts(global);
 }
 
@@ -73,55 +78,4 @@ void pause_create(global_t *global)
     sfSprite_setScale(global->pause->inv, (sfVector2f){0.60, 0.60});
     sfSprite_setScale(global->pause->st_inv->equip, (sfVector2f){3.5, 3.5});
     pause_create2(global);
-}
-
-void display_inv(global_t *global)
-{
-    sfRenderWindow_clear(global->window, sfBlack);
-    sfRenderWindow_drawSprite(global->window,
-        global->pause->st_inv->wp_inv, NULL);
-    sfSprite_setPosition(global->pause->st_inv->equip,
-        (sfVector2f){1000, 100});
-    sfRenderWindow_drawSprite(global->window,
-        global->pause->st_inv->equip, NULL);
-    chose_good_char(global);
-    sfSprite_setPosition(global->pause->st_inv->comp, (sfVector2f){1000, 745});
-    sfRenderWindow_drawSprite(global->window, global->pause->st_inv->comp,
-        NULL);
-    sfSprite_setPosition(global->pause->st_inv->inv, (sfVector2f){200, 260});
-    sfRenderWindow_drawSprite(global->window, global->pause->st_inv->inv,
-        NULL);
-    sfText_setPosition(global->pause->st_inv->eq, (sfVector2f){320, 100});
-    sfRenderWindow_drawText(global->window, global->pause->st_inv->eq, NULL);
-    sfText_setPosition(global->pause->st_inv->eq2, (sfVector2f){1035, 285});
-    sfRenderWindow_drawText(global->window, global->pause->st_inv->eq2, NULL);
-    sfText_setPosition(global->pause->st_inv->eq3, (sfVector2f){1050, 770});
-    sfRenderWindow_drawText(global->window, global->pause->st_inv->eq3, NULL);
-    sfRenderWindow_display(global->window);
-}
-
-void draw_pause(global_t *global)
-{
-    sfRenderWindow_clear(global->window, sfBlack);
-    sfView_reset(global->gameplay->view, (sfFloatRect)
-        {0, 0, 1920, 1080});
-    sfRenderWindow_setView(global->window, global->gameplay->view);
-    sfRenderWindow_drawSprite(global->window, global->pause->back, NULL);
-    sfSprite_setPosition(global->menu->start1, (sfVector2f){780, 150});
-    sfRenderWindow_drawSprite(global->window, global->menu->start1, NULL);
-    sfSprite_setPosition(global->menu->quit1, (sfVector2f){780, 650});
-    sfRenderWindow_drawSprite(global->window, global->menu->quit1, NULL);
-    sfSprite_setPosition(global->pause->inv, (sfVector2f){780, 400});
-    sfRenderWindow_drawSprite(global->window, global->pause->inv, NULL);
-    sfRenderWindow_display(global->window);
-}
-
-void display_pause(global_t *global)
-{
-    if (global->scn == 2) {
-        draw_pause(global);
-    }
-    if (global->scn == 3) {
-        display_inv(global);
-    }
 }

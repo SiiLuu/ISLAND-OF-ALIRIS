@@ -113,6 +113,8 @@ typedef struct pause {
     sfRectangleShape *rct;
     sfTexture *invt;
     sfSprite *inv;
+    sfSprite *quest;
+    sfTexture *questt;
     sfTexture *backt;
     sfSprite *back;
     inv_t *st_inv;
@@ -244,8 +246,10 @@ void display_player_inv(global_t *global, sfSprite *spr);
 
 // In src/pause/inv.c
 void chose_good_char(global_t *global);
-void display_pause(global_t *global);
 int but_is_c(sfEvent event, sfSprite *spr);
+
+// In src/pause/draw_pause.c
+void display_pause(global_t *global);
 
 //In src/gameplay/pnj_interaction.c
 int check_interaction(global_t *global);

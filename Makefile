@@ -28,6 +28,7 @@ SRC 	=	src/main.c						\
 			src/choose_character/choose_character.c				\
 			src/choose_character/choose_character_display.c     \
 			src/pause/pause.c \
+			src/pause/draw_pause.c\
 			src/pause/inv.c
 
 OBJ 	=	$(SRC:.c=.o)

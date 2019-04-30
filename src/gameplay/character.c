@@ -55,6 +55,9 @@ int check_events(global_t *global)
         if ((but_is_c(global->event, global->pause->inv) == 1) &&
             (global->scn == 2))
             global->scn = 3;
+        if ((but_is_c(global->event, global->pause->quest) == 1) &&
+            (global->scn == 2))
+            global->scn = 4;
         if (global->event.key.code == sfKeyEscape && global->scn != 0)
             global->scn = 2;
         move_character(global);
