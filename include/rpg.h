@@ -99,6 +99,12 @@ typedef struct inv {
     sfSprite *wp_inv;
     sfTexture *equipt;
     sfSprite *equip;
+    sfTexture *compt;
+    sfSprite *comp;
+    sfTexture *invt;
+    sfSprite *inv;
+    sfText *eq;
+    sfFont *eqf;
 }inv_t;
 
 typedef struct pause {

@@ -10,7 +10,25 @@
 
 void pause_create2(global_t *global)
 {
-
+    global->pause->st_inv->comp = sfSprite_create();
+    global->pause->st_inv->compt = sfTexture_createFromFile(
+        "resource/menu/comp.png", NULL);
+    sfSprite_setTexture(global->pause->st_inv->comp,
+        global->pause->st_inv->compt, sfTrue);
+    sfSprite_setScale(global->pause->st_inv->comp, (sfVector2f){3.63, 3});
+    global->pause->st_inv->inv = sfSprite_create();
+    global->pause->st_inv->invt = sfTexture_createFromFile(
+        "resource/menu/inv.jpg", NULL);
+    sfSprite_setTexture(global->pause->st_inv->inv,
+        global->pause->st_inv->invt, sfTrue);
+    sfSprite_setScale(global->pause->st_inv->inv, (sfVector2f){2.75, 2.75});
+    global->pause->st_inv->eq = sfText_create();
+    global->pause->st_inv->eqf = sfFont_createFromFile(
+        "resource/font/arial.ttf");
+    sfText_setFont(global->pause->st_inv->eq, global->pause->st_inv->eqf);
+    sfText_setString(global->pause->st_inv->eq, "INVENTAIRE");
+    sfText_setCharacterSize(global->pause->st_inv->eq, 75);
+    sfText_setColor(global->pause->st_inv->eq, sfWhite);
 }
 
 void pause_create(global_t *global)
@@ -48,6 +66,14 @@ void display_inv(global_t *global)
     sfRenderWindow_drawSprite(global->window,
         global->pause->st_inv->equip, NULL);
     chose_good_char(global);
+    sfSprite_setPosition(global->pause->st_inv->comp, (sfVector2f){1000, 745});
+    sfRenderWindow_drawSprite(global->window, global->pause->st_inv->comp,
+        NULL);
+    sfSprite_setPosition(global->pause->st_inv->inv, (sfVector2f){200, 260});
+    sfRenderWindow_drawSprite(global->window, global->pause->st_inv->inv,
+        NULL);
+    sfText_setPosition(global->pause->st_inv->eq, (sfVector2f){320, 100});
+    sfRenderWindow_drawText(global->window, global->pause->st_inv->eq, NULL);
     sfRenderWindow_display(global->window);
 }
 
