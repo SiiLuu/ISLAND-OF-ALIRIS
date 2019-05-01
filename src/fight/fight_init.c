@@ -14,7 +14,7 @@ void create_all(global_t *global)
                                                     NULL);
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
-    global->fight->boss1t = sfTexture_createFromFile("resource/Darklord.png", NULL);
+    global->fight->boss1t = sfTexture_createFromFile("resource/Darklord-final.png", NULL);
     global->fight->players = sfSprite_create();
     choose_who_create(global);
     global->fight->arrows = sfSprite_create();
