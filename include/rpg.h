@@ -29,6 +29,32 @@ typedef struct choose_char {
     sfSprite *player4_sprite;
 }choose_char_t;
 
+typedef struct fight {
+    sfTexture *wp1t;
+    sfSprite *wp1s;
+    sfTexture *boss1t;
+    sfSprite *boss1s;
+    sfTexture *playert;     // A chnager
+    sfSprite *players;      // A chnager
+    sfSprite *arrows;
+    sfTexture *arrowt;
+    sfIntRect rect;
+    sfSprite *attack_spes;
+    sfTexture *attack_spet;
+    sfSprite *attacks;
+    sfTexture *attackt;
+    int life1;
+    int life2;
+    int stamina1;
+    bool turn;
+    bool stamina_used;
+    sfClock *clocks;
+    sfText* life;
+    sfText* life1t;
+    sfText* stamina1t;
+    sfText* stamina;
+}fight_t;
+
 typedef struct settings {
     sfTexture *settingst;
     sfMusic *musique;
@@ -135,6 +161,7 @@ typedef struct global {
     gameplay_t *gameplay;
     pause_t *pause;
     choose_char_t *choose_char;
+    fight_t *fight;
     int scn;
 }global_t;
 
@@ -266,5 +293,25 @@ void init_texts_quest(global_t *global);
 //In src/gameplay/pnj_interaction.c
 int check_interaction(global_t *global);
 void display_score(global_t *global);
+
+// In src/fight/fight.c
+void fight(global_t *global);
+void wait(global_t *global);
+
+// In src/fight/detect_win.c
+int dectect_win(global_t *global);
+
+// In src/fight/fight_init.c
+void fight_create(global_t *global);
+void fight_destroy(global_t *global);
+void set_my_recta(global_t *global);
+
+// In src/fight/fight_turn.c
+void check_turn(global_t *global);
+
+// In src/fight/fight_display.c
+void display_elementary(global_t *global);
+void fight_display(global_t *global);
+void draw_fight_info(global_t *global);
 
 #endif

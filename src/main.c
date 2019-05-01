@@ -67,6 +67,7 @@ void clean_bytes(global_t *global, char status)
         global->choose_char = malloc(sizeof(choose_char_t) * 1);
         global->menu->settings = malloc(sizeof(settings_t) * 1);
         global->gameplay->pnj = malloc(sizeof(pnj_t) * 1);
+        global->fight = malloc(sizeof(fight_t) * 1);
     }
     if (status == 'f') {
         free(global->menu->settings);
