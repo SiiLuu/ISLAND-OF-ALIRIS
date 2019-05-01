@@ -36,6 +36,7 @@ void move_down(global_t *global)
         check_position_down(global);
         move_rect(global->gameplay);
         move_vue(global);
+        check_interaction(global);
         draw_sprites(global);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_down(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
@@ -55,6 +56,7 @@ void move_left(global_t *global)
         check_position_left(global);
         move_rect(global->gameplay);
         move_vue(global);
+        check_interaction(global);
         draw_sprites(global);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_left(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
@@ -74,6 +76,7 @@ void move_right(global_t *global)
         check_position_right(global);
         move_rect(global->gameplay);
         move_vue(global);
+        check_interaction(global);
         draw_sprites(global);
         //printf("y = %d, x = %d\n", global->gameplay->y, global->gameplay->x);
         if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_right(global->gameplay, 10) == true) {

@@ -94,11 +94,35 @@ typedef struct menu {
 typedef struct pnj {
     sfSprite *sprite_pnj_1;
     sfTexture *pnj_1;
+    sfSprite *sprite_pnj_d;
+    sfTexture *pnj_d;
+    sfSprite *sprite_pnj_ed;
+    sfTexture *pnj_ed;
+    sfSprite *sprite_pnj_pech;
+    sfTexture *pnj_pech;
+    sfSprite *sprite_pnj_bot;
+    sfTexture *pnj_bot;
+    sfIntRect rect_pnj_d;
+    sfIntRect rect_pnj_1;
+    sfIntRect rect_pnj_ed;
+    sfIntRect rect_pnj_pech;
+    sfIntRect rect_pnj_bot;
     sfTexture *text_box;
     sfSprite *s_text_box;
     sfText *text;
+    sfText *text_d;
+    sfText *text_ed;
+    sfText *text_pech;
+    sfText *text_bot;
     sfFont *font;
     int p_text;
+    int p_text_d;
+    int p_text_ed;
+    int p_text_pech;
+    int p_text_bot;
+    int girl_quest;
+    int quest_complete;
+    char *sec_q;
 }pnj_t;
 
 typedef struct gameplay {
@@ -107,7 +131,6 @@ typedef struct gameplay {
     sfTexture *man;
     sfSprite *sprite_man;
     sfIntRect rect_man;
-    sfIntRect rect_pnj_1;
     sfClock *clocks;
     sfView * view;
     char *buffer;
@@ -281,6 +304,7 @@ void display_player_inv(global_t *global, sfSprite *spr);
 
 // In src/pause/inv.c
 void chose_good_char(global_t *global);
+void display_pause(global_t *global);
 int but_is_c(sfEvent event, sfSprite *spr);
 
 // In src/pause/draw_pause.c
@@ -291,8 +315,8 @@ sfText *create_text(sfText *text, sfFont *fon);
 void init_texts_quest(global_t *global);
 
 //In src/gameplay/pnj_interaction.c
-int check_interaction(global_t *global);
-void display_score(global_t *global);
+void check_interaction(global_t *global);
+void display_text(global_t *global);
 
 // In src/fight/fight.c
 void fight(global_t *global);

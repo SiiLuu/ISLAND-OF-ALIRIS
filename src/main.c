@@ -2,15 +2,17 @@
 ** EPITECH PROJECT, 2019
 ** main fonction
 ** File description:
-** my_defender, main function
+** my_rpg, main function
 */
 #include "my.h"
 #include "rpg.h"
+//4310 4600
 
 void game_parameters(global_t *global)
 {
     check_events(global);
     draw_sprites(global);
+    //printf("x = %d      y = %d\n", global->gameplay->x, global->gameplay->y);
 }
 
 int main_loop(global_t *global)
