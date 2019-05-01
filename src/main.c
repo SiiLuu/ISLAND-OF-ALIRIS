@@ -6,13 +6,12 @@
 */
 #include "my.h"
 #include "rpg.h"
-//2350 500
 
 void game_parameters(global_t *global)
 {
     check_events(global);
     draw_sprites(global);
-    
+    //printf("%d     %d\n", global->gameplay->x, global->gameplay->y);
 }
 
 int main_loop(global_t *global)

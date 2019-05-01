@@ -11,20 +11,20 @@
 int check_village(global_t *global, int mpos_x, int mpos_y, int scn)
 {
     if (global->gameplay->map[mpos_y][mpos_x] == 'V' && scn == 1) {
-        global->gameplay->x = 1600;
-        global->gameplay->y = 1400;
+        global->gameplay->x = 2000;
+        global->gameplay->y = 1600;
         global->gameplay->width = 4000;
         global->gameplay->lenght = 2000;
         sfSprite_setPosition(global->gameplay->sprite_backg,
                             (sfVector2f){0, 0});
-        sfView_reset(global->gameplay->view, (sfFloatRect){0,00,1920,1080});
-        sfRenderWindow_setView(global->window, global->gameplay->view);
         sfSprite_setPosition(global->gameplay->sprite_man,
-                            (sfVector2f){1600, 1400});
+                            (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTexture(global->gameplay->sprite_backg,
                             global->gameplay->backg_vil, sfTrue);
+        global->gameplay->camera_y = 960 - 48;
+        move_vue(global);
         global->gameplay->map = global->gameplay->mapc_vil;
-        scn = 11;                          
+        scn = 11;
     }
     return (scn);
 }

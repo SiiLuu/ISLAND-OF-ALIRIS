@@ -10,7 +10,7 @@
 
 void top_right_corner(global_t *global)
 {
-    sfView_reset(global->gameplay->view, (sfFloatRect){0, 
+    sfView_reset(global->gameplay->view, (sfFloatRect){0,
     global->gameplay->lenght - 1080, 1920, 1080});
 }
 

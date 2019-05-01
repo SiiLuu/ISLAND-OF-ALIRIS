@@ -83,7 +83,6 @@ int check_events(global_t *global)
             global->scn = 5;
         move_character(global);
     }
-    global->scn = check_map_change(global, global->scn);
     check_monster_dead(global);
     return (0);
 }
@@ -237,21 +236,24 @@ void init_texture(global_t *global)
 
 void draw_sprites(global_t *global)
 {
+    global->scn = check_map_change(global, global->scn);
     if (global->scn == 1 || global->scn == 10 || global->scn == 11) {
         sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-        if (global->gameplay->pnj->girl_quest == 1)
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_1, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_d, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_ed, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_pech, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_bot, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_final_boss, NULL);
-        sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_winter_boss, NULL);
-        switch_in_fight(global);
-        display_text(global);
+        if (global->scn == 1) {
+           if (global->gameplay->pnj->girl_quest == 1)
+               sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_1, NULL);
+            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_d, NULL);
+            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_ed, NULL);
+            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_pech, NULL);
+            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_bot, NULL);
+            sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_final_boss, NULL);
+            sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_winter_boss, NULL);
+            switch_in_fight(global);
+            display_text(global);
+        }
         sfRenderWindow_display(global->window);
     }
     if (global->scn == 5)

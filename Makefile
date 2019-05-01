@@ -70,6 +70,7 @@ clean:
 	@rm -f src/pause/*.o
 	@rm -f src/choose_character/*.o
 	@rm -f src/gameplay/*.o
+	@rm -f src/gameplay/interaction/*.o
 	@rm -f src/gameplay/movement_player/*.o
 	@rm -f lib/my/libmy.a
 	@rm -f *.o
