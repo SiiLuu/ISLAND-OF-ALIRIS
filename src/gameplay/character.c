@@ -237,7 +237,7 @@ void init_texture(global_t *global)
 
 void draw_sprites(global_t *global)
 {
-    if (global->scn == 1 || global->scn == 10) {
+    if (global->scn == 1 || global->scn == 10 || global->scn == 11) {
         sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);

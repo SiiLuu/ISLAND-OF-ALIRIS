@@ -59,7 +59,7 @@ int check_map_change(global_t *global, int scn)
 
     if (scn == 1) {
         scn = check_firecamp(global, mpos_x, mpos_y, scn);
-        //scn = check_village(global, mpos_x, mpos_y, scn);
+        scn = check_village(global, mpos_x, mpos_y, scn);
     }
     else if (scn == 10)
         if (global->gameplay->map[mpos_y][mpos_x] == 'S') {
