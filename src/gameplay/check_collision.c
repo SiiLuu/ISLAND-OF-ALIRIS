@@ -17,7 +17,7 @@ bool check_collision_up(gameplay_t *gameplay, int distance)
     int mpos_y = pos_y / 100;
 
     if (pos_y > 0) {
-        if ((gameplay->map[mpos_y][mpos_x] == '0') &&
+        if ((gameplay->map[mpos_y][mpos_x] != '1') &&
             manage_col_up(gameplay, pos_x, mpos_y) == true)
             return (true);
     }
@@ -31,8 +31,8 @@ bool check_collision_down(gameplay_t *gameplay, int distance)
     int mpos_x = pos_x / 100;
     int mpos_y = pos_y / 100;
 
-    if (pos_y < 6000) {
-        if ((gameplay->map[mpos_y][mpos_x] == '0') &&
+    if (pos_y < gameplay->lenght) {
+        if ((gameplay->map[mpos_y][mpos_x] != '1') &&
             manage_col_down(gameplay, pos_x, mpos_y) == true)
             return (true);
     }
@@ -47,7 +47,7 @@ bool check_collision_left(gameplay_t *gameplay, int distance)
     int mpos_y = pos_y / 100;
 
     if (pos_x > 0) {
-        if (gameplay->map[mpos_y][mpos_x] == '0' &&
+        if (gameplay->map[mpos_y][mpos_x] != '1' &&
             manage_col_left(gameplay, mpos_x, pos_y) == true)
             return (true);
     }
@@ -61,8 +61,8 @@ bool check_collision_right(gameplay_t *gameplay, int distance)
     int mpos_x = pos_x / 100;
     int mpos_y = pos_y / 100;
 
-    if (pos_x < 6000) {
-        if (gameplay->map[mpos_y][mpos_x] == '0' &&
+    if (pos_x < gameplay->width) {
+        if (gameplay->map[mpos_y][mpos_x] != '1' &&
         manage_col_right(gameplay, mpos_x, pos_y) == true)
         return (true);
     }

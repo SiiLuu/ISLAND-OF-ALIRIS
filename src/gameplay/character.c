@@ -10,27 +10,27 @@
 
 void bottom_left_corner(global_t *global)
 {
-    sfView_reset(global->gameplay->view, (sfFloatRect){6000 - 1920, 0,
-    1920, 1080});
+    sfView_reset(global->gameplay->view, (sfFloatRect){
+        global->gameplay->width - 1920, 0, 1920, 1080});
 }
 
 void move_vue(global_t *global)
 {
-    if ((global->gameplay->x > 6000 - 1920 / 2 - 48) && (global->gameplay->y < 1080 / 2 - 48))
+    if ((global->gameplay->x > global->gameplay->width - 1920 / 2 - 48) && (global->gameplay->y < 1080 / 2 - 48))
         bottom_left_corner(global);
     else if ((global->gameplay->x < 0 + (1920 / 2) - 48) &&
             (global->gameplay->y < (1080 / 2) - 48))
         sfView_reset(global->gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
     else if ((global->gameplay->x < 0 + 1920 / 2 - 48) &&
-            (global->gameplay->y > 6000 - 1080 / 2 - 48))
+            (global->gameplay->y > global->gameplay->lenght - 1080 / 2 - 48))
         top_right_corner(global);
-    else if ((global->gameplay->x > 6000 - 1920 / 2 - 48) &&
-            (global->gameplay->y > 6000 - 1080 / 2 - 48))
+    else if ((global->gameplay->x > global->gameplay->width - 1920 / 2 - 48) &&
+            (global->gameplay->y > global->gameplay->lenght - 1080 / 2 - 48))
         bottom_right_corner(global);
-    else if (global->gameplay->x > 6000 - (1920 / 2) - 48 ||
+    else if (global->gameplay->x > global->gameplay->width - (1920 / 2) - 48 ||
             global->gameplay->x < (1920 / 2) - 48)
         camera_horizontal(global);
-    else if (global->gameplay->y > 6000 - (1080 / 2) - 48 ||
+    else if (global->gameplay->y > global->gameplay->lenght - (1080 / 2) - 48 ||
            global->gameplay->y < (1080 / 2) - 48)
         vertical_camera(global);
     else
@@ -40,19 +40,21 @@ void move_vue(global_t *global)
 
 void check_monster_dead(global_t *global)
 {
-    if (global->gameplay->boss->win_vs_final_boss == 1) {
-        sfSprite_setColor(global->gameplay->boss->sp_final_boss, sfTransparent);
-        global->gameplay->map[5][23] = '0';
-        global->gameplay->map[5][24] = '0';
+    if (global->scn == 1) {
+        if (global->gameplay->boss->win_vs_final_boss == 1) {
+            sfSprite_setColor(global->gameplay->boss->sp_final_boss, sfTransparent);
+            global->gameplay->map[5][23] = '0';
+            global->gameplay->map[5][24] = '0';
+        }
+        if (global->gameplay->boss->win_vs_winter_boss == 1) {
+            sfSprite_setColor(global->gameplay->boss->sp_winter_boss, sfTransparent);
+            global->gameplay->map[31][54] = '0';
+        }
+        if (global->gameplay->pnj->girl_quest == 0)
+            global->gameplay->map[50][50] = '0';
+        else
+            global->gameplay->map[50][50] = '5';
     }
-    if (global->gameplay->boss->win_vs_winter_boss == 1) {
-        sfSprite_setColor(global->gameplay->boss->sp_winter_boss, sfTransparent);
-        global->gameplay->map[31][54] = '0';
-    }
-    if (global->gameplay->pnj->girl_quest == 0)
-        global->gameplay->map[50][50] = '0';
-    else
-        global->gameplay->map[50][50] = '5';
 }
 
 int check_events(global_t *global)
@@ -81,6 +83,7 @@ int check_events(global_t *global)
             global->scn = 5;
         move_character(global);
     }
+    global->scn = check_map_change(global, global->scn);
     check_monster_dead(global);
     return (0);
 }
@@ -173,7 +176,12 @@ void create_sprite(global_t *global)
     global->gameplay->pnj->pnj_bot = sfTexture_createFromFile("resource/Sprite player/Actor3.png", NULL);
     global->gameplay->boss->final_boss = sfTexture_createFromFile("resource/fight/bigmonster.png", NULL);
     global->gameplay->boss->winter_boss = sfTexture_createFromFile("resource/fight/bigmonster.png", NULL);
-    global->gameplay->backg = sfTexture_createFromFile("resource/World Map.png", NULL);
+    global->gameplay->backg = sfTexture_createFromFile(
+        "resource/World Map.png", NULL);
+    global->gameplay->backg_fcp = sfTexture_createFromFile(
+        "resource/Firecamp Plaine.png", NULL);
+    global->gameplay->backg_vil = sfTexture_createFromFile(
+        "resource/Village de départ.jpg", NULL);
 }
 
 void init_gameplay_action(global_t *global)
@@ -229,7 +237,7 @@ void init_texture(global_t *global)
 
 void draw_sprites(global_t *global)
 {
-    if (global->scn == 1) {
+    if (global->scn == 1 || global->scn == 10) {
         sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);

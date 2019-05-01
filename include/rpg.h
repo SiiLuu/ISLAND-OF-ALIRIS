@@ -143,18 +143,24 @@ typedef struct boss {
 
 typedef struct gameplay {
     sfTexture *backg;
+    sfTexture *backg_vil;
+    sfTexture *backg_fcp;
     sfSprite *sprite_backg;
     sfTexture *man;
     sfSprite *sprite_man;
     sfIntRect rect_man;
     sfClock *clocks;
     sfView * view;
-    char *buffer;
     char **map;
+    char **wmap;
+    char **mapc_fcp;
+    char **mapc_vil;
     int x;
     int y;
     int camera_x;
     int camera_y;
+    int width;
+    int lenght;
     int player_nb;
     pnj_t *pnj;
     boss_t *boss;
@@ -263,10 +269,7 @@ void check_position_top(global_t *global);
 void check_position_down(global_t *global);
 
 //In src/gameplay/buffer_in_array.c
-void string_to_tab(gameplay_t *gameplay);
-
-//In src/gameplay/buffer_in_array.c
-void string_to_tab(gameplay_t *gameplay);
+char **string_to_tab(char *buffer);
 
 //In src/Gameplay/rect_in_movement.c
 void set_rect_runing(gameplay_t * gameplay);
@@ -362,5 +365,12 @@ void choose_who_create(global_t *global);
 void display_elementary(global_t *global);
 void fight_display(global_t *global);
 void draw_fight_info(global_t *global);
+
+//In src/gameplay/movement_player/open_col_files.c
+int open_file(global_t *global);
+char **get_map(char *path, char **map);
+
+//In src/gameplay/movement_player/change_map.c
+int check_map_change(global_t *global, int scn);
 
 #endif

@@ -15,7 +15,7 @@ bool manage_col_up(gameplay_t *gameplay, int pos_x, int mpos_y)
 
     if (mpos_x <= 59) {
         if ((mpos_x == mpos_x / 100) ||
-            gameplay->map[mpos_y][mpos_x] == '0')
+            gameplay->map[mpos_y][mpos_x] != '1')
             return (true);
     }
     return (false);
@@ -27,7 +27,7 @@ bool manage_col_down(gameplay_t *gameplay, int pos_x, int mpos_y)
 
     if (mpos_x <= 59) {
         if ((mpos_x == mpos_x / 100) ||
-            gameplay->map[mpos_y][mpos_x] == '0')
+            gameplay->map[mpos_y][mpos_x] != '1')
             return (true);
     }
     return (false);
@@ -39,7 +39,7 @@ bool manage_col_left(gameplay_t *gameplay, int mpos_x, int pos_y)
 
     if (mpos_y <= 59) {
         if ((mpos_y == pos_y / 100) ||
-            gameplay->map[mpos_y][mpos_x] == '0')
+            gameplay->map[mpos_y][mpos_x] != '1')
             return (true);
     }
     return (false);
@@ -51,7 +51,7 @@ bool manage_col_right(gameplay_t *gameplay, int mpos_x, int pos_y)
 
     if (mpos_y <= 59) {
         if ((mpos_y == pos_y / 100) ||
-            gameplay->map[mpos_y][mpos_x] == '0')
+            gameplay->map[mpos_y][mpos_x] != '1')
             return (true);
     }
     return (false);
