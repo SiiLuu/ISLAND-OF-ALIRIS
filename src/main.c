@@ -12,17 +12,13 @@ void game_parameters(global_t *global)
 {
     check_events(global);
     draw_sprites(global);
-    //printf("x = %d      y = %d\n", global->gameplay->x, global->gameplay->y);
+    
 }
 
 int main_loop(global_t *global)
 {
     global->gameplay->clocks = sfClock_create();
     global->gameplay->view = sfView_create();
-
-    global->scn = 0;
-    global->gameplay->x = 300;
-    global->gameplay->y = 600;
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(global->gameplay->clocks);
@@ -87,35 +83,17 @@ void main_function(global_t *global)
                                             sfFullscreen | sfClose, NULL);
     global->menu->settings->sound = 0;
     global->menu->settings->nbr_bar = 4;
+    global->gameplay->lenght = 6000;
+    global->gameplay->width = 6000;
+    global->scn = 0;
+    global->gameplay->x = 300;
+    global->gameplay->y = 600;
     music_game(global);
     main_loop(global);
     music_destroy(global);
     sfRenderWindow_destroy(global->window);
     destroy_all(global);
     clean_bytes(global, 'f');
-
-}
-
-int open_file(char **av, global_t *global)
-{
-    struct stat filepath;
-    char *buffer = NULL;
-    int fd = 0;
-    int i = 0;
-
-    stat(av[1], &filepath);
-    fd = open(av[1], O_RDONLY);
-    if (fd == -1)
-        return (84);
-    i = filepath.st_size;
-    buffer = malloc(sizeof(char) * i);
-    if (buffer == NULL)
-        return (84);
-    read(fd, buffer, i);
-    close(fd);
-    global->gameplay->buffer = buffer;
-    string_to_tab(global->gameplay);
-    return (0);
 }
 
 int main(int ac, char **av)
@@ -132,9 +110,7 @@ int main(int ac, char **av)
         my_putstr("\twith different abilities. GOOD LUCK TO YOU !\n");
         return (1);
     }
-    if (ac != 2)
-        return (84);
-    if (open_file(av, global) == 84)
+    if (open_file(global) == 84)
         return (84);
     else
         main_function(global);
