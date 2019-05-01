@@ -8,16 +8,6 @@
 #include "rpg.h"
 #include "my.h"
 
-static int get_len_file(gameplay_t *gameplay)
-{
-    int i = 0;
-
-    while (gameplay->map[i] != NULL) {
-        i++;
-    }
-    return (i - 1);
-}
-
 static int get_len_line(gameplay_t *gameplay)
 {
     int i = 0;
