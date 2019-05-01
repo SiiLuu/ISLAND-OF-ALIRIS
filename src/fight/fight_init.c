@@ -10,7 +10,6 @@
 
 void create_all(global_t *global)
 {
-    global->fight->enemis = 1;
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
     if (global->fight->enemis == 1) {
