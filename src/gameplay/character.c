@@ -79,8 +79,6 @@ int check_events(global_t *global)
             global->scn = 4;
         if (global->event.key.code == sfKeyEscape && global->scn != 0)
             global->scn = 2;
-        if (global->event.key.code == sfKeySpace && global->scn == 1)
-            global->scn = 5;
         move_character(global);
     }
     check_monster_dead(global);
