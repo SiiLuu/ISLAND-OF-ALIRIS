@@ -10,6 +10,9 @@
 
 void choose_create2(global_t *global)
 {
+    choose_create3(global);
+    sfSprite_setTexture(global->choose_char->champ_bck,
+                        global->choose_char->champ_bckt, sfTrue);
     sfSprite_setTexture(global->choose_char->player1_sprite,
                         global->choose_char->player1_texture, sfTrue);
     sfSprite_setTexture(global->choose_char->player2_sprite,
@@ -30,17 +33,20 @@ void choose_create2(global_t *global)
 
 void choose_create(global_t *global)
 {
+    const char *texture = "resource/menu/champ_bck.jpg";
     const char *texture1 = "resource/Sprite player/player1.png";
     const char *texture2 = "resource/Sprite player/player2.png";
     const char *texture3 = "resource/Sprite player/player3.png";
     const char *texture4 = "resource/Sprite player/player4.png";
 
+    global->choose_char->champ_bck = sfSprite_create();
     global->choose_char->player1_sprite = sfSprite_create();
     global->choose_char->player2_sprite = sfSprite_create();
     global->choose_char->player3_sprite = sfSprite_create();
     global->choose_char->player4_sprite = sfSprite_create();
     global->choose_char->player1_texture = sfTexture_createFromFile(texture1,
                                                 NULL);
+    global->choose_char->champ_bckt = sfTexture_createFromFile(texture, NULL);
     global->choose_char->player2_texture = sfTexture_createFromFile(texture2,
                                                 NULL);
     global->choose_char->player3_texture = sfTexture_createFromFile(texture3,

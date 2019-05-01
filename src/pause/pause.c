@@ -63,8 +63,8 @@ void pause_create2(global_t *global)
         global->pause->st_inv->invt, sfTrue);
     sfSprite_setScale(global->pause->st_inv->inv, (sfVector2f){2.75, 2.75});
     global->pause->quest = sfSprite_create();
-    global->pause->questt = sfTexture_createFromFile("resource/menu/s1.png",
-        NULL);
+    global->pause->questt = sfTexture_createFromFile(
+        "resource/menu/but_quest.png", NULL);
     sfSprite_setTexture(global->pause->quest, global->pause->questt, sfTrue);
     sfSprite_setScale(global->pause->quest, (sfVector2f){0.60, 0.60});
     init_texts(global);
@@ -80,7 +80,7 @@ void pause_create(global_t *global)
         NULL);
     global->pause->st_inv->wp_invt = sfTexture_createFromFile(
         "resource/menu/menu_pause.jpg", NULL);
-    global->pause->invt = sfTexture_createFromFile("resource/menu/s1.png",
+    global->pause->invt = sfTexture_createFromFile("resource/menu/but_inv.png",
         NULL);
     global->pause->st_inv->equipt = sfTexture_createFromFile(
         "resource/menu/equip.png", NULL);
