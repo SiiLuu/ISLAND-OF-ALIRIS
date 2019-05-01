@@ -46,6 +46,7 @@ typedef struct fight {
     int life1;
     int life2;
     int stamina1;
+    int enemis;
     bool turn;
     bool stamina_used;
     sfClock *clocks;

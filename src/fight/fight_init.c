@@ -10,21 +10,25 @@
 
 void create_all(global_t *global)
 {
-    global->fight->wp1t = sfTexture_createFromFile("resource/Cobblestones1.png",
+    global->fight->enemis = 1;
+    global->fight->wp1t = sfTexture_createFromFile("resource/fight/Cobblestones1.png",
                                                     NULL);
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
-    global->fight->boss1t = sfTexture_createFromFile("resource/Darklord-final.png", NULL);
+    if (global->fight->enemis == 1)
+        global->fight->boss1t = sfTexture_createFromFile("resource/fight/Darklord-final.png", NULL);
+    if (global->fight->enemis == 2)
+        global->fight->boss1t = sfTexture_createFromFile("resource/fight/Dragon.png", NULL);
     global->fight->players = sfSprite_create();
     choose_who_create(global);
     global->fight->arrows = sfSprite_create();
-    global->fight->arrowt = sfTexture_createFromFile("resource/arrow.png",
+    global->fight->arrowt = sfTexture_createFromFile("resource/fight/arrow.png",
                                                         NULL);
     global->fight->attack_spes = sfSprite_create();
-    global->fight->attack_spet = sfTexture_createFromFile("resource/test.png",
+    global->fight->attack_spet = sfTexture_createFromFile("resource/fight/test.png",
                                                             NULL);
     global->fight->attacks = sfSprite_create();
-    global->fight->attackt = sfTexture_createFromFile("resource/test2.png",
+    global->fight->attackt = sfTexture_createFromFile("resource/fight/test2.png",
                                                         NULL);
 }
 
@@ -32,6 +36,8 @@ void texture_scale(global_t *global)
 {
     sfSprite_setTexture(global->fight->wp1s, global->fight->wp1t, sfTrue);
     sfSprite_setScale(global->fight->wp1s, (sfVector2f){2.10, 1.90});
+    if (global->fight->enemis == 2)
+        sfSprite_setScale(global->fight->boss1s, (sfVector2f){1.2, 1.2});
     sfSprite_setTexture(global->fight->boss1s, global->fight->boss1t, sfTrue);
     sfSprite_setPosition(global->fight->boss1s, (sfVector2f){50, 500});
     sfSprite_setTexture(global->fight->players,
