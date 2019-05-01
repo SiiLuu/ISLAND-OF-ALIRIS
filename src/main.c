@@ -6,7 +6,7 @@
 */
 #include "my.h"
 #include "rpg.h"
-//4310 4600
+//2350 500
 
 void game_parameters(global_t *global)
 {
@@ -69,6 +69,7 @@ void clean_bytes(global_t *global, char status)
         global->choose_char = malloc(sizeof(choose_char_t) * 1);
         global->menu->settings = malloc(sizeof(settings_t) * 1);
         global->gameplay->pnj = malloc(sizeof(pnj_t) * 1);
+        global->gameplay->boss = malloc(sizeof(boss_t) * 1);
         global->fight = malloc(sizeof(fight_t) * 1);
     }
     if (status == 'f') {

@@ -15,7 +15,8 @@ SRC 	=	src/main.c						\
 			src/gameplay/check_collision.c						\
 			src/gameplay/manage_collision.c						\
 			src/gameplay/character.c							\
-			src/gameplay/pnj_interaction.c						\
+			src/gameplay/interaction/pnj_interaction.c			\
+			src/gameplay/interaction/fight_interaction.c			\
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\
 			src/gameplay/buffer_in_array.c						\

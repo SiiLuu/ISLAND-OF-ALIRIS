@@ -47,6 +47,7 @@ typedef struct fight {
     int life2;
     int stamina1;
     int enemis;
+    int win_vs_final_boss;
     bool turn;
     bool stamina_used;
     sfClock *clocks;
@@ -126,6 +127,12 @@ typedef struct pnj {
     char *sec_q;
 }pnj_t;
 
+typedef struct boss {
+    sfTexture *final_boss;
+    sfSprite *sp_final_boss;
+    sfIntRect rect_final_boss;
+}boss_t;
+
 typedef struct gameplay {
     sfTexture *backg;
     sfSprite *sprite_backg;
@@ -142,6 +149,7 @@ typedef struct gameplay {
     int camera_y;
     int player_nb;
     pnj_t *pnj;
+    boss_t *boss;
 }gameplay_t;
 
 typedef struct inv {
@@ -315,9 +323,12 @@ sfText *create_text(sfText *text, sfFont *fon);
 // In src/pause/quest.c
 void init_texts_quest(global_t *global);
 
-//In src/gameplay/pnj_interaction.c
+//In src/gameplay/interaction/pnj_interaction.c
 void check_interaction(global_t *global);
 void display_text(global_t *global);
+
+//In src/gameplay/interaction/pnj_interaction.c
+void switch_in_fight(global_t *global);
 
 // In src/fight/fight.c
 int fight(global_t *global);

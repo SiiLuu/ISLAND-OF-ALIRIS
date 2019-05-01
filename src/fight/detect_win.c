@@ -70,7 +70,7 @@ void player_win(global_t *global)
     draw_fight_info(global);
     sfRenderWindow_display(global->window);
     while (sfTime_asMilliseconds(sfClock_getElapsedTime(
-            global->fight->clocks)) < 10000);
+            global->fight->clocks)) < 5000);
     sfFont_destroy(font);
     sfText_destroy(text);
     sfClock_destroy(clocks);
@@ -83,6 +83,7 @@ int dectect_win(global_t *global)
         exit (0);
     }
     if (global->fight->life2 <= 0) {
+        global->fight->win_vs_final_boss = 1;
         player_win(global);
         return (1);
     }
