@@ -16,10 +16,12 @@ SRC 	=	src/main.c						\
 			src/gameplay/manage_collision.c						\
 			src/gameplay/character.c							\
 			src/gameplay/interaction/pnj_interaction.c			\
-			src/gameplay/interaction/fight_interaction.c			\
+			src/gameplay/interaction/fight_interaction.c		\
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\
 			src/gameplay/buffer_in_array.c						\
+			src/gameplay/movement_player/open_col_files.c		\
+			src/gameplay/movement_player/change_map.c			\
 			src/gameplay/movement_player/move_player.c			\
 			src/gameplay/movement_player/rect_in_movement.c		\
 			src/gameplay/movement_player/set_player_direction.c	\

@@ -8,11 +8,11 @@
 #include "rpg.h"
 #include "my.h"
 
-static int get_len_line(gameplay_t *gameplay)
+static int get_len_line(char *buffer)
 {
     int i = 0;
 
-    for (i = 0; gameplay->buffer[i] != '\n'; i++);
+    for (i = 0; buffer[i] != '\n'; i++);
     return (i);
 }
 
@@ -28,7 +28,7 @@ static int get_line_nbr(char *str)
     return (count + 1);
 }
 
-static void set_line(gameplay_t *gameplay, int height, int len)
+static char **set_line(char *buffer, char **map, int height, int len)
 {
     int i = 0;
     int j = 0;
@@ -36,30 +36,32 @@ static void set_line(gameplay_t *gameplay, int height, int len)
 
     for (i = 0; i != height; i++) {
         for (j = 0; j != len; j++) {
-            if (gameplay->buffer[k] == '\n')
+            if (buffer[k] == '\n')
                 k++;
-            gameplay->map[i][j] = gameplay->buffer[k];
+            map[i][j] = buffer[k];
             k++;
-            if (j + 1 == len)
-                gameplay->map[i][j + 2] = '\0';
         }
+        map[i][j] = '\0';
     }
+    return (map);
 }
 
-void string_to_tab(gameplay_t *gameplay)
+char **string_to_tab(char *buffer)
 {
+    char **map = NULL;
     int i = 0;
-    int height = get_line_nbr(gameplay->buffer);
+    int height = get_line_nbr(buffer);
     int len = 0;
 
     if (height > 1)
-        len = get_len_line(gameplay);
+        len = get_len_line(buffer);
     else
-        len = my_strlen(gameplay->buffer);
-    gameplay->map = malloc(sizeof(char *) * (height + 1));
+        len = my_strlen(buffer);
+    map = malloc(sizeof(char *) * (height + 1));
     for (i = 0; i != height; i++) {
-        gameplay->map[i] = malloc(sizeof(char) * (len + 1));
+        map[i] = malloc(sizeof(char) * (len + 1));
     }
-    gameplay->map[i] = NULL;
-    set_line(gameplay, height, len);
+    map[i] = NULL;
+    map = set_line(buffer, map, height, len);
+    return (map);
 }
