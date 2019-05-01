@@ -10,7 +10,6 @@
 
 void create_all(global_t *global)
 {
-    global->fight->enemis = 1;
     global->fight->wp1t = sfTexture_createFromFile("resource/fight/Cobblestones1.png",
                                                     NULL);
     global->fight->wp1s = sfSprite_create();
@@ -19,6 +18,8 @@ void create_all(global_t *global)
         global->fight->boss1t = sfTexture_createFromFile("resource/fight/Darklord-final.png", NULL);
     if (global->fight->enemis == 2)
         global->fight->boss1t = sfTexture_createFromFile("resource/fight/Dragon.png", NULL);
+    if (global->fight->enemis == 3)
+        global->fight->boss1t = sfTexture_createFromFile("resource/fight/God.png", NULL);
     global->fight->players = sfSprite_create();
     choose_who_create(global);
     global->fight->arrows = sfSprite_create();

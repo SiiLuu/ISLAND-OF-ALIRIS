@@ -83,7 +83,10 @@ int dectect_win(global_t *global)
         exit (0);
     }
     if (global->fight->life2 <= 0) {
-        global->fight->win_vs_final_boss = 1;
+        if (global->fight->enemis == 1)
+            global->gameplay->boss->win_vs_final_boss = 1;
+        if (global->fight->enemis == 3)
+            global->gameplay->boss->win_vs_winter_boss = 1;
         player_win(global);
         return (1);
     }

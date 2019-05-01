@@ -51,7 +51,6 @@ typedef struct fight {
     int life2;
     int stamina1;
     int enemis;
-    int win_vs_final_boss;
     bool turn;
     bool stamina_used;
     sfClock *clocks;
@@ -135,6 +134,11 @@ typedef struct boss {
     sfTexture *final_boss;
     sfSprite *sp_final_boss;
     sfIntRect rect_final_boss;
+    int win_vs_final_boss;
+    sfTexture *winter_boss;
+    sfSprite *sp_winter_boss;
+    sfIntRect rect_winter_boss;
+    int win_vs_winter_boss;
 }boss_t;
 
 typedef struct gameplay {
