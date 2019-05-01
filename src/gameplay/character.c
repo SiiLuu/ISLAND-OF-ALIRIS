@@ -49,8 +49,10 @@ void check_monster_dead(global_t *global)
         sfSprite_setColor(global->gameplay->boss->sp_winter_boss, sfTransparent);
         global->gameplay->map[31][54] = '0';
     }
-    //if (global->gameplay->pnj->girl_quest == 0)
-    //    global->gameplay->map[50][50] = '0';
+    if (global->gameplay->pnj->girl_quest == 0)
+        global->gameplay->map[50][50] = '0';
+    else
+        global->gameplay->map[50][50] = '5';
 }
 
 int check_events(global_t *global)
