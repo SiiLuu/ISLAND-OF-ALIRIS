@@ -61,6 +61,7 @@ clean:
 	@echo "removing my libmy.a ..."
 	@rm -f lib/my/*.o
 	@rm -f src/*.o
+	@rm -f src/fight/*.o
 	@rm -f src/menu/*.o
 	@rm -f src/pause/*.o
 	@rm -f src/choose_character/*.o

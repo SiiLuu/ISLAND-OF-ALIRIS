@@ -319,7 +319,7 @@ void check_interaction(global_t *global);
 void display_text(global_t *global);
 
 // In src/fight/fight.c
-void fight(global_t *global);
+int fight(global_t *global);
 void wait(global_t *global);
 
 // In src/fight/detect_win.c
@@ -332,6 +332,7 @@ void set_my_recta(global_t *global);
 
 // In src/fight/fight_turn.c
 void check_turn(global_t *global);
+void choose_who_create(global_t *global);
 
 // In src/fight/fight_display.c
 void display_elementary(global_t *global);

@@ -23,7 +23,7 @@ void wait(global_t *global)
 
 int check_event_fight(global_t *global, int x, int y)
 {
-    if (x >= 1500 && x <= 1775 && y >= 675 && y <= 730) {
+    if (x >= 1500 && x <= 1780 && y >= 830 && y <= 885) {
         if (global->fight->stamina1 < 20)
             return (0);
         global->fight->stamina_used = 1;
@@ -34,7 +34,7 @@ int check_event_fight(global_t *global, int x, int y)
             global->fight->turn = 0;
         fight_display(global);
     }
-    else if (x >= 1500 && x <= 1740 && y >= 780 && y <= 830) {
+    else if (x >= 1500 && x <= 1730 && y >= 925 && y <= 980) {
         global->fight->stamina1 += 5;
         if (global->fight->turn == 0)
             global->fight->turn = 1;
@@ -57,17 +57,22 @@ void check_mouse_fight(global_t *global)
     }
 }
 
-void fight(global_t *global)
+int fight(global_t *global)
 {
     global->fight->clocks = sfClock_create();
 
+    sfView_reset(global->gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
+    sfRenderWindow_setView(global->window, global->gameplay->view);
     global->fight->life1 = 110;
     global->fight->life2 = 95;
     fight_create(global);
     sfRenderWindow_pollEvent(global->window, &global->event);
     while (1) {
-        if (dectect_win(global))
-            exit (0);
+        if (dectect_win(global)) {
+            move_vue(global);
+            global->scn = 1;
+            return (0);
+        }
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(
             global->fight->clocks)) > 100) {
             check_mouse_fight(global);

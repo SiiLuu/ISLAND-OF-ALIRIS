@@ -60,6 +60,8 @@ int check_events(global_t *global)
             global->scn = 4;
         if (global->event.key.code == sfKeyEscape && global->scn != 0)
             global->scn = 2;
+        if (global->event.key.code == sfKeySpace && global->scn == 1)
+            global->scn = 5;
         move_character(global);
     }
     return (0);
@@ -191,5 +193,7 @@ void draw_sprites(global_t *global)
         display_text(global);
         sfRenderWindow_display(global->window);
     }
+    if (global->scn == 5)
+        fight(global);
     display_pause(global);
 }

@@ -10,14 +10,13 @@
 
 void create_all(global_t *global)
 {
-    global->fight->wp1t = sfTexture_createFromFile("rpg/Cobblestones1.png",
+    global->fight->wp1t = sfTexture_createFromFile("resource/Cobblestones1.png",
                                                     NULL);
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
-    global->fight->boss1t = sfTexture_createFromFile("rpg/Darklord.png", NULL);
+    global->fight->boss1t = sfTexture_createFromFile("resource/Darklord.png", NULL);
     global->fight->players = sfSprite_create();
-    global->fight->playert = sfTexture_createFromFile(
-        "resource/Sprite player/Actor1_4.png", NULL);
+    choose_who_create(global);
     global->fight->arrows = sfSprite_create();
     global->fight->arrowt = sfTexture_createFromFile("resource/arrow.png",
                                                         NULL);

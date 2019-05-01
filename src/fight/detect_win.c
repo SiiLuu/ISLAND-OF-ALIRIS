@@ -48,9 +48,7 @@ int dectect_win(global_t *global)
         player_loose(global);
         exit (0);
     }
-    if (global->fight->life2 <= 0) {
-        printf("PLAYER WIN\n");     // RETURN SCENE
+    if (global->fight->life2 <= 0)
         return (1);
-    }
     return (0);
 }

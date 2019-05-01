@@ -82,3 +82,19 @@ void check_turn(global_t *global)
         wait(global);
     }
 }
+
+void choose_who_create(global_t *global)
+{
+    if (global->gameplay->player_nb == 1)
+        global->fight->playert = sfTexture_createFromFile(
+            "resource/Sprite player/Actor1_4.png", NULL);
+    if (global->gameplay->player_nb == 4)
+        global->fight->playert = sfTexture_createFromFile(
+            "resource/Sprite player/Actor1_7.png", NULL);
+    if (global->gameplay->player_nb == 2)
+        global->fight->playert = sfTexture_createFromFile(
+            "resource/Sprite player/Actor2_2.png", NULL);
+    if (global->gameplay->player_nb == 3)
+        global->fight->playert = sfTexture_createFromFile(
+            "resource/Sprite player/Actor2_5.png", NULL);
+}
