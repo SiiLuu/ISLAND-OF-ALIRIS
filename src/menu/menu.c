@@ -24,13 +24,12 @@ void menu_set_position(global_t *global)
 {
     sfSprite_setPosition(global->menu->sounds, (sfVector2f){1750, 100});
     sfSprite_setPosition(global->menu->nosound, (sfVector2f){1750, 100});
-    sfSprite_setPosition(global->menu->wp, (sfVector2f){-25, -25});
     sfSprite_setPosition(global->menu->start1, (sfVector2f){780, 150});
     sfSprite_setPosition(global->menu->quit1, (sfVector2f){780, 475});
     sfSprite_setPosition(global->menu->start2, (sfVector2f){780, 150});
     sfSprite_setPosition(global->menu->settingsa, (sfVector2f){20, 100});
     sfSprite_setScale(global->menu->settingsa, (sfVector2f){0.30, 0.30});
-    sfSprite_setScale(global->menu->wp, (sfVector2f){1.00, 1.00});
+    sfSprite_setScale(global->menu->wp, (sfVector2f){1.00, 1.1});
     sfSprite_setScale(global->menu->start1, (sfVector2f){0.60, 0.60});
     sfSprite_setScale(global->menu->quit1, (sfVector2f){0.65, 0.65});
     sfSprite_setScale(global->menu->start2, (sfVector2f){0.60, 0.60});
