@@ -26,7 +26,7 @@ void display_text_quest(global_t *global)
         }
         set_desert_text(global);
         sfSprite_setPosition(global->gameplay->pnj->s_text_box,
-        (sfVector2f){1640, 1950 + 420});
+        (sfVector2f){1640, global->gameplay->y + 380});
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->pnj->s_text_box, NULL);
         sfRenderWindow_drawText(global->window,
@@ -43,7 +43,7 @@ void display_text_bottom(global_t *global)
         "I never go away, my mom forbids me.\nweird things happen down there");
         set_bot_text(global);
         sfSprite_setPosition(global->gameplay->pnj->s_text_box,
-        (sfVector2f){4150, 4500 + 450});
+        (sfVector2f){4150, global->gameplay->y + 370});
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->pnj->s_text_box, NULL);
         sfRenderWindow_drawText(global->window,
@@ -78,7 +78,7 @@ void display_text_desert(global_t *global)
         \neven walk the sand burns. Good Luck to you !");
         set_edesert_text(global);
         sfSprite_setPosition(global->gameplay->pnj->s_text_box,
-        (sfVector2f){2620, 2000 + 450});
+        (sfVector2f){2620, global->gameplay->y + 380});
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->pnj->s_text_box, NULL);
         sfRenderWindow_drawText(global->window,

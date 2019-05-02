@@ -23,7 +23,7 @@ void set_desert_text(global_t *global)
     sfText_setCharacterSize(global->gameplay->pnj->text_d, 35);
     sfText_setColor(global->gameplay->pnj->text_d, sfWhite);
     sfText_setPosition(global->gameplay->pnj->text_d,
-    (sfVector2f){1700, 1900 + 500});
+    (sfVector2f){1700, global->gameplay->y + 410});
 }
 
 void set_edesert_text(global_t *global)
@@ -33,7 +33,7 @@ void set_edesert_text(global_t *global)
     sfText_setCharacterSize(global->gameplay->pnj->text_ed, 35);
     sfText_setColor(global->gameplay->pnj->text_ed, sfWhite);
     sfText_setPosition(global->gameplay->pnj->text_ed,
-    (sfVector2f){2680, 1990 + 500});
+    (sfVector2f){2680, global->gameplay->y + 420});
 }
 
 void set_pech_text(global_t *global)
@@ -53,5 +53,5 @@ void set_bot_text(global_t *global)
     sfText_setCharacterSize(global->gameplay->pnj->text_bot, 35);
     sfText_setColor(global->gameplay->pnj->text_bot, sfWhite);
     sfText_setPosition(global->gameplay->pnj->text_bot,
-    (sfVector2f){4210, 4600 + 390});
+    (sfVector2f){4210, global->gameplay->y + 400});
 }
