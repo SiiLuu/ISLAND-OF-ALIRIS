@@ -59,6 +59,7 @@ typedef struct fight {
     sfText* stamina1t;
     sfText* stamina;
     sfMusic *musique;
+    int x;
 }fight_t;
 
 typedef struct settings {
