@@ -345,6 +345,33 @@ void display_text(global_t *global);
 //In src/gameplay/interaction/pnj_interaction.c
 void switch_in_fight(global_t *global);
 
+//In src/gameplay/interaction/display_text.c
+void display_text(global_t *global);
+
+//In src/gameplay/interaction/display_text.c
+void set_text_box(global_t *global);
+void destroy_textures_quetes(global_t *global);
+
+//In src/gameplay/interaction/destroy_sprites.c
+void destroy_textures_quetes_bot(global_t *global);
+void destroy_textures_quetes_pech(global_t *global);
+void destroy_textures_quetes_ed(global_t *global);
+void destroy_textures_quetes_d(global_t *global);
+
+//In src/gameplay/interaction/display_pnj_settings.c
+void display_text_quest(global_t *global);
+void display_text_bottom(global_t *global);
+void display_text_pech(global_t *global);
+void different_text(global_t *global);
+void display_text_desert(global_t *global);
+
+//IN src/gameplay/interaction/text_settings.c
+void set_winter_text(global_t *global);
+void set_desert_text(global_t *global);
+void set_edesert_text(global_t *global);
+void set_pech_text(global_t *global);
+void set_bot_text(global_t *global);
+
 // In src/fight/fight.c
 int fight(global_t *global);
 void wait(global_t *global);

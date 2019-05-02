@@ -78,7 +78,7 @@ void main_function(global_t *global)
 {
     clean_bytes(global, 'm');
     sfVideoMode mode = {1920, 1080, 32};
-    global->window = sfRenderWindow_create(mode, "my_RPG",
+    global->window = sfRenderWindow_create(mode, "TAILS OF ALIRIS",
                                             sfFullscreen | sfClose, NULL);
     global->menu->settings->sound = 0;
     global->menu->settings->nbr_bar = 4;
