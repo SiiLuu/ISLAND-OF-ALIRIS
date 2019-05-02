@@ -59,7 +59,20 @@ void check_mouse_fight(global_t *global)
 
 int fight_loop(global_t *global)
 {
-    
+    while (1) {
+        if (dectect_win(global)) {
+            move_vue(global);
+            global->scn = 1;
+            return (0);
+        }
+        if (sfTime_asMilliseconds(sfClock_getElapsedTime(
+            global->fight->clocks)) > 100) {
+            check_mouse_fight(global);
+            sfClock_restart(global->fight->clocks);
+        }
+        sfRenderWindow_pollEvent(global->window, &global->event);
+    }
+    return (0);
 }
 
 int fight(global_t *global)
@@ -73,19 +86,7 @@ int fight(global_t *global)
     global->fight->life2 = 95;
     fight_create(global);
     sfRenderWindow_pollEvent(global->window, &global->event);
-    while (1) {
-        if (dectect_win(global)) {
-            move_vue(global);
-            global->scn = 1;
-            break;
-        }
-        if (sfTime_asMilliseconds(sfClock_getElapsedTime(
-            global->fight->clocks)) > 100) {
-            check_mouse_fight(global);
-            sfClock_restart(global->fight->clocks);
-        }
-        sfRenderWindow_pollEvent(global->window, &global->event);
-    }
+    fight_loop(global);
     fight_destroy(global);
     fight_music_destroy(global);
     return (0);
