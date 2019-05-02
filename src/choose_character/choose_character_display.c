@@ -11,6 +11,7 @@
 void choose_display(global_t *global)
 {
     sfRenderWindow_clear(global->window, sfBlack);
+    sfSprite_setScale(global->choose_char->champ_bck, (sfVector2f){1, 1.05});
     sfRenderWindow_drawSprite(global->window,
                                 global->choose_char->champ_bck, NULL);
     sfRenderWindow_drawSprite(global->window,
