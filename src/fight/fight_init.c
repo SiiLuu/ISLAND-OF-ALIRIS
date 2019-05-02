@@ -37,6 +37,8 @@ void create_all(global_t *global)
     global->fight->arrows = sfSprite_create();
     global->fight->arrowt = sfTexture_createFromFile("resource/fight/arrow.png",
                                                         NULL);
+    global->fight->arrowt = sfTexture_createFromFile("resource/fight/arrow.png",
+                                                        NULL);
     global->fight->attack_spes = sfSprite_create();
     global->fight->attack_spet = sfTexture_createFromFile("resource/fight/test.png",
                                                             NULL);

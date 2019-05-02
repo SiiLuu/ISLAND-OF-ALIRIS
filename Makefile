@@ -43,7 +43,7 @@ SRC 	=	src/main.c						\
 			src/fight/fight_display.c       \
 			src/fight/fight_turn.c          \
 			src/fight/fight_init.c          \
-			src/fight/music_fight.c          \
+			src/fight/music_fight.c         \
 			src/fight/detect_win.c
 
 OBJ 	=	$(SRC:.c=.o)
