@@ -189,6 +189,12 @@ typedef struct quest {
     sfText *tquest2;
 }quest_t;
 
+typedef struct htp {
+    sfTexture *htpt_bck;
+    sfSprite *htp_bck;
+    sfClock *loading;
+}htp_t;
+
 typedef struct pause {
     sfRectangleShape *rct;
     sfTexture *invt;
@@ -199,6 +205,7 @@ typedef struct pause {
     sfSprite *back;
     inv_t *st_inv;
     quest_t *st_quest;
+    htp_t *st_htp;
 }pause_t;
 
 typedef struct global {
@@ -338,6 +345,7 @@ sfText *create_text(sfText *text, sfFont *fon);
 
 // In src/pause/quest.c
 void init_texts_quest(global_t *global);
+void init_how_to_play(global_t *global);
 
 //In src/gameplay/interaction/pnj_interaction.c
 void check_interaction(global_t *global);

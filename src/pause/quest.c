@@ -27,3 +27,13 @@ void init_texts_quest(global_t *global)
     sfText_setCharacterSize(global->pause->st_quest->tquest2, 35);
     sfText_setColor(global->pause->st_quest->tquest2, sfBlack);
 }
+
+void init_how_to_play(global_t *global)
+{
+    global->pause->st_htp->htp_bck = sfSprite_create();
+    global->pause->st_htp->htpt_bck = sfTexture_createFromFile(
+        "resource/bck_h.jpg", NULL);
+    sfSprite_setTexture(global->pause->st_htp->htp_bck,
+        global->pause->st_htp->htpt_bck, sfTrue);
+    sfSprite_setScale(global->pause->st_htp->htp_bck, (sfVector2f){1, 1.15});
+}

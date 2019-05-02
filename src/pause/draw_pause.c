@@ -71,8 +71,24 @@ void draw_quest(global_t *global)
     sfRenderWindow_display(global->window);
 }
 
+void draw_how_to_play(global_t *global)
+{
+    sfRenderWindow_clear(global->window, sfBlack);
+    sfRenderWindow_drawSprite(global->window,
+        global->pause->st_htp->htp_bck, NULL);
+    sfRenderWindow_display(global->window);
+}
+
 void display_pause(global_t *global)
 {
+    global->pause->st_htp->loading = sfClock_create();
+
+    if (global->scn == 0) {
+        draw_how_to_play(global);
+        while (sfTime_asSeconds(sfClock_getElapsedTime(
+            global->pause->st_htp->loading)) < 5);
+        global->scn = 1;
+    }
     if (global->scn == 2)
         draw_pause(global);
     if (global->scn == 3)

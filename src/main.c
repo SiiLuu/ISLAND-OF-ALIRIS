@@ -25,7 +25,7 @@ int main_loop(global_t *global)
     }
     init_texture(global);
     pause_create(global);
-    global->scn = 1;
+    global->scn = 0;
     sfView_reset(global->gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
     sfRenderWindow_setView(global->window, global->gameplay->view);
     while (sfRenderWindow_isOpen(global->window))
@@ -61,6 +61,7 @@ void clean_bytes(global_t *global, char status)
         global->pause = malloc(sizeof(pause_t) * 1);
         global->pause->st_inv = malloc(sizeof(inv_t) * 1);
         global->pause->st_quest = malloc(sizeof(quest_t) * 1);
+        global->pause->st_htp = malloc(sizeof(htp_t) * 1);
         global->choose_char = malloc(sizeof(choose_char_t) * 1);
         global->menu->settings = malloc(sizeof(settings_t) * 1);
         global->gameplay->pnj = malloc(sizeof(pnj_t) * 1);
