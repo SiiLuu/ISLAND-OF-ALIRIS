@@ -8,22 +8,30 @@
 #include "my.h"
 #include "rpg.h"
 
+void select_enemis(global_t *global)
+{
+    if (global->fight->enemis == 1) {
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/Darklord-final.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/Ruins3.png", NULL);
+    }
+    if (global->fight->enemis == 2)
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/Dragon.png", NULL);
+    if (global->fight->enemis == 3) {
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/God.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/IceCave.png", NULL);
+    }
+}
+
 void create_all(global_t *global)
 {
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
-    if (global->fight->enemis == 1) {
-        global->fight->boss1t = sfTexture_createFromFile("resource/fight/Darklord-final.png", NULL);
-        global->fight->wp1t = sfTexture_createFromFile("resource/fight/Ruins3.png",
-                                                    NULL);
-    }
-    if (global->fight->enemis == 2)
-        global->fight->boss1t = sfTexture_createFromFile("resource/fight/Dragon.png", NULL);
-    if (global->fight->enemis == 3) {
-        global->fight->boss1t = sfTexture_createFromFile("resource/fight/God.png", NULL);
-        global->fight->wp1t = sfTexture_createFromFile("resource/fight/IceCave.png",
-                                                    NULL);
-    }
+    select_enemis(global);
     global->fight->players = sfSprite_create();
     choose_who_create(global);
     global->fight->arrows = sfSprite_create();
