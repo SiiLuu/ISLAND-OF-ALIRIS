@@ -57,10 +57,16 @@ void check_mouse_fight(global_t *global)
     }
 }
 
+int fight_loop(global_t *global)
+{
+    
+}
+
 int fight(global_t *global)
 {
     global->fight->clocks = sfClock_create();
 
+    music_fight(global);
     sfView_reset(global->gameplay->view, (sfFloatRect){0, 0, 1920, 1080});
     sfRenderWindow_setView(global->window, global->gameplay->view);
     global->fight->life1 = 110;
@@ -71,7 +77,7 @@ int fight(global_t *global)
         if (dectect_win(global)) {
             move_vue(global);
             global->scn = 1;
-            return (0);
+            break;
         }
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(
             global->fight->clocks)) > 100) {
@@ -81,4 +87,6 @@ int fight(global_t *global)
         sfRenderWindow_pollEvent(global->window, &global->event);
     }
     fight_destroy(global);
+    fight_music_destroy(global);
+    return (0);
 }

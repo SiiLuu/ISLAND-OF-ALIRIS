@@ -58,6 +58,7 @@ typedef struct fight {
     sfText* life1t;
     sfText* stamina1t;
     sfText* stamina;
+    sfMusic *musique;
 }fight_t;
 
 typedef struct settings {
@@ -387,6 +388,10 @@ void set_my_recta(global_t *global);
 // In src/fight/fight_turn.c
 void check_turn(global_t *global);
 void choose_who_create(global_t *global);
+
+// In src/fight/music_fight.c
+void music_fight(global_t *global);
+void fight_music_destroy(global_t *global);
 
 // In src/fight/fight_display.c
 void display_elementary(global_t *global);
