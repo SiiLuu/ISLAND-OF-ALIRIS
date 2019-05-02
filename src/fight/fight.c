@@ -100,7 +100,7 @@ void fight_choose_player(global_t *global)
         global->fight->rect.height = 48;
         global->fight->rect.width = 48;
         global->fight->rect.left = 144;
-        global->fight->rect.top = 0;
+        global->fight->rect.top = 48;
         sfSprite_setTextureRect(global->fight->players, global->fight->rect);
     }
     if (global->gameplay->player_nb == 3) {
@@ -121,28 +121,26 @@ void fight_choose_player(global_t *global)
 
 void change_rect_fight(global_t *global)
 {
-    
     if (global->gameplay->player_nb == 1) {
-        if (global->fight->rect.left == 528)
+        if (global->fight->rect.left >= 528)
             global->fight->rect.left = 432;
         global->fight->rect.left += 48;
     }
     if (global->gameplay->player_nb == 2) {
-        if (global->fight->rect.left == 236)
+        if (global->fight->rect.left >= 240)
             global->fight->rect.left = 144;
         global->fight->rect.left += 48;
     }
     if (global->gameplay->player_nb == 3) {
-        if (global->fight->rect.left == 92)
+        if (global->fight->rect.left >= 92)
             global->fight->rect.left = 0;
         global->fight->rect.left += 48;
     }
     if (global->gameplay->player_nb == 4) {
-        if (global->fight->rect.left == 380)
+        if (global->fight->rect.left >= 380)
             global->fight->rect.left = 288;
         global->fight->rect.left += 48;
     }
-    
 }
 
 void fight_animation(global_t *global)
@@ -151,11 +149,15 @@ void fight_animation(global_t *global)
 
     sfRenderWindow_display(global->window);
     fight_choose_player(global);
+    sfSprite_setScale(global->fight->players, (sfVector2f){2.20, 2.20});
     while (global->fight->x > 1200) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 1) {
             global->fight->x -= 3;
-            change_rect_fight(global);
-            //sfSprite_setTextureRect(global->fight->players, global->fight->rect);
+            if (sfTime_asMilliseconds(sfClock_getElapsedTime(global->gameplay->clocks)) > 100) {
+                change_rect_fight(global);
+                sfClock_restart(global->gameplay->clocks);
+            }
+            sfSprite_setTextureRect(global->fight->players, global->fight->rect);
             sfSprite_setPosition(global->fight->players, (sfVector2f){global->fight->x, 700});
             sfRenderWindow_drawSprite(global->window, global->fight->wp1s, NULL);
             sfRenderWindow_drawSprite(global->window, global->fight->boss1s, NULL);

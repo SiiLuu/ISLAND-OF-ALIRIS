@@ -8,8 +8,18 @@
 #include "my.h"
 #include "rpg.h"
 
+void init_rect_in_fight(global_t *global)
+{
+    global->fight->rect.height = 64;
+    global->fight->rect.width = 64;
+    global->fight->rect.left = 320;
+    global->fight->rect.top = 0;
+}
+
 void display_elementary(global_t *global)
 {
+    init_rect_in_fight(global);
+    sfSprite_setTextureRect(global->fight->players, global->fight->rect);
     sfRenderWindow_drawSprite(global->window, global->fight->wp1s, NULL);
     sfRenderWindow_drawSprite(global->window, global->fight->boss1s, NULL);
     sfRenderWindow_drawSprite(global->window, global->fight->players, NULL);

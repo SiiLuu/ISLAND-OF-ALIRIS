@@ -58,7 +58,7 @@ void texture_scale(global_t *global)
     sfSprite_setTexture(global->fight->players,
                         global->fight->playert, sfTrue);
     sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-    sfSprite_setScale(global->fight->players, (sfVector2f){2.10, 2.10});
+    sfSprite_setScale(global->fight->players, (sfVector2f){2.20, 2.20});
     sfSprite_setPosition(global->fight->players, (sfVector2f){1200, 700});
     sfSprite_setTexture(global->fight->arrows, global->fight->arrowt, sfTrue);
     sfSprite_setPosition(global->fight->attack_spes, (sfVector2f){1500, 800});

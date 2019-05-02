@@ -85,6 +85,7 @@ void check_turn(global_t *global)
 
 void choose_who_create(global_t *global)
 {
+    sfTexture_destroy(global->fight->playert);
     if (global->gameplay->player_nb == 1)
         global->fight->playert = sfTexture_createFromFile(
             "resource/Sprite player/Actor1_4.png", NULL);
@@ -97,4 +98,5 @@ void choose_who_create(global_t *global)
     if (global->gameplay->player_nb == 3)
         global->fight->playert = sfTexture_createFromFile(
             "resource/Sprite player/Actor2_5.png", NULL);
+    sfSprite_setScale(global->fight->players, (sfVector2f){1.90, 1.90});
 }
