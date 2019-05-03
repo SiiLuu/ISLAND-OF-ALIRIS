@@ -16,14 +16,23 @@ void select_enemis(global_t *global)
         global->fight->wp1t = sfTexture_createFromFile(
         "resource/fight/Ruins3.png", NULL);
     }
-    if (global->fight->enemis == 2)
+    if (global->fight->enemis == 2) {
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/Dragon.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/Wasteland.png", NULL);
+    }
     if (global->fight->enemis == 3) {
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/God.png", NULL);
         global->fight->wp1t = sfTexture_createFromFile(
         "resource/fight/IceCave.png", NULL);
+    }
+    if (global->fight->enemis == 4) {
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/Evilgod.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/Dirt2.png", NULL);
     }
 }
 

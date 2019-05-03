@@ -147,6 +147,15 @@ typedef struct boss {
     sfSprite *sp_winter_boss;
     sfIntRect rect_winter_boss;
     int win_vs_winter_boss;
+    sfTexture *desert_boss;
+    sfSprite *sp_desert_boss;
+    sfIntRect rect_desert_boss;
+    int win_vs_desert_boss;
+    sfTexture *hl_boss;
+    sfSprite *sp_hl_boss;
+    sfIntRect rect_hl_boss;
+    int win_vs_hl_boss;
+    int quest_fboss;
 }boss_t;
 
 typedef struct item {
