@@ -75,6 +75,26 @@ void player_win(global_t *global)
     sfClock_destroy(clocks);
 }
 
+void init_to_int(global_t *global)
+{
+    if (global->fight->enemis == 1) {
+        global->gameplay->boss->win_vs_final_boss = 1;
+        global->gameplay->boss->quest_fboss += 1;
+    }
+    if (global->fight->enemis == 2) {
+        global->gameplay->boss->win_vs_desert_boss = 1;
+        global->gameplay->boss->quest_fboss += 1;
+    }
+    if (global->fight->enemis == 3) {
+        global->gameplay->boss->win_vs_winter_boss = 1;
+        global->gameplay->boss->quest_fboss += 1;
+    }
+    if (global->fight->enemis == 4) {
+        global->gameplay->boss->win_vs_hl_boss = 1;
+        global->gameplay->boss->quest_fboss += 1;
+    }
+}
+
 int dectect_win(global_t *global)
 {
     if (global->fight->life1 <= 0) {
@@ -82,10 +102,7 @@ int dectect_win(global_t *global)
         exit (0);
     }
     if (global->fight->life2 <= 0) {
-        if (global->fight->enemis == 1)
-            global->gameplay->boss->win_vs_final_boss = 1;
-        if (global->fight->enemis == 3)
-            global->gameplay->boss->win_vs_winter_boss = 1;
+        init_to_int(global);
         player_win(global);
         return (1);
     }

@@ -16,10 +16,22 @@ void switch_in_fight(global_t *global)
             global->fight->enemis = 1;
             global->scn = 5;
         }
+    if ((global->gameplay->x > 450 && global->gameplay->x < 700) &&
+        (global->gameplay->y > 3150 && global->gameplay->y < 3400) &&
+        global->gameplay->boss->win_vs_desert_boss == 0) {
+            global->fight->enemis = 2;
+            global->scn = 5;
+        }
     if ((global->gameplay->x > 5250 && global->gameplay->x < 5400) &&
         (global->gameplay->y > 2950 && global->gameplay->y < 3150) &&
         global->gameplay->boss->win_vs_winter_boss == 0) {
             global->fight->enemis = 3;
+            global->scn = 5;
+        }
+    if ((global->gameplay->x > 290 && global->gameplay->x < 450) &&
+        (global->gameplay->y > 5700 && global->gameplay->y < 5850) &&
+        global->gameplay->boss->win_vs_hl_boss == 0) {
+            global->fight->enemis = 4;
             global->scn = 5;
         }
 }

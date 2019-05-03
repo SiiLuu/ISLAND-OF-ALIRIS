@@ -147,6 +147,15 @@ typedef struct boss {
     sfSprite *sp_winter_boss;
     sfIntRect rect_winter_boss;
     int win_vs_winter_boss;
+    sfTexture *desert_boss;
+    sfSprite *sp_desert_boss;
+    sfIntRect rect_desert_boss;
+    int win_vs_desert_boss;
+    sfTexture *hl_boss;
+    sfSprite *sp_hl_boss;
+    sfIntRect rect_hl_boss;
+    int win_vs_hl_boss;
+    int quest_fboss;
 }boss_t;
 
 typedef struct item {
@@ -442,8 +451,30 @@ void draw_fight_info(global_t *global);
 int open_file(global_t *global);
 char **get_map(char *path, char **map);
 
-//In src/gameplay/movement_player/change_map.c
+//In src/gameplay/map_management/change_map.c
 int check_map_change(global_t *global, int scn);
+
+//In src/gameplay/map_management/check_enter_builds.c
+int check_village(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_castle(global_t *global, int mpos_x, int mpos_y, int scn);
+
+//In src/gameplay/map_management/check_leaving_builds.c
+int check_leave_cas(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_vil(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_builds(global_t *global, int mpos_x, int mpos_y, int scn);
+
+//In src/gameplay/map_management/check_enter_dungeons.c
+int check_volcano(global_t *global, int mpos_x, int mpos_y, int scn);
+
+//In src/gameplay/map_management/check_leave_dungeon.c
+int check_leave_vol(global_t *global, int mpos_x, int mpos_y, int scn);
+
+//In src/gameplay/map_management/check_enter_fc.c
+int check_firecamp(global_t *global, int mpos_x, int mpos_y, int scn);
+
+//In src/gameplay/map_management/check_leaving_fc.c
+int check_leave_pfc(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_firecamps(global_t *global, int mpos_x, int mpos_y, int scn);
 
 // In src/gameplay/inv/items.c
 void create_item(global_t *global);
