@@ -158,6 +158,8 @@ typedef struct item {
 typedef struct gameplay {
     sfTexture *backg;
     sfTexture *backg_vil;
+    sfTexture *backg_cas;
+    sfTexture *backg_vol;
     sfTexture *backg_fcp;
     sfSprite *sprite_backg;
     sfTexture *man;
@@ -168,6 +170,8 @@ typedef struct gameplay {
     char **map;
     char **wmap;
     char **mapc_fcp;
+    char **mapc_cas;
+    char **mapc_vol;
     char **mapc_vil;
     int x;
     int y;

@@ -96,15 +96,19 @@ void move_right(global_t *global)
 void move_character(global_t *global)
 {
     if (global->event.key.code == sfKeyUp && (global->scn == 1 ||
-        global->scn == 10 || global->scn == 11))
+        global->scn == 10 || global->scn == 11 || global->scn == 12
+        || global->scn == 13))
         move_up(global);
     if (global->event.key.code == sfKeyDown && (global->scn == 1 ||
-        global->scn == 10 || global->scn == 11))
+        global->scn == 10 || global->scn == 11 || global->scn == 12
+        || global->scn == 13))
         move_down(global);
     if (global->event.key.code == sfKeyLeft && (global->scn == 1 ||
-        global->scn == 10 || global->scn == 11))
+        global->scn == 10 || global->scn == 11 || global->scn == 12
+        || global->scn == 13))
         move_left(global);
     if (global->event.key.code == sfKeyRight && (global->scn == 1 ||
-        global->scn == 10 || global->scn == 11))
+        global->scn == 10 || global->scn == 11 || global->scn == 12
+        || global->scn == 13))
         move_right(global);
 }

@@ -185,11 +185,15 @@ void create_sprite(global_t *global)
     global->gameplay->boss->winter_boss = sfTexture_createFromFile("resource/fight/bigmonster.png", NULL);
     global->gameplay->pnj->vil_old = sfTexture_createFromFile("resource/Sprite player/People1.png", NULL);
     global->gameplay->backg = sfTexture_createFromFile(
-        "resource/World Map.png", NULL);
+        "resource/World Map.jpg", NULL);
     global->gameplay->backg_fcp = sfTexture_createFromFile(
         "resource/Firecamp Plaine.png", NULL);
     global->gameplay->backg_vil = sfTexture_createFromFile(
         "resource/Village de départ.jpg", NULL);
+    global->gameplay->backg_cas = sfTexture_createFromFile(
+        "resource/Castle.jpg", NULL);
+    global->gameplay->backg_vol = sfTexture_createFromFile(
+        "resource/Volcano.jpg", NULL);
     create_item(global);
 }
 
@@ -250,7 +254,7 @@ void init_texture(global_t *global)
 void draw_sprites(global_t *global)
 {
     global->scn = check_map_change(global, global->scn);
-    if (global->scn == 1 || global->scn == 10 || global->scn == 11) {
+    if (global->scn == 1 || global->scn == 10 || global->scn == 11 || global->scn == 12 || global->scn == 13) {
         sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
