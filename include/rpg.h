@@ -488,6 +488,9 @@ void check_mouse_fight(global_t *global);
 // In src/fight/change_rect.c
 void change_rect_fight(global_t *global);
 
+// In src/fight/reward.c
+void reward(global_t *global);
+
 // In src/pause/draw_inv.c
 void display_inv2(global_t *global);
 

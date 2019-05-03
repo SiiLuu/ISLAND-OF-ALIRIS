@@ -55,6 +55,7 @@ SRC 	=	src/main.c						\
 			src/fight/music_fight.c         \
 			src/fight/change_rect.c         \
 			src/fight/select_enemis.c       \
+			src/fight/reward.c              \
 			src/fight/detect_win.c
 
 OBJ 	=	$(SRC:.c=.o)

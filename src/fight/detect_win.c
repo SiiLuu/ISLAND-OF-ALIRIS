@@ -67,6 +67,7 @@ void player_win(global_t *global)
     player_win_display(global);
     sfRenderWindow_drawText(global->window, text, NULL);
     draw_fight_info(global);
+    reward(global);
     sfRenderWindow_display(global->window);
     while (sfTime_asMilliseconds(sfClock_getElapsedTime(
             global->fight->clocks)) < 5000);
