@@ -59,6 +59,7 @@ void clean_bytes(global_t *global, char status)
     if (status == 'm') {
         global->menu = malloc(sizeof(menu_t) * 1);
         global->pause = malloc(sizeof(pause_t) * 1);
+        global->gameplay->item = malloc(sizeof(item_t) * 1);
         global->pause->st_inv = malloc(sizeof(inv_t) * 1);
         global->pause->st_quest = malloc(sizeof(quest_t) * 1);
         global->pause->st_htp = malloc(sizeof(htp_t) * 1);

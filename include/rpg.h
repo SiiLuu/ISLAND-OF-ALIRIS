@@ -149,6 +149,12 @@ typedef struct boss {
     int win_vs_winter_boss;
 }boss_t;
 
+typedef struct item {
+    int on;
+    sfTexture *bootst;
+    sfSprite *boots;
+}item_t;
+
 typedef struct gameplay {
     sfTexture *backg;
     sfTexture *backg_vil;
@@ -172,6 +178,7 @@ typedef struct gameplay {
     int player_nb;
     pnj_t *pnj;
     boss_t *boss;
+    item_t *item;
 }gameplay_t;
 
 typedef struct inv {
@@ -423,5 +430,9 @@ char **get_map(char *path, char **map);
 
 //In src/gameplay/movement_player/change_map.c
 int check_map_change(global_t *global, int scn);
+
+// In src/gameplay/inv/items.c
+void create_item(global_t *global);
+void draw_item(global_t *global);
 
 #endif

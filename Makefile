@@ -36,6 +36,7 @@ SRC 	=	src/main.c						\
 			src/choose_character/choose_character.c				\
 			src/choose_character/choose_character_display.c     \
 			src/choose_character/choose_text.c                  \
+			src/inv/items.c                  \
 			src/pause/pause.c               \
 			src/pause/draw_pause.c          \
 			src/pause/quest.c               \
@@ -74,6 +75,7 @@ clean:
 	@rm -f src/fight/*.o
 	@rm -f src/menu/*.o
 	@rm -f src/pause/*.o
+	@rm -f src/inv/*.o
 	@rm -f src/choose_character/*.o
 	@rm -f src/gameplay/*.o
 	@rm -f src/gameplay/interaction/*.o
