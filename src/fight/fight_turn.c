@@ -8,7 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-
 void turn_boss(global_t *global)
 {
     sfFont* font = sfFont_createFromFile("resource/font/text.ttf");
@@ -40,8 +39,7 @@ sfText *turn_player_text(global_t *global, sfText* text)
         global->fight->stamina_used = 0;
         sfText_setString(text, "Critical ! Your attack deals 25hp");
         global->fight->life2 -= 25;
-    }
-    else {
+    } else {
         sfText_setString(text, "Your attack deals 10hp");
         global->fight->life2 -= 10;
     }

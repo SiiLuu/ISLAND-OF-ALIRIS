@@ -8,7 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-
 void player_loose_display(global_t *global)
 {
     sfSprite_setTextureRect(global->fight->players, global->fight->rect);

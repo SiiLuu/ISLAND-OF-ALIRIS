@@ -38,8 +38,8 @@ typedef struct fight {
     sfSprite *wp1s;
     sfTexture *boss1t;
     sfSprite *boss1s;
-    sfTexture *playert;     // A chnager
-    sfSprite *players;      // A chnager
+    sfTexture *playert;
+    sfSprite *players;
     sfSprite *arrows;
     sfTexture *arrowt;
     sfIntRect rect;
@@ -414,6 +414,8 @@ int dectect_win(global_t *global);
 void fight_create(global_t *global);
 void fight_destroy(global_t *global);
 void set_my_recta(global_t *global);
+void create_all(global_t *global);
+void texture_scale(global_t *global);
 
 // In src/fight/fight_turn.c
 void check_turn(global_t *global);
@@ -438,5 +440,13 @@ int check_map_change(global_t *global, int scn);
 // In src/gameplay/inv/items.c
 void create_item(global_t *global);
 void draw_item(global_t *global);
+
+// In src/fight/select_enemis.c
+void fight_choose_player(global_t *global);
+int check_event_fight(global_t *global, int x, int y);
+void check_mouse_fight(global_t *global);
+
+// In src/fight/change_rect.c
+void change_rect_fight(global_t *global);
 
 #endif

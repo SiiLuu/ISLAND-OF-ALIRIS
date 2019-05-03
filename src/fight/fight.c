@@ -21,42 +21,6 @@ void wait(global_t *global)
     sfClock_destroy(clocks);
 }
 
-int check_event_fight(global_t *global, int x, int y)
-{
-    if (x >= 1500 && x <= 1780 && y >= 830 && y <= 885) {
-        if (global->fight->stamina1 < 20)
-            return (0);
-        global->fight->stamina_used = 1;
-        global->fight->stamina1 -= 20;
-        if (global->fight->turn == 0)
-            global->fight->turn = 1;
-        else if (global->fight->turn == 1)
-            global->fight->turn = 0;
-        fight_display(global);
-    }
-    else if (x >= 1500 && x <= 1730 && y >= 925 && y <= 980) {
-        global->fight->stamina1 += 5;
-        if (global->fight->turn == 0)
-            global->fight->turn = 1;
-        else if (global->fight->turn == 1)
-            global->fight->turn = 0;
-        fight_display(global);
-    }
-    return (0);
-}
-
-void check_mouse_fight(global_t *global)
-{
-    int x = 0;
-    int y = 0;
-
-    if (global->event.type == sfEvtMouseButtonPressed) {
-        x = global->event.mouseButton.x;
-        y = global->event.mouseButton.y;
-        check_event_fight(global, x, y);
-    }
-}
-
 int fight_loop(global_t *global)
 {
     while (1) {
@@ -75,72 +39,15 @@ int fight_loop(global_t *global)
     return (0);
 }
 
-void fight_choose_player(global_t *global)
+void fight_animation_display(global_t *global)
 {
-    if (global->gameplay->player_nb == 1 || global->gameplay->player_nb == 4) {
-        global->fight->playert = sfTexture_createFromFile(
-                "resource/Sprite player/Actor.png", NULL);
-        sfSprite_setTexture(global->fight->players,
-                        global->fight->playert, sfTrue);
-    }
-    if (global->gameplay->player_nb == 2 || global->gameplay->player_nb == 3) {
-        global->fight->playert = sfTexture_createFromFile(
-                "resource/Sprite player/player2and3.png", NULL);
-        sfSprite_setTexture(global->fight->players,
-                        global->fight->playert, sfTrue);
-    }
-    if (global->gameplay->player_nb == 1) {
-        global->fight->rect.height = 48;
-        global->fight->rect.width = 48;
-        global->fight->rect.left = 432;
-        global->fight->rect.top = 48;
-        sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-    }
-    if (global->gameplay->player_nb == 2) {
-        global->fight->rect.height = 48;
-        global->fight->rect.width = 48;
-        global->fight->rect.left = 144;
-        global->fight->rect.top = 48;
-        sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-    }
-    if (global->gameplay->player_nb == 3) {
-        global->fight->rect.height = 48;
-        global->fight->rect.width = 48;
-        global->fight->rect.left = 0;
-        global->fight->rect.top = 240;
-        sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-    }
-    if (global->gameplay->player_nb == 4) {
-        global->fight->rect.height = 48;
-        global->fight->rect.width = 48;
-        global->fight->rect.left = 288;
-        global->fight->rect.top = 240;
-        sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-    }
-}
-
-void change_rect_fight(global_t *global)
-{
-    if (global->gameplay->player_nb == 1) {
-        if (global->fight->rect.left >= 528)
-            global->fight->rect.left = 432;
-        global->fight->rect.left += 48;
-    }
-    if (global->gameplay->player_nb == 2) {
-        if (global->fight->rect.left >= 240)
-            global->fight->rect.left = 144;
-        global->fight->rect.left += 48;
-    }
-    if (global->gameplay->player_nb == 3) {
-        if (global->fight->rect.left >= 92)
-            global->fight->rect.left = 0;
-        global->fight->rect.left += 48;
-    }
-    if (global->gameplay->player_nb == 4) {
-        if (global->fight->rect.left >= 380)
-            global->fight->rect.left = 288;
-        global->fight->rect.left += 48;
-    }
+    sfSprite_setTextureRect(global->fight->players, global->fight->rect);
+    sfSprite_setPosition(global->fight->players,
+                        (sfVector2f){global->fight->x, 700});
+    sfRenderWindow_drawSprite(global->window, global->fight->wp1s, NULL);
+    sfRenderWindow_drawSprite(global->window, global->fight->boss1s, NULL);
+    sfRenderWindow_drawSprite(global->window, global->fight->players, NULL);
+    sfRenderWindow_display(global->window);
 }
 
 void fight_animation(global_t *global)
@@ -153,16 +60,12 @@ void fight_animation(global_t *global)
     while (global->fight->x > 1200) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 1) {
             global->fight->x -= 3;
-            if (sfTime_asMilliseconds(sfClock_getElapsedTime(global->gameplay->clocks)) > 100) {
+            if (sfTime_asMilliseconds(sfClock_getElapsedTime(
+                global->gameplay->clocks)) > 100) {
                 change_rect_fight(global);
                 sfClock_restart(global->gameplay->clocks);
             }
-            sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-            sfSprite_setPosition(global->fight->players, (sfVector2f){global->fight->x, 700});
-            sfRenderWindow_drawSprite(global->window, global->fight->wp1s, NULL);
-            sfRenderWindow_drawSprite(global->window, global->fight->boss1s, NULL);
-            sfRenderWindow_drawSprite(global->window, global->fight->players, NULL);
-            sfRenderWindow_display(global->window);
+            fight_animation_display(global);
             sfClock_restart(clocks);
         }
         sfRenderWindow_pollEvent(global->window, &global->event);
@@ -171,9 +74,6 @@ void fight_animation(global_t *global)
     }
     sfClock_destroy(clocks);
 }
-
-void create_all(global_t *global);
-void texture_scale(global_t *global);
 
 int fight(global_t *global)
 {

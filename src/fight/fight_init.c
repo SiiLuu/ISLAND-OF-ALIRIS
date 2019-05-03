@@ -8,43 +8,26 @@
 #include "my.h"
 #include "rpg.h"
 
-void select_enemis(global_t *global)
-{
-    if (global->fight->enemis == 1) {
-        global->fight->boss1t = sfTexture_createFromFile(
-        "resource/fight/Darklord-final.png", NULL);
-        global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Ruins3.png", NULL);
-    }
-    if (global->fight->enemis == 2)
-        global->fight->boss1t = sfTexture_createFromFile(
-        "resource/fight/Dragon.png", NULL);
-    if (global->fight->enemis == 3) {
-        global->fight->boss1t = sfTexture_createFromFile(
-        "resource/fight/God.png", NULL);
-        global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/IceCave.png", NULL);
-    }
-}
+void select_enemis(global_t *global);
 
 void create_all(global_t *global)
 {
+    char *res = "resource/fight/arrow.png";
+    char *res2 = "resource/fight/test.png";
+    char *res3 = "resource/fight/test2.png";
+
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
     select_enemis(global);
     global->fight->players = sfSprite_create();
     choose_who_create(global);
     global->fight->arrows = sfSprite_create();
-    global->fight->arrowt = sfTexture_createFromFile("resource/fight/arrow.png",
-                                                        NULL);
-    global->fight->arrowt = sfTexture_createFromFile("resource/fight/arrow.png",
-                                                        NULL);
+    global->fight->arrowt = sfTexture_createFromFile(res, NULL);
+    global->fight->arrowt = sfTexture_createFromFile(res, NULL);
     global->fight->attack_spes = sfSprite_create();
-    global->fight->attack_spet = sfTexture_createFromFile("resource/fight/test.png",
-                                                            NULL);
+    global->fight->attack_spet = sfTexture_createFromFile(res2, NULL);
     global->fight->attacks = sfSprite_create();
-    global->fight->attackt = sfTexture_createFromFile("resource/fight/test2.png",
-                                                        NULL);
+    global->fight->attackt = sfTexture_createFromFile(res3, NULL);
 }
 
 void texture_scale(global_t *global)
