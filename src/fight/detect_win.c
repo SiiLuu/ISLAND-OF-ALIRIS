@@ -42,7 +42,6 @@ void player_loose(global_t *global)
     global->fight->rect.top = 320;
     player_loose_display(global);
     sfRenderWindow_drawText(global->window, text, NULL);
-    draw_fight_info(global);
     sfRenderWindow_display(global->window);
     while (sfTime_asMilliseconds(sfClock_getElapsedTime(
             global->fight->clocks)) < 10000);
@@ -66,7 +65,6 @@ void player_win(global_t *global)
     global->fight->rect.top = 64;
     player_win_display(global);
     sfRenderWindow_drawText(global->window, text, NULL);
-    draw_fight_info(global);
     reward(global);
     sfRenderWindow_display(global->window);
     while (sfTime_asMilliseconds(sfClock_getElapsedTime(

@@ -20,7 +20,7 @@ void turn_boss(global_t *global)
     sfText_setFont(text, font);
     sfText_setColor(text, sfBlack);
     sfText_setCharacterSize(text, 50);
-    sfText_setPosition(text, (sfVector2f){750, 300});
+    sfText_setPosition(text, (sfVector2f){780, 300});
     display_elementary(global);
     if (x == 1)
         sfRenderWindow_drawText(global->window, text, NULL);

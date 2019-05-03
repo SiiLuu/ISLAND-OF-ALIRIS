@@ -300,8 +300,7 @@ void init_texture(global_t *global)
 
 void draw_sprites(global_t *global)
 {
-    if (global->scn == 2 || global->scn == 3 || global->scn == 4 ||
-        global->scn == 5)
+    if (global->scn == 2 || global->scn == 3 || global->scn == 4)
         sfRenderWindow_setMouseCursorVisible(global->window, sfTrue);
     else
         sfRenderWindow_setMouseCursorVisible(global->window, sfFalse);
@@ -331,7 +330,9 @@ void draw_sprites(global_t *global)
         }
         sfRenderWindow_display(global->window);
     }
-    if (global->scn == 5)
+    if (global->scn == 5) {
+        sfRenderWindow_setMouseCursorVisible(global->window, sfTrue);
         fight(global);
+    }
     display_pause(global);
 }
