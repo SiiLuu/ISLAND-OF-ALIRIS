@@ -13,8 +13,8 @@ void select_enemis(global_t *global);
 void create_all(global_t *global)
 {
     char *res = "resource/fight/arrow.png";
-    char *res2 = "resource/fight/test.png";
-    char *res3 = "resource/fight/test2.png";
+    char *res2 = "resource/fight/spe_attack.png";
+    char *res3 = "resource/fight/attack.png";
 
     global->fight->wp1s = sfSprite_create();
     global->fight->boss1s = sfSprite_create();
