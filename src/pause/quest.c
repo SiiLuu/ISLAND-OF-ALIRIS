@@ -20,10 +20,9 @@ void init_texts_quest(global_t *global)
     sfText_setCharacterSize(global->pause->st_quest->tquest, 60);
     sfText_setColor(global->pause->st_quest->tquest, sfBlack);
     sfText_setString(global->pause->st_quest->tquest2, "INVENTORY");
-    sfText_setString(global->pause->st_quest->tquest2, "find and revenge the\
-    \t\t\t\tfind the daughter of\npeople of the village of\t\t\t\t\
-    KATARINA, who\nVILLEUS by killing\t\t\t\t\t\t\t\tis lost.\
-    \nENDUS THE GREAT.");
+    sfText_setString(global->pause->st_quest->tquest2,
+    "Exterminate all threats\t\t\t\tFind the daughter of\
+    \n of the island of Aliris.\t\t\t\t KATARINA, who is lost.");
     sfText_setCharacterSize(global->pause->st_quest->tquest2, 35);
     sfText_setColor(global->pause->st_quest->tquest2, sfBlack);
 }

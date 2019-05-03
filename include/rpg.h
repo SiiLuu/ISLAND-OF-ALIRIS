@@ -153,6 +153,14 @@ typedef struct item {
     int on;
     sfTexture *bootst;
     sfSprite *boots;
+    sfTexture *armort;
+    sfSprite *armors;
+    sfTexture *axet;
+    sfSprite *axes;
+    sfTexture *helmett;
+    sfSprite *helmets;
+    sfTexture *orbt;
+    sfSprite *orbs;
 }item_t;
 
 typedef struct gameplay {
@@ -448,5 +456,8 @@ void check_mouse_fight(global_t *global);
 
 // In src/fight/change_rect.c
 void change_rect_fight(global_t *global);
+
+// In src/pause/draw_inv.c
+void display_inv2(global_t *global);
 
 #endif

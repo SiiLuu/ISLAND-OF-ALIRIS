@@ -10,14 +10,7 @@
 
 void display_inv(global_t *global)
 {
-    sfRenderWindow_clear(global->window, sfBlack);
-    sfRenderWindow_drawSprite(global->window,
-        global->pause->st_inv->wp_inv, NULL);
-    sfSprite_setPosition(global->pause->st_inv->equip,
-        (sfVector2f){1000, 100});
-    sfRenderWindow_drawSprite(global->window,
-        global->pause->st_inv->equip, NULL);
-    chose_good_char(global);
+    display_inv2(global);
     sfSprite_setPosition(global->pause->st_inv->comp, (sfVector2f){1000, 745});
     sfRenderWindow_drawSprite(global->window, global->pause->st_inv->comp,
         NULL);

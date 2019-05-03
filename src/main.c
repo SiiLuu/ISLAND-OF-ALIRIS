@@ -25,7 +25,7 @@ int main_loop(global_t *global)
     }
     init_texture(global);
     pause_create(global);
-    global->scn = 0;
+    global->scn = 1;
     sfView_reset(global->gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
     sfRenderWindow_setView(global->window, global->gameplay->view);
     while (sfRenderWindow_isOpen(global->window))

@@ -36,8 +36,9 @@ SRC 	=	src/main.c						\
 			src/choose_character/choose_character.c				\
 			src/choose_character/choose_character_display.c     \
 			src/choose_character/choose_text.c                  \
-			src/inv/items.c                  \
+			src/inv/items.c                 \
 			src/pause/pause.c               \
+			src/pause/draw_inv.c            \
 			src/pause/draw_pause.c          \
 			src/pause/quest.c               \
 			src/pause/inv.c                 \
