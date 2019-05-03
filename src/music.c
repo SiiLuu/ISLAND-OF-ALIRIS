@@ -10,7 +10,7 @@
 
 void music_game(global_t *global)
 {
-    const char *te = "resource/music.flac";
+    const char *te = "resource/music.ogg";
 
     global->menu->settings->musique = sfMusic_createFromFile(te);
     sfMusic_play(global->menu->settings->musique);
