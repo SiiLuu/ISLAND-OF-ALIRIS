@@ -19,8 +19,9 @@ SRC 	=	src/main.c						\
 			src/gameplay/interaction/fight_interaction.c		\
 			src/gameplay/interaction/destroy_sprites.c			\
 			src/gameplay/interaction/display_pnj_text.c			\
-			src/gameplay/interaction/text_settings.c		\
+			src/gameplay/interaction/text_settings.c			\
 			src/gameplay/interaction/text_box_settings.c		\
+			src/gameplay/interaction/pnj_interaction_vil.c		\
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\
 			src/gameplay/buffer_in_array.c						\

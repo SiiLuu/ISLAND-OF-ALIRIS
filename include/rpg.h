@@ -109,11 +109,14 @@ typedef struct pnj {
     sfTexture *pnj_pech;
     sfSprite *sprite_pnj_bot;
     sfTexture *pnj_bot;
+    sfSprite *sp_vil_old;
+    sfTexture *vil_old;
     sfIntRect rect_pnj_d;
     sfIntRect rect_pnj_1;
     sfIntRect rect_pnj_ed;
     sfIntRect rect_pnj_pech;
     sfIntRect rect_pnj_bot;
+    sfIntRect rect_vil_old;
     sfTexture *text_box;
     sfSprite *s_text_box;
     sfText *text;
@@ -121,6 +124,7 @@ typedef struct pnj {
     sfText *text_ed;
     sfText *text_pech;
     sfText *text_bot;
+    sfText *text_papy;
     sfFont *font;
     int p_text;
     int p_text_d;
@@ -128,7 +132,9 @@ typedef struct pnj {
     int p_text_pech;
     int p_text_bot;
     int girl_quest;
+    int vil_papy;
     int quest_complete;
+    int next_text;
     char *sec_q;
 }pnj_t;
 
@@ -354,6 +360,10 @@ void display_text(global_t *global);
 
 //In src/gameplay/interaction/pnj_interaction.c
 void switch_in_fight(global_t *global);
+
+//In src/gameplay/interaction/pnj_interaction_vil.c
+void display_text_vill(global_t *global);
+void check_interaction_village(global_t *global);
 
 //In src/gameplay/interaction/display_text.c
 void display_text(global_t *global);
