@@ -111,12 +111,15 @@ typedef struct pnj {
     sfTexture *pnj_bot;
     sfSprite *sp_vil_old;
     sfTexture *vil_old;
+    sfSprite *sp_pnj_volc;
+    sfTexture *pnj_volc;
     sfIntRect rect_pnj_d;
     sfIntRect rect_pnj_1;
     sfIntRect rect_pnj_ed;
     sfIntRect rect_pnj_pech;
     sfIntRect rect_pnj_bot;
     sfIntRect rect_vil_old;
+    sfIntRect rect_pnj_volc;
     sfTexture *text_box;
     sfSprite *s_text_box;
     sfText *text;
@@ -125,6 +128,7 @@ typedef struct pnj {
     sfText *text_pech;
     sfText *text_bot;
     sfText *text_papy;
+    sfText *text_volc;
     sfFont *font;
     int p_text;
     int p_text_d;
@@ -133,6 +137,7 @@ typedef struct pnj {
     int p_text_bot;
     int girl_quest;
     int vil_papy;
+    int q_volc;
     int quest_complete;
     int next_text;
     char *sec_q;
@@ -155,6 +160,8 @@ typedef struct boss {
     sfSprite *sp_hl_boss;
     sfIntRect rect_hl_boss;
     int win_vs_hl_boss;
+    int s_last_quest;
+    int s_last_quest2;
     int quest_fboss;
 }boss_t;
 
@@ -399,12 +406,14 @@ void display_text(global_t *global);
 //In src/gameplay/interaction/display_text.c
 void set_text_box(global_t *global);
 void destroy_textures_quetes(global_t *global);
+void display_text_volc(global_t *global);
 
 //In src/gameplay/interaction/destroy_sprites.c
 void destroy_textures_quetes_bot(global_t *global);
 void destroy_textures_quetes_pech(global_t *global);
 void destroy_textures_quetes_ed(global_t *global);
 void destroy_textures_quetes_d(global_t *global);
+void destroy_textures_quetes_volc(global_t *global);
 
 //In src/gameplay/interaction/display_pnj_settings.c
 void display_text_quest(global_t *global);
@@ -419,6 +428,7 @@ void set_desert_text(global_t *global);
 void set_edesert_text(global_t *global);
 void set_pech_text(global_t *global);
 void set_bot_text(global_t *global);
+void set_volc_text(global_t *global);
 
 // In src/fight/fight.c
 int fight(global_t *global);

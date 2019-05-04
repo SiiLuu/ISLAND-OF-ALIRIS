@@ -86,6 +86,37 @@ void display_text_desert(global_t *global)
     }
 }
 
+void fight_final_boss(global_t *global)
+{
+    sfText_setString(global->gameplay->pnj->text_volc,
+    "You are too weak to enter here.\
+    \ncome back ... wait what ?! Ok sir you're\
+    \npretty strong to go here, Good luck !");
+    global->gameplay->boss->s_last_quest = 1;
+}
+
+void display_text_volc(global_t *global)
+{
+    if (global->gameplay->pnj->q_volc == 1) {
+        set_text_box(global);
+        global->gameplay->pnj->text_volc = sfText_create();
+        if (global->gameplay->boss->quest_fboss < 4) {
+            sfText_setString(global->gameplay->pnj->text_volc,
+            "You are too weak to enter here.\
+            \ncome back later...");
+        }
+        else
+            fight_final_boss(global);
+        set_volc_text(global);
+        sfSprite_setPosition(global->gameplay->pnj->s_text_box,
+        (sfVector2f){1300, global->gameplay->y + 380});
+        sfRenderWindow_drawSprite(global->window,
+        global->gameplay->pnj->s_text_box, NULL);
+        sfRenderWindow_drawText(global->window,
+        global->gameplay->pnj->text_volc, NULL);
+    }
+}
+
 void display_text(global_t *global)
 {
     global->gameplay->pnj->font = sfFont_createFromFile(\

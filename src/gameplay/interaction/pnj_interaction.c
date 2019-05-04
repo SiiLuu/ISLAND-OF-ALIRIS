@@ -14,6 +14,7 @@ void different_text(global_t *global)
     display_text_pech(global);
     display_text_bottom(global);
     display_text_quest(global);
+    display_text_volc(global);
 }
 
 void check_interaction_4(global_t *global)
@@ -29,6 +30,17 @@ void check_interaction_4(global_t *global)
         (global->gameplay->y < 4450 || global->gameplay->y > 4650))) {
         global->gameplay->pnj->p_text_bot = 0;
         destroy_textures_quetes_bot(global);
+        }
+    if (sfKeyboard_isKeyPressed(sfKeyA) &&
+        (global->gameplay->x > 1400 && global->gameplay->x < 1550) &&
+        (global->gameplay->y > 890 && global->gameplay->y < 1150)) {
+        global->gameplay->pnj->q_volc = 1;
+        }
+    if (global->gameplay->pnj->q_volc == 1 &&
+        ((global->gameplay->x < 1400 || global->gameplay->x > 1550) ||
+        (global->gameplay->y < 890 || global->gameplay->y > 1150))) {
+        global->gameplay->pnj->q_volc = 0;
+        destroy_textures_quetes_volc(global);
         }
 }
 

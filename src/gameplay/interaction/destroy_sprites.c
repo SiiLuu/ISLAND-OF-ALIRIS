@@ -35,3 +35,10 @@ void destroy_textures_quetes_bot(global_t *global)
     sfSprite_destroy(global->gameplay->pnj->s_text_box);
     sfTexture_destroy(global->gameplay->pnj->text_box);
 }
+
+void destroy_textures_quetes_volc(global_t *global)
+{
+    sfText_destroy(global->gameplay->pnj->text_volc);
+    sfSprite_destroy(global->gameplay->pnj->s_text_box);
+    sfTexture_destroy(global->gameplay->pnj->text_box);
+}
