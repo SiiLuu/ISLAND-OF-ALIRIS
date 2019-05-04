@@ -31,6 +31,7 @@ void check_interaction_fcp(global_t *global)
         (global->gameplay->x > 1250 && global->gameplay->x < 1350) &&
         (global->gameplay->y > 600 && global->gameplay->y < 800)) {
         global->gameplay->pnj->rect_chest_1.top = 144;
+        global->gameplay->pnj->op_chest = 1;
         global->gameplay->pnj->chest_nb1 = 1;
         }
     if (global->gameplay->pnj->chest_nb1 == 1 &&

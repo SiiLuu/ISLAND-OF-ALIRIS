@@ -143,6 +143,7 @@ typedef struct pnj {
     int vil_papy;
     int q_volc;
     int chest_nb1;
+    int op_chest;
     int quest_complete;
     int next_text;
     char *sec_q;

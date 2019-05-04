@@ -320,6 +320,7 @@ void init_gameplay_action(global_t *global)
     global->gameplay->boss->win_vs_final_boss = 0;
     global->gameplay->boss->win_vs_winter_boss = 0;
     global->gameplay->boss->win_vs_desert_boss = 0;
+    global->gameplay->pnj->op_chest = 0;
     global->gameplay->boss->s_last_quest2 = 0;
     global->gameplay->pnj->q_volc = 0;
     global->gameplay->boss->win_vs_hl_boss = 0;
