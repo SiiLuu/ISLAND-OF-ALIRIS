@@ -36,3 +36,19 @@ void init_how_to_play(global_t *global)
         global->pause->st_htp->htpt_bck, sfTrue);
     sfSprite_setScale(global->pause->st_htp->htp_bck, (sfVector2f){1, 1.15});
 }
+
+void init_instruct(global_t *global)
+{
+    global->pause->st_htp->ins1_bck = sfSprite_create();
+    global->pause->st_htp->ins1t_bck = sfTexture_createFromFile(
+        "resource/ins1_bck.jpg", NULL);
+    sfSprite_setTexture(global->pause->st_htp->ins1_bck,
+        global->pause->st_htp->ins1t_bck, sfTrue);
+    sfSprite_setScale(global->pause->st_htp->ins1_bck, (sfVector2f){1, 1.15});
+    global->pause->st_htp->ins2_bck = sfSprite_create();
+    global->pause->st_htp->ins2t_bck = sfTexture_createFromFile(
+        "resource/ins2_bck.jpg", NULL);
+    sfSprite_setTexture(global->pause->st_htp->ins2_bck,
+        global->pause->st_htp->ins2t_bck, sfTrue);
+    sfSprite_setScale(global->pause->st_htp->ins2_bck, (sfVector2f){1, 1.15});
+}

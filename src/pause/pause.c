@@ -69,6 +69,7 @@ void pause_create2(global_t *global)
     sfSprite_setScale(global->pause->quest, (sfVector2f){0.60, 0.60});
     init_texts(global);
     init_how_to_play(global);
+    init_instruct(global);
 }
 
 void pause_create(global_t *global)

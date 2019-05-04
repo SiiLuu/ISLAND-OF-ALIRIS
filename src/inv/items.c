@@ -69,3 +69,18 @@ void draw_item(global_t *global)
     sfRenderWindow_drawSprite(global->window, global->gameplay->item->helmets,
         NULL);
 }
+
+int item_is_c(sfEvent event, sfSprite *spr)
+{
+    sfVector2f target_pos;
+    int x = event.mouseButton.x;
+    int y = event.mouseButton.y;
+
+    target_pos = sfSprite_getPosition(spr);
+    if (x >= target_pos.x &&
+        x <= target_pos.x + 100 &&
+        y >= target_pos.y &&
+        y <= target_pos.y + 100)
+        return (1);
+    return (0);
+}

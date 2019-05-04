@@ -243,6 +243,10 @@ typedef struct quest {
 typedef struct htp {
     sfTexture *htpt_bck;
     sfSprite *htp_bck;
+    sfTexture *ins1t_bck;
+    sfSprite *ins1_bck;
+    sfTexture *ins2t_bck;
+    sfSprite *ins2_bck;
     sfClock *loading;
 }htp_t;
 
@@ -397,6 +401,7 @@ sfText *create_text(sfText *text, sfFont *fon);
 // In src/pause/quest.c
 void init_texts_quest(global_t *global);
 void init_how_to_play(global_t *global);
+void init_instruct(global_t *global);
 
 //In src/gameplay/interaction/pnj_interaction.c
 void check_interaction(global_t *global);
@@ -503,6 +508,7 @@ int check_leave_firecamps(global_t *global, int mpos_x, int mpos_y, int scn);
 // In src/gameplay/inv/items.c
 void create_item(global_t *global);
 void draw_item(global_t *global);
+int item_is_c(sfEvent event, sfSprite *spr);
 
 // In src/fight/select_enemis.c
 void fight_choose_player(global_t *global);
@@ -517,5 +523,7 @@ void reward(global_t *global);
 
 // In src/pause/draw_inv.c
 void display_inv2(global_t *global);
+void draw_instruct(global_t *global);
+void draw_instruct2(global_t *global);
 
 #endif

@@ -11,15 +11,13 @@
 char *reward_str(global_t *global)
 {
     if (global->gameplay->boss->win_vs_final_boss == 1)
-        return("METTEZ LES PHRASES LA !!");
+        return("Lava boots obtained !!");
     if (global->gameplay->boss->win_vs_winter_boss == 1)
-        return("METTEZ LES PHRASES LA !!");
+        return("Marauder's ax obtained !!");
     if (global->gameplay->boss->win_vs_desert_boss == 1)
-        return("METTEZ LES PHRASES LA !!");
+        return("adaptive helmet obtained !!");
     if (global->gameplay->boss->win_vs_hl_boss == 1)
-        return("METTEZ LES PHRASES LA !!");
-    if (global->gameplay->boss->win_vs_volc_boss == 1)
-        return("METTEZ LES PHRASES LA !!");
+        return("enchanted breastplate obtained !!");
     return ("ERROR");
 }
 
