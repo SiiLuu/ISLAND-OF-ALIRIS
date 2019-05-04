@@ -22,7 +22,8 @@ void init_texts_quest(global_t *global)
     sfText_setString(global->pause->st_quest->tquest2, "INVENTORY");
     sfText_setString(global->pause->st_quest->tquest2,
     "Exterminate all threats\t\t\t\tFind the daughter of\
-    \n of the island of Aliris.\t\t\t\t KATARINA, who is lost.");
+    \n of the island of Aliris.\t\t\t\t KATARINA, who is lost.\n\n\n\
+    \nFind and kill\nENDUS THE GREAT.");
     sfText_setCharacterSize(global->pause->st_quest->tquest2, 35);
     sfText_setColor(global->pause->st_quest->tquest2, sfBlack);
 }

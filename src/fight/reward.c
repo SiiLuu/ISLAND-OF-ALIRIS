@@ -11,7 +11,7 @@
 char *reward_str(global_t *global)
 {
     if (global->gameplay->boss->win_vs_final_boss == 1)
-        return("Lava boots obtained !!");
+        return("Cosmic orb obtained !!");
     if (global->gameplay->boss->win_vs_winter_boss == 1)
         return("Marauder's ax obtained !!");
     if (global->gameplay->boss->win_vs_desert_boss == 1)
