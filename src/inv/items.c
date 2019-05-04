@@ -58,19 +58,19 @@ void create_item(global_t *global)
 
 void draw_item(global_t *global)
 {
-    //if (global->gameplay->pnj->op_chest == 1)
+    if (global->gameplay->pnj->op_chest == 1)
         sfRenderWindow_drawSprite(global->window,
             global->gameplay->item->boots, NULL);
-    //if (global->gameplay->boss->win_vs_final_boss == 1)
+    if (global->gameplay->boss->win_vs_final_boss == 1)
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->item->orbs, NULL);
-    //if (global->gameplay->boss->win_vs_desert_boss == 1)
-        sfRenderWindow_drawSprite(global->window,
-        global->gameplay->item->armors, NULL);
-    //if (global->gameplay->boss->win_vs_hl_boss == 1)
+    if (global->gameplay->boss->win_vs_desert_boss == 1)
+       sfRenderWindow_drawSprite(global->window,
+         global->gameplay->item->armors, NULL);
+    if (global->gameplay->boss->win_vs_hl_boss == 1)
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->item->axes, NULL);
-    //if (global->gameplay->boss->win_vs_winter_boss == 1)
+    if (global->gameplay->boss->win_vs_winter_boss == 1)
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->item->helmets, NULL);
 }
