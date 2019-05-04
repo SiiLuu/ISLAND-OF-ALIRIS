@@ -113,6 +113,8 @@ typedef struct pnj {
     sfTexture *vil_old;
     sfSprite *sp_pnj_volc;
     sfTexture *pnj_volc;
+    sfSprite *sp_chest_1;
+    sfTexture *chest_1;
     sfIntRect rect_pnj_d;
     sfIntRect rect_pnj_1;
     sfIntRect rect_pnj_ed;
@@ -120,6 +122,7 @@ typedef struct pnj {
     sfIntRect rect_pnj_bot;
     sfIntRect rect_vil_old;
     sfIntRect rect_pnj_volc;
+    sfIntRect rect_chest_1;
     sfTexture *text_box;
     sfSprite *s_text_box;
     sfText *text;
@@ -129,6 +132,7 @@ typedef struct pnj {
     sfText *text_bot;
     sfText *text_papy;
     sfText *text_volc;
+    sfText *text_chest_1;
     sfFont *font;
     int p_text;
     int p_text_d;
@@ -138,6 +142,7 @@ typedef struct pnj {
     int girl_quest;
     int vil_papy;
     int q_volc;
+    int chest_nb1;
     int quest_complete;
     int next_text;
     char *sec_q;
@@ -160,6 +165,10 @@ typedef struct boss {
     sfSprite *sp_hl_boss;
     sfIntRect rect_hl_boss;
     int win_vs_hl_boss;
+    sfTexture *volc_boss;
+    sfSprite *sp_volc_boss;
+    sfIntRect rect_volc_boss;
+    int win_vs_volc_boss;
     int s_last_quest;
     int s_last_quest2;
     int quest_fboss;
@@ -400,8 +409,13 @@ void switch_in_fight(global_t *global);
 void display_text_vill(global_t *global);
 void check_interaction_village(global_t *global);
 
+//In src/gameplay/interaction/fcp_interaction.c
+void display_text_fcp(global_t *global);
+void check_interaction_fcp(global_t *global);
+
 //In src/gameplay/interaction/display_text.c
 void display_text(global_t *global);
+void fight_in_volc(global_t *global);
 
 //In src/gameplay/interaction/display_text.c
 void set_text_box(global_t *global);

@@ -30,19 +30,8 @@ void create_all(global_t *global)
     global->fight->attackt = sfTexture_createFromFile(res3, NULL);
 }
 
-void texture_scale(global_t *global)
+void fight_textures(global_t *global)
 {
-    sfSprite_setTexture(global->fight->wp1s, global->fight->wp1t, sfTrue);
-    sfSprite_setScale(global->fight->wp1s, (sfVector2f){2.10, 1.90});
-    if (global->fight->enemis == 2)
-        sfSprite_setScale(global->fight->boss1s, (sfVector2f){1.2, 1.2});
-    sfSprite_setTexture(global->fight->boss1s, global->fight->boss1t, sfTrue);
-    sfSprite_setPosition(global->fight->boss1s, (sfVector2f){50, 500});
-    sfSprite_setTexture(global->fight->players,
-                        global->fight->playert, sfTrue);
-    sfSprite_setTextureRect(global->fight->players, global->fight->rect);
-    sfSprite_setScale(global->fight->players, (sfVector2f){2.20, 2.20});
-    sfSprite_setPosition(global->fight->players, (sfVector2f){1200, 700});
     sfSprite_setTexture(global->fight->arrows, global->fight->arrowt, sfTrue);
     sfSprite_setPosition(global->fight->attack_spes, (sfVector2f){1500, 800});
     sfSprite_setTexture(global->fight->attack_spes,
@@ -50,6 +39,26 @@ void texture_scale(global_t *global)
     sfSprite_setPosition(global->fight->attacks, (sfVector2f){1500, 900});
     sfSprite_setTexture(global->fight->attacks,
                         global->fight->attackt, sfTrue);
+}
+
+void texture_scale(global_t *global)
+{
+    sfSprite_setTexture(global->fight->wp1s, global->fight->wp1t, sfTrue);
+    sfSprite_setScale(global->fight->wp1s, (sfVector2f){2.10, 1.90});
+    sfSprite_setPosition(global->fight->boss1s, (sfVector2f){50, 500});
+    if (global->fight->enemis == 2)
+        sfSprite_setScale(global->fight->boss1s, (sfVector2f){1.2, 1.2});
+    if (global->fight->enemis == 5) {
+        sfSprite_setScale(global->fight->boss1s, (sfVector2f){1.7, 1.7});
+        sfSprite_setPosition(global->fight->boss1s, (sfVector2f){50, 350});
+    }
+    sfSprite_setTexture(global->fight->boss1s, global->fight->boss1t, sfTrue);
+    sfSprite_setTexture(global->fight->players,
+                        global->fight->playert, sfTrue);
+    sfSprite_setTextureRect(global->fight->players, global->fight->rect);
+    sfSprite_setScale(global->fight->players, (sfVector2f){2.20, 2.20});
+    sfSprite_setPosition(global->fight->players, (sfVector2f){1200, 700});
+    fight_textures(global);
 }
 
 void fight_create(global_t *global)

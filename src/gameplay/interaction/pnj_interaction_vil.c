@@ -41,6 +41,14 @@ void check_interaction_village(global_t *global)
         }
 }
 
+void set_text_papy(global_t *global)
+{
+    sfText_setString(global->gameplay->pnj->text_papy,
+    "I come every day to pay tribute to these men\
+    \nwho are beaten to try to restore calm on\
+    \nthe island of aliris.");
+}
+
 void display_text_vill(global_t *global)
 {
     if (global->gameplay->pnj->vil_papy == 1) {
@@ -54,12 +62,8 @@ void display_text_vill(global_t *global)
             \nhorrible monsters which occupe the island\
             \nI trust in you ! We need help");
         }
-        else {
-            sfText_setString(global->gameplay->pnj->text_papy,
-            "I come every day to pay tribute to these men\
-            \nwho are beaten to try to restore calm on\
-            \nthe island of aliris.");
-        }
+        else
+            set_text_papy(global);
         set_vil_papy_text(global);
         sfSprite_setPosition(global->gameplay->pnj->s_text_box,
         (sfVector2f){550, global->gameplay->y + 380});

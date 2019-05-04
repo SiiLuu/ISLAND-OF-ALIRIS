@@ -92,6 +92,8 @@ void init_to_int(global_t *global)
         global->gameplay->boss->win_vs_hl_boss = 1;
         global->gameplay->boss->quest_fboss += 1;
     }
+    if (global->fight->enemis == 5)
+        global->gameplay->boss->win_vs_volc_boss = 1;
 }
 
 int dectect_win(global_t *global)

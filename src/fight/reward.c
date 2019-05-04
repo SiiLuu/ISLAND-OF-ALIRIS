@@ -18,6 +18,8 @@ char *reward_str(global_t *global)
         return("METTEZ LES PHRASES LA !!");
     if (global->gameplay->boss->win_vs_hl_boss == 1)
         return("METTEZ LES PHRASES LA !!");
+    if (global->gameplay->boss->win_vs_volc_boss == 1)
+        return("METTEZ LES PHRASES LA !!");
     return ("ERROR");
 }
 

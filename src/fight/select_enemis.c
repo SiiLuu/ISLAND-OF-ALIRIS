@@ -34,6 +34,12 @@ void select_enemis(global_t *global)
         global->fight->wp1t = sfTexture_createFromFile(
         "resource/fight/Dirt2.png", NULL);
     }
+    if (global->fight->enemis == 5) {
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/Irongiant.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/Lava2.png", NULL);
+    }
 }
 
 void fight_choose_player2(global_t *global)

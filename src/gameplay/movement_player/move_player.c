@@ -18,8 +18,10 @@ void move_up(global_t *global)
         move_vue(global);
         check_interaction(global);
         check_interaction_village(global);
+        check_interaction_fcp(global);
         draw_sprites(global);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_up(global->gameplay, 10) == true) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) &&
+            check_collision_up(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->y -= 10;
         }
@@ -39,8 +41,10 @@ void move_down(global_t *global)
         move_vue(global);
         check_interaction(global);
         check_interaction_village(global);
+        check_interaction_fcp(global);
         draw_sprites(global);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_down(global->gameplay, 10) == true) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) &&
+            check_collision_down(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->y += 10;
         }
@@ -60,8 +64,10 @@ void move_left(global_t *global)
         move_vue(global);
         check_interaction(global);
         check_interaction_village(global);
+        check_interaction_fcp(global);
         draw_sprites(global);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_left(global->gameplay, 10) == true) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) &&
+            check_collision_left(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->x -= 10;
         }
@@ -81,8 +87,10 @@ void move_right(global_t *global)
         move_vue(global);
         check_interaction(global);
         check_interaction_village(global);
+        check_interaction_fcp(global);
         draw_sprites(global);
-        if (sfKeyboard_isKeyPressed(sfKeyLShift) && check_collision_right(global->gameplay, 10) == true) {
+        if (sfKeyboard_isKeyPressed(sfKeyLShift) &&
+            check_collision_right(global->gameplay, 10) == true) {
             set_rect_runing(global->gameplay);
             global->gameplay->x += 10;
         }

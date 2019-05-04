@@ -11,13 +11,14 @@ void game_parameters(global_t *global)
 {
     check_events(global);
     draw_sprites(global);
-    //printf("%d     %d\n", global->gameplay->x, global->gameplay->y);
+    //printf("%d\n", global->gameplay->boss->win_vs_volc_boss);
 }
 
 int main_loop(global_t *global)
 {
     global->gameplay->clocks = sfClock_create();
     global->gameplay->view = sfView_create();
+
     sfRenderWindow_setFramerateLimit(global->window, 60);
     if (menu_start(global, 0) || global->event.type == sfEvtClosed) {
         sfClock_destroy(global->gameplay->clocks);

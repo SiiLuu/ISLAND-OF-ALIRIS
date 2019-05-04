@@ -38,6 +38,25 @@ void move_vue(global_t *global)
     sfRenderWindow_setView(global->window, global->gameplay->view);
 }
 
+void check_other_events(global_t *global)
+{
+    if (global->gameplay->boss->win_vs_desert_boss == 1) {
+        sfSprite_setColor(global->gameplay->boss->sp_desert_boss, sfTransparent);
+        global->gameplay->map[32][4] = '0';
+    }
+    if (global->gameplay->boss->win_vs_hl_boss == 1) {
+        sfSprite_setColor(global->gameplay->boss->sp_hl_boss, sfTransparent);
+        global->gameplay->map[58][4] = '0';
+    }
+    if (global->gameplay->boss->quest_fboss == 4 &&
+        global->gameplay->boss->s_last_quest == 1)
+        global->gameplay->map[9][14] = '0';
+    if (global->gameplay->pnj->girl_quest == 0)
+        global->gameplay->map[50][50] = '0';
+    else
+        global->gameplay->map[50][50] = '5';
+}
+
 void check_monster_dead(global_t *global)
 {
     if (global->scn == 1) {
@@ -50,21 +69,11 @@ void check_monster_dead(global_t *global)
             sfSprite_setColor(global->gameplay->boss->sp_winter_boss, sfTransparent);
             global->gameplay->map[31][54] = '0';
         }
-        if (global->gameplay->boss->win_vs_desert_boss == 1) {
-            sfSprite_setColor(global->gameplay->boss->sp_desert_boss, sfTransparent);
-            global->gameplay->map[32][4] = '0';
-        }
-        if (global->gameplay->boss->win_vs_hl_boss == 1) {
-            sfSprite_setColor(global->gameplay->boss->sp_hl_boss, sfTransparent);
-            global->gameplay->map[58][4] = '0';
-        }
-        if (global->gameplay->boss->quest_fboss == 4 &&
-            global->gameplay->boss->s_last_quest == 1)
-            global->gameplay->map[9][14] = '0';
-        if (global->gameplay->pnj->girl_quest == 0)
-            global->gameplay->map[50][50] = '0';
-        else
-            global->gameplay->map[50][50] = '5';
+        check_other_events(global);
+    }
+    if (global->scn == 13) {
+        if (global->gameplay->boss->win_vs_volc_boss == 1)
+        sfSprite_setColor(global->gameplay->boss->sp_volc_boss, sfTransparent);
     }
 }
 
@@ -73,6 +82,7 @@ int check_events(global_t *global)
     while (sfRenderWindow_pollEvent(global->window, &global->event)) {
         check_interaction(global);
         check_interaction_village(global);
+        check_interaction_fcp(global);
         if (global->event.type == sfEvtClosed)
             sfRenderWindow_close(global->window);
         if ((but_is_c(global->event, global->menu->start1) == 1) &&
@@ -120,6 +130,14 @@ void init_pnj_rect(global_t *global)
     global->gameplay->pnj->rect_pnj_volc.width = 48;
     global->gameplay->pnj->rect_pnj_volc.left = 48;
     global->gameplay->pnj->rect_pnj_volc.top = 240;
+    global->gameplay->pnj->rect_chest_1.height = 48;
+    global->gameplay->pnj->rect_chest_1.width = 48;
+    global->gameplay->pnj->rect_chest_1.left = 48;
+    global->gameplay->pnj->rect_chest_1.top = 0;
+    global->gameplay->boss->rect_volc_boss.height = 96;
+    global->gameplay->boss->rect_volc_boss.width = 96;
+    global->gameplay->boss->rect_volc_boss.left = 96;
+    global->gameplay->boss->rect_volc_boss.top = 192;
 }
 
 void init_rect_boss(global_t *global)
@@ -186,6 +204,9 @@ void set_position_2(global_t *global)
     sfSprite_setTextureRect(global->gameplay->boss->sp_hl_boss, global->gameplay->boss->rect_hl_boss);
     sfSprite_setPosition(global->gameplay->boss->sp_hl_boss, (sfVector2f){400, 5700});
     sfSprite_setScale(global->gameplay->boss->sp_hl_boss, (sfVector2f){1.5, 1.5});
+    sfSprite_setTextureRect(global->gameplay->boss->sp_volc_boss, global->gameplay->boss->rect_volc_boss);
+    sfSprite_setPosition(global->gameplay->boss->sp_volc_boss, (sfVector2f){1200, 1325});
+    sfSprite_setScale(global->gameplay->boss->sp_volc_boss, (sfVector2f){1.5, 1.5});
 }
 
 void set_position(global_t *global)
@@ -205,6 +226,7 @@ void set_position(global_t *global)
     sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_bot, (sfVector2f){4310, 4600});
     sfSprite_setPosition(global->gameplay->pnj->sp_vil_old, (sfVector2f){600, 600});
     sfSprite_setPosition(global->gameplay->pnj->sp_pnj_volc, (sfVector2f){1500, 1000});
+    sfSprite_setPosition(global->gameplay->pnj->sp_chest_1, (sfVector2f){1305, 600});
     sfSprite_setScale(global->gameplay->pnj->sprite_pnj_d, (sfVector2f){2.08333, 2.08333});
     sfSprite_setScale(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){2.08333, 2.08333});
     sfSprite_setScale(global->gameplay->pnj->sprite_pnj_ed, (sfVector2f){2.08333, 2.08333});
@@ -212,6 +234,7 @@ void set_position(global_t *global)
     sfSprite_setScale(global->gameplay->pnj->sprite_pnj_bot, (sfVector2f){2.08333, 2.08333});
     sfSprite_setScale(global->gameplay->pnj->sp_vil_old, (sfVector2f){2.08333, 2.08333});
     sfSprite_setScale(global->gameplay->pnj->sp_pnj_volc, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_chest_1, (sfVector2f){2.08333, 2.08333});
     sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
     sfSprite_setScale(global->gameplay->sprite_man, (sfVector2f){2.08333, 2.08333});
     set_position_2(global);
@@ -232,6 +255,8 @@ void create_sprite(global_t *global)
     global->gameplay->pnj->sp_pnj_volc = sfSprite_create();
     global->gameplay->boss->sp_desert_boss = sfSprite_create();
     global->gameplay->boss->sp_hl_boss = sfSprite_create();
+    global->gameplay->boss->sp_volc_boss = sfSprite_create();
+    global->gameplay->pnj->sp_chest_1 = sfSprite_create();
     global->gameplay->pnj->pnj_d = sfTexture_createFromFile("resource/Sprite player/Actor3.png", NULL);
     global->gameplay->pnj->pnj_1 = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
     global->gameplay->pnj->pnj_ed = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
@@ -241,8 +266,10 @@ void create_sprite(global_t *global)
     global->gameplay->boss->winter_boss = sfTexture_createFromFile("resource/fight/bigmonster.png", NULL);
     global->gameplay->boss->desert_boss = sfTexture_createFromFile("resource/fight/bigmonster.png", NULL);
     global->gameplay->boss->hl_boss = sfTexture_createFromFile("resource/fight/bigmonster.png", NULL);
+    global->gameplay->boss->volc_boss = sfTexture_createFromFile("resource/fight/Boss.png", NULL);
     global->gameplay->pnj->vil_old = sfTexture_createFromFile("resource/Sprite player/People1.png", NULL);
     global->gameplay->pnj->pnj_volc = sfTexture_createFromFile("resource/Sprite player/People3.png", NULL);
+    global->gameplay->pnj->chest_1 = sfTexture_createFromFile("resource/Sprite player/Chest.png", NULL);
     global->gameplay->backg = sfTexture_createFromFile(
         "resource/World Map.jpg", NULL);
     global->gameplay->backg_fcp = sfTexture_createFromFile(
@@ -271,7 +298,8 @@ void init_gameplay_action(global_t *global)
     global->gameplay->boss->s_last_quest2 = 0;
     global->gameplay->pnj->q_volc = 0;
     global->gameplay->boss->win_vs_hl_boss = 0;
-    global->gameplay->boss->quest_fboss = 0;
+    global->gameplay->boss->win_vs_volc_boss = 0;
+    global->gameplay->boss->quest_fboss = 4;
     global->gameplay->pnj->vil_papy = 0;
     global->gameplay->pnj->sec_q = \
     "secondary quests: Find the lost girl and bring her back to her mother";
@@ -286,7 +314,9 @@ void set_textures(global_t *global)
     sfSprite_setTexture(global->gameplay->pnj->sprite_pnj_bot, global->gameplay->pnj->pnj_bot, sfTrue);
     sfSprite_setTexture(global->gameplay->pnj->sp_pnj_volc, global->gameplay->pnj->pnj_volc, sfTrue);
     sfSprite_setTexture(global->gameplay->pnj->sp_vil_old, global->gameplay->pnj->vil_old, sfTrue);
+    sfSprite_setTexture(global->gameplay->pnj->sp_chest_1, global->gameplay->pnj->chest_1, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_final_boss, global->gameplay->boss->final_boss, sfTrue);
+    sfSprite_setTexture(global->gameplay->boss->sp_volc_boss, global->gameplay->boss->volc_boss, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_winter_boss, global->gameplay->boss->winter_boss, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_desert_boss, global->gameplay->boss->desert_boss, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_hl_boss, global->gameplay->boss->hl_boss, sfTrue);
@@ -318,38 +348,74 @@ void init_texture(global_t *global)
     set_position(global);
 }
 
-void draw_sprites(global_t *global)
+void scn_1(global_t *global)
+{
+    if (global->gameplay->pnj->girl_quest == 1)
+        sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_1, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_d, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_ed, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_pech, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_bot, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sp_pnj_volc, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_final_boss, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_winter_boss, NULL);
+    sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_desert_boss, NULL);
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->boss->sp_hl_boss, NULL);
+    switch_in_fight(global);
+    display_text(global);
+}
+
+void scn_10(global_t *global)
+{
+    sfSprite_setTextureRect(global->gameplay->pnj->sp_chest_1,
+    global->gameplay->pnj->rect_chest_1);
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->pnj->sp_chest_1, NULL);
+    display_text_fcp(global);
+
+}
+
+void scn_11(global_t *global)
+{
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->pnj->sp_vil_old, NULL);
+    display_text_vill(global);
+}
+
+void scn_13(global_t *global)
+{
+    fight_in_volc(global);
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->boss->sp_volc_boss, NULL);
+}
+
+void set_cursor(global_t *global)
 {
     if (global->scn == 2 || global->scn == 3 || global->scn == 4 ||
         global->scn == 5)
         sfRenderWindow_setMouseCursorVisible(global->window, sfTrue);
     else
         sfRenderWindow_setMouseCursorVisible(global->window, sfFalse);
+}
+
+void draw_sprites(global_t *global)
+{
+    set_cursor(global);
     global->scn = check_map_change(global, global->scn);
     if (global->scn == 1 || global->scn == 10 || global->scn == 11 || global->scn == 12 || global->scn == 13) {
         sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man, global->gameplay->rect_man);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_backg, NULL);
         sfRenderWindow_drawSprite(global->window, global->gameplay->sprite_man, NULL);
-        if (global->scn == 1) {
-           if (global->gameplay->pnj->girl_quest == 1)
-               sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_1, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_d, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_ed, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_pech, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sprite_pnj_bot, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sp_pnj_volc, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_final_boss, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_winter_boss, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_desert_boss, NULL);
-            sfRenderWindow_drawSprite(global->window, global->gameplay->boss->sp_hl_boss, NULL);
-            switch_in_fight(global);
-            display_text(global);
-        }
-        if (global->scn == 11) {
-            sfRenderWindow_drawSprite(global->window, global->gameplay->pnj->sp_vil_old, NULL);
-            display_text_vill(global);
-        }
+        if (global->scn == 1)
+            scn_1(global);
+        if (global->scn == 11)
+            scn_11(global);
+        if (global->scn == 10)
+            scn_10(global);
+        if (global->scn == 13)
+            scn_13(global);
         sfRenderWindow_display(global->window);
     }
     if (global->scn == 5) {
