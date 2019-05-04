@@ -23,6 +23,8 @@ void display_inv(global_t *global)
     sfRenderWindow_drawText(global->window, global->pause->st_inv->eq2, NULL);
     sfText_setPosition(global->pause->st_inv->eq3, (sfVector2f){1050, 770});
     sfRenderWindow_drawText(global->window, global->pause->st_inv->eq3, NULL);
+    sfText_setPosition(global->pause->st_inv->eq1, (sfVector2f){320, 1050});
+    sfRenderWindow_drawText(global->window, global->pause->st_inv->eq1, NULL);
 }
 
 void draw_pause(global_t *global)
@@ -89,8 +91,7 @@ void display_pause(global_t *global)
         draw_pause(global);
     if (global->scn == 3) {
         display_inv(global);
-        if (global->gameplay->item->on == 1)
-            draw_item(global);
+        draw_item(global);
         sfRenderWindow_display(global->window);
     }
     if (global->scn == 4)

@@ -101,38 +101,36 @@ int check_events(global_t *global)
             global->scn = 4;
         if (global->event.key.code == sfKeyEscape && global->scn != 0)
             global->scn = 2;
-        if (global->event.key.code == sfKeySpace && global->scn == 3)
-            global->gameplay->item->on = 1;
         if ((item_is_c(global->event, global->gameplay->item->boots) == 1) &&
-            (global->scn == 3) && global->gameplay->item->on == 1) {
+            (global->scn == 3)) {
             sfSprite_setPosition(global->gameplay->item->boots,
                 (sfVector2f){1045,320});
             sfSprite_setScale(global->gameplay->item->boots,
                 (sfVector2f){3.45, 3.45});
         }
         if ((item_is_c(global->event, global->gameplay->item->orbs) == 1) &&
-            (global->scn == 3) && global->gameplay->item->on == 1) {
+            (global->scn == 3)) {
             sfSprite_setPosition(global->gameplay->item->orbs,
                 (sfVector2f){1045, 490});
             sfSprite_setScale(global->gameplay->item->orbs,
                 (sfVector2f){2.2, 1.8});
         }
         if ((item_is_c(global->event, global->gameplay->item->armors) == 1) &&
-            (global->scn == 3) && global->gameplay->item->on == 1) {
+            (global->scn == 3)) {
             sfSprite_setPosition(global->gameplay->item->armors,
                 (sfVector2f){1045,320});
             sfSprite_setScale(global->gameplay->item->armors,
                 (sfVector2f){1.98, 2.1});
         }
         if ((item_is_c(global->event, global->gameplay->item->axes) == 1) &&
-            (global->scn == 3) && global->gameplay->item->on == 1) {
+            (global->scn == 3)) {
             sfSprite_setPosition(global->gameplay->item->axes,
                 (sfVector2f){1045, 150});
             sfSprite_setScale(global->gameplay->item->axes,
                 (sfVector2f){2.15, 2.1});
         }
         if ((item_is_c(global->event, global->gameplay->item->helmets) == 1) &&
-            (global->scn == 3) && global->gameplay->item->on == 1) {
+            (global->scn == 3)) {
             sfSprite_setPosition(global->gameplay->item->helmets,
                 (sfVector2f){1605, 320});
             sfSprite_setScale(global->gameplay->item->helmets,

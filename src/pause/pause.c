@@ -19,6 +19,8 @@ sfText *create_text(sfText *text, sfFont *fon)
 
 void init_texts(global_t *global)
 {
+    global->pause->st_inv->eq1 = create_text(global->pause->st_inv->eq1,
+        global->pause->st_inv->eqf);
     global->pause->st_inv->eq = create_text(global->pause->st_inv->eq,
         global->pause->st_inv->eqf);
     global->pause->st_inv->eq2 = create_text(global->pause->st_inv->eq2,
@@ -26,12 +28,15 @@ void init_texts(global_t *global)
     global->pause->st_inv->eq3 = create_text(global->pause->st_inv->eq3,
          global->pause->st_inv->eqf);
     sfText_setString(global->pause->st_inv->eq, "INVENTORY");
+    sfText_setString(global->pause->st_inv->eq1,
+        "*Click on an item for equip it.");
     sfText_setString(global->pause->st_inv->eq2,
     "Main Weapon\t\t\t\t\t\t\t\t\t\t   \
     Secondary Weapon\n\n\n\n\n\n\n\nMain Defense\t\t\t\t\t\t\t\t\t\t \
     Secondary Defense\n\n\n\n\n\n\n\n\nMain Power\t\t\t\t\t\t\t\t\t\t\t  \
     Secondary Power");
     sfText_setCharacterSize(global->pause->st_inv->eq, 75);
+    sfText_setCharacterSize(global->pause->st_inv->eq1, 20);
     sfText_setCharacterSize(global->pause->st_inv->eq2, 20);
     sfText_setCharacterSize(global->pause->st_inv->eq3, 30);
     init_texts_quest(global);

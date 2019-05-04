@@ -24,7 +24,7 @@ void create_item2(global_t *global)
         global->gameplay->item->helmett, sfTrue);
     sfSprite_setPosition(global->gameplay->item->helmets,
         (sfVector2f){607, 912});
-    sfSprite_setScale(global->gameplay->item->helmets, (sfVector2f){2, 1.7});
+    sfSprite_setScale(global->gameplay->item->helmets, (sfVector2f){1.7, 1.7});
     sfSprite_setTexture(global->gameplay->item->armors,
         global->gameplay->item->armort, sfTrue);
     sfSprite_setPosition(global->gameplay->item->armors,
@@ -49,7 +49,7 @@ void create_item(global_t *global)
     sfSprite_setTexture(global->gameplay->item->orbs, 
         global->gameplay->item->orbt, sfTrue);
     sfSprite_setPosition(global->gameplay->item->orbs, (sfVector2f){217, 912});
-    sfSprite_setScale(global->gameplay->item->orbs, (sfVector2f){2, 1.7});
+    sfSprite_setScale(global->gameplay->item->orbs, (sfVector2f){1.8, 1.6});
     global->gameplay->item->armors = sfSprite_create();
     global->gameplay->item->armort = sfTexture_createFromFile(
         "resource/menu/armor.jpg", NULL);
@@ -58,16 +58,21 @@ void create_item(global_t *global)
 
 void draw_item(global_t *global)
 {
-    sfRenderWindow_drawSprite(global->window,
-        global->gameplay->item->boots, NULL);
-    sfRenderWindow_drawSprite(global->window, global->gameplay->item->orbs,
-        NULL);
-    sfRenderWindow_drawSprite(global->window, global->gameplay->item->armors,
-        NULL);
-    sfRenderWindow_drawSprite(global->window, global->gameplay->item->axes,
-        NULL);
-    sfRenderWindow_drawSprite(global->window, global->gameplay->item->helmets,
-        NULL);
+    //if (global->gameplay->pnj->op_chest == 1)
+        sfRenderWindow_drawSprite(global->window,
+            global->gameplay->item->boots, NULL);
+    //if (global->gameplay->boss->win_vs_final_boss == 1)
+        sfRenderWindow_drawSprite(global->window,
+        global->gameplay->item->orbs, NULL);
+    //if (global->gameplay->boss->win_vs_desert_boss == 1)
+        sfRenderWindow_drawSprite(global->window,
+        global->gameplay->item->armors, NULL);
+    //if (global->gameplay->boss->win_vs_hl_boss == 1)
+        sfRenderWindow_drawSprite(global->window,
+        global->gameplay->item->axes, NULL);
+    //if (global->gameplay->boss->win_vs_winter_boss == 1)
+        sfRenderWindow_drawSprite(global->window,
+        global->gameplay->item->helmets, NULL);
 }
 
 int item_is_c(sfEvent event, sfSprite *spr)
