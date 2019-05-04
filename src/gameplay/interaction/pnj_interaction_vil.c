@@ -46,7 +46,7 @@ void set_text_papy(global_t *global)
     sfText_setString(global->gameplay->pnj->text_papy,
     "I come every day to pay tribute to these men\
     \nwho are beaten to try to restore calm on\
-    \nthe island of aliris.");
+    \nthe island of aliris.\n\t\t\t\t\t\t\t\t\t\t\t\t\t(Press tab)");
 }
 
 void display_text_vill(global_t *global)
