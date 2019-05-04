@@ -323,7 +323,7 @@ void init_gameplay_action(global_t *global)
     global->gameplay->pnj->q_volc = 0;
     global->gameplay->boss->win_vs_hl_boss = 0;
     global->gameplay->boss->win_vs_volc_boss = 0;
-    global->gameplay->boss->quest_fboss = 4;
+    global->gameplay->boss->quest_fboss = 0;
     global->gameplay->pnj->vil_papy = 0;
     global->gameplay->pnj->sec_q = \
     "secondary quests: Find the lost girl and bring her back to her mother";
