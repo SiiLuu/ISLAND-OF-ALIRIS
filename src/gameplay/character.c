@@ -44,7 +44,7 @@ void check_other_events(global_t *global)
     if (global->gameplay->boss->win_vs_desert_boss == 1) {
         sfSprite_setColor(global->gameplay->boss->sp_desert_boss,
                         sfTransparent);
-        global->gameplay->map[33][4] = '0';
+        global->gameplay->map[33][5] = '0';
     }
     if (global->gameplay->boss->win_vs_hl_boss == 1) {
         sfSprite_setColor(global->gameplay->boss->sp_hl_boss, sfTransparent);
@@ -186,7 +186,7 @@ void set_position_boss(global_t *global)
     sfSprite_setTextureRect(global->gameplay->boss->sp_desert_boss,
     global->gameplay->boss->rect_desert_boss);
     sfSprite_setPosition(global->gameplay->boss->sp_desert_boss,
-    (sfVector2f){545, 3235});
+    (sfVector2f){500, 3235});
     sfSprite_setScale(global->gameplay->boss->sp_desert_boss,
     (sfVector2f){1.5, 1.5});
     set_position_boss_volc(global);

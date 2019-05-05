@@ -36,8 +36,8 @@ void switch_in_fight(global_t *global)
             global->fight->enemis = 1;
             global->scn = 5;
         }
-    if ((global->gameplay->x > 450 && global->gameplay->x < 700) &&
-        (global->gameplay->y > 3150 && global->gameplay->y < 3400) &&
+    if ((global->gameplay->x > 390 && global->gameplay->x < 650) &&
+        (global->gameplay->y > 3150 && global->gameplay->y < 3420) &&
         global->gameplay->boss->win_vs_desert_boss == 0) {
             global->fight->enemis = 2;
             global->scn = 5;
