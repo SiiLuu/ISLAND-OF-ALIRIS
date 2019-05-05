@@ -8,8 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-void select_enemis(global_t *global);
-
 void fight_textures(global_t *global)
 {
     sfSprite_setTexture(global->fight->arrows, global->fight->arrowt, sfTrue);
