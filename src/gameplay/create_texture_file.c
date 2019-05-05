@@ -24,7 +24,7 @@ void init_gameplay_action(global_t *global)
     global->gameplay->pnj->status->q_volc = 0;
     global->gameplay->boss->win_vs_hl_boss = 0;
     global->gameplay->boss->win_vs_volc_boss = 0;
-    global->gameplay->boss->quest_fboss = 4;
+    global->gameplay->boss->quest_fboss = 0;
     global->gameplay->pnj->status->vil_papy = 0;
 }
 
