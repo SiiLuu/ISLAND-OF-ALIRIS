@@ -20,6 +20,7 @@ SRC 	=	src/main.c						\
 			src/gameplay/manage_collision.c						\
 			src/gameplay/init_rect_pnj.c						\
 			src/gameplay/character.c							\
+			src/gameplay/check_events.c							\
 			src/gameplay/interaction/pnj_interaction.c			\
 			src/gameplay/interaction/fight_interaction.c		\
 			src/gameplay/interaction/fcp_interaction.c			\

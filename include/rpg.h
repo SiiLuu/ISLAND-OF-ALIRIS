@@ -325,9 +325,16 @@ void music_destroy(global_t *global);
 int main_loop(global_t *global);
 void destroy_all(global_t *global);
 void clean_bytes(global_t *global, char status);
+int check_events(global_t *global);
 void main_function(global_t *global);
 void game_parameters(global_t *global);
 int game_in_clock(global_t *global);
+
+//In src/gameplay/check_events.c
+void check_next_events(global_t *global);
+void check_events_scn(global_t *global);
+void check_events_scn_2(global_t *global);
+void check_first_events(global_t *global);
 
 //In src/menu/menu.c
 int menu_start(global_t *global, int i);
