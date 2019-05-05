@@ -104,8 +104,6 @@ int choose_character(global_t *global)
             if (choose_character1(global, x, y))
                 return (0);
         }
-        if (global->event.key.code == sfKeyEscape)
-            exit (0);
         sfRenderWindow_pollEvent(global->window, &global->event);
     }
     return (0);
