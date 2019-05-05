@@ -494,7 +494,7 @@ void fight_final_boss(global_t *global);
 
 //In src/gameplay/interaction/text_in_castel.c
 void display_text_knight(global_t *global);
-void display_text_princess(global_t* global);
+void display_text_princess(global_t *global);
 void display_text_castel(global_t *global);
 
 //In src/gameplay/interaction/destroy_textures_castel.c
