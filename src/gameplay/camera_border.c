@@ -41,6 +41,7 @@ void camera_center(global_t *global)
 {
     global->gameplay->camera_x = global->gameplay->x - (1920 / 2) + 48;
     global->gameplay->camera_y = global->gameplay->y - (1080 / 2) + 48;
-    sfView_reset(global->gameplay->view, (sfFloatRect){global->gameplay->x - ((1920 / 2) - 48),
+    sfView_reset(global->gameplay->view,
+    (sfFloatRect){global->gameplay->x - ((1920 / 2) - 48),
     global->gameplay->y - ((1080 / 2) - 48), 1920, 1080});
 }

@@ -10,7 +10,7 @@
 
 void display_text_bottom(global_t *global)
 {
-    if (global->gameplay->pnj->p_text_bot == 1) {
+    if (global->gameplay->pnj->status->p_text_bot == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_bot = sfText_create();
         sfText_setString(global->gameplay->pnj->text_bot,
@@ -26,7 +26,7 @@ void display_text_bottom(global_t *global)
 }
 void display_text_pech(global_t *global)
 {
-    if (global->gameplay->pnj->p_text_pech == 1) {
+    if (global->gameplay->pnj->status->p_text_pech == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_pech = sfText_create();
         sfText_setString(global->gameplay->pnj->text_pech,
@@ -44,7 +44,7 @@ void display_text_pech(global_t *global)
 
 void display_text_desert(global_t *global)
 {
-    if (global->gameplay->pnj->p_text_ed == 1) {
+    if (global->gameplay->pnj->status->p_text_ed == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_ed = sfText_create();
         sfText_setString(global->gameplay->pnj->text_ed,
@@ -62,7 +62,7 @@ void display_text_desert(global_t *global)
 
 void display_text_volc(global_t *global)
 {
-    if (global->gameplay->pnj->q_volc == 1) {
+    if (global->gameplay->pnj->status->q_volc == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_volc = sfText_create();
         if (global->gameplay->boss->quest_fboss < 4) {
@@ -86,8 +86,8 @@ void display_text(global_t *global)
 {
     global->gameplay->pnj->font = sfFont_createFromFile(\
     "resource/font/arial.ttf");
-    if (global->gameplay->pnj->p_text == 1 &&
-        global->gameplay->pnj->girl_quest == 1) {
+    if (global->gameplay->pnj->status->p_text == 1 &&
+        global->gameplay->pnj->status->girl_quest == 1) {
         set_text_box(global);
         global->gameplay->pnj->text = sfText_create();
         sfText_setString(global->gameplay->pnj->text,

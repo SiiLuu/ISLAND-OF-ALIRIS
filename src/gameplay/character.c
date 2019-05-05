@@ -53,7 +53,7 @@ void check_other_events(global_t *global)
     if (global->gameplay->boss->quest_fboss == 4 &&
         global->gameplay->boss->s_last_quest == 1)
         global->gameplay->map[9][14] = '0';
-    if (global->gameplay->pnj->girl_quest == 0)
+    if (global->gameplay->pnj->status->girl_quest == 0)
         global->gameplay->map[50][50] = '0';
     else
         global->gameplay->map[50][50] = '5';
@@ -383,24 +383,22 @@ void create_sprite(global_t *global)
 
 void init_gameplay_action(global_t *global)
 {
-    global->gameplay->pnj->p_text_bot = 0;
-    global->gameplay->pnj->p_text_pech = 0;
-    global->gameplay->pnj->p_text_ed = 0;
-    global->gameplay->pnj->p_text = 0;
-    global->gameplay->pnj->girl_quest = 0;
-    global->gameplay->pnj->quest_complete = 0;
+    global->gameplay->pnj->status->p_text_bot = 0;
+    global->gameplay->pnj->status->p_text_pech = 0;
+    global->gameplay->pnj->status->p_text_ed = 0;
+    global->gameplay->pnj->status->p_text = 0;
+    global->gameplay->pnj->status->girl_quest = 0;
+    global->gameplay->pnj->status->quest_complete = 0;
     global->gameplay->boss->win_vs_final_boss = 0;
     global->gameplay->boss->win_vs_winter_boss = 0;
     global->gameplay->boss->win_vs_desert_boss = 0;
-    global->gameplay->pnj->op_chest = 0;
+    global->gameplay->pnj->status->op_chest = 0;
     global->gameplay->boss->s_last_quest2 = 0;
-    global->gameplay->pnj->q_volc = 0;
+    global->gameplay->pnj->status->q_volc = 0;
     global->gameplay->boss->win_vs_hl_boss = 0;
     global->gameplay->boss->win_vs_volc_boss = 0;
     global->gameplay->boss->quest_fboss = 0;
-    global->gameplay->pnj->vil_papy = 0;
-    global->gameplay->pnj->sec_q = \
-    "secondary quests: Find the lost girl and bring her back to her mother";
+    global->gameplay->pnj->status->vil_papy = 0;
 }
 
 void pnj_textures(global_t *global)
@@ -502,7 +500,7 @@ void draw_sprites_scn_1(global_t *global)
 
 void scn_1(global_t *global)
 {
-    if (global->gameplay->pnj->girl_quest == 1)
+    if (global->gameplay->pnj->status->girl_quest == 1)
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->pnj->sprite_pnj_1, NULL);
     draw_sprites_scn_1(global);

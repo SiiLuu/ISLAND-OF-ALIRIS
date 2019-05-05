@@ -30,7 +30,7 @@ void set_vil_garden_text(global_t *global)
 
 void set_garden_text(global_t *global)
 {
-    if (global->gameplay->pnj->p_garden == 1) {
+    if (global->gameplay->pnj->status->p_garden == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_pnj_garden = sfText_create();
         sfText_setString(global->gameplay->pnj->text_pnj_garden,

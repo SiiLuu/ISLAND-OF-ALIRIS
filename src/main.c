@@ -11,7 +11,6 @@ void game_parameters(global_t *global)
 {
     check_events(global);
     draw_sprites(global);
-    //printf("%d\n", global->gameplay->boss->win_vs_volc_boss);
 }
 
 int main_loop(global_t *global)
@@ -30,7 +29,8 @@ int main_loop(global_t *global)
     sfView_reset(global->gameplay->view, (sfFloatRect){0, 98, 1920, 1080});
     sfRenderWindow_setView(global->window, global->gameplay->view);
     while (sfRenderWindow_isOpen(global->window))
-        if (sfTime_asMilliseconds(sfClock_getElapsedTime(global->gameplay->clocks)) > 5) {
+        if (sfTime_asMilliseconds(sfClock_getElapsedTime(
+            global->gameplay->clocks)) > 5) {
             game_parameters(global);
             sfClock_restart(global->gameplay->clocks);
         }
@@ -67,6 +67,7 @@ void clean_bytes(global_t *global, char status)
         global->choose_char = malloc(sizeof(choose_char_t) * 1);
         global->menu->settings = malloc(sizeof(settings_t) * 1);
         global->gameplay->pnj = malloc(sizeof(pnj_t) * 1);
+        global->gameplay->pnj->status = malloc(sizeof(pnj_t) * 1);
         global->gameplay->boss = malloc(sizeof(boss_t) * 1);
         global->fight = malloc(sizeof(fight_t) * 1);
     }

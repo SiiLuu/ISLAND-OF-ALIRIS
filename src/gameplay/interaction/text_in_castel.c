@@ -10,7 +10,7 @@
 
 void display_text_knight(global_t *global)
 {
-    if (global->gameplay->pnj->p_knight_2 == 1) {
+    if (global->gameplay->pnj->status->p_knight_2 == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_knight_2 = sfText_create();
         sfText_setString(global->gameplay->pnj->text_knight_2,
@@ -28,7 +28,7 @@ void display_text_knight(global_t *global)
 
 void display_text_princess(global_t* global)
 {
-    if (global->gameplay->pnj->p_princess == 1) {
+    if (global->gameplay->pnj->status->p_princess == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_princess = sfText_create();
         sfText_setString(global->gameplay->pnj->text_princess,
@@ -46,7 +46,7 @@ void display_text_princess(global_t* global)
 
 void display_text_castel(global_t *global)
 {
-    if (global->gameplay->pnj->p_knight_1 == 1) {
+    if (global->gameplay->pnj->status->p_knight_1 == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_knight_1 = sfText_create();
         sfText_setString(global->gameplay->pnj->text_knight_1,

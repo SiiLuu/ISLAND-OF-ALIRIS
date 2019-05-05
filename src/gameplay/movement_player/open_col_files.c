@@ -45,7 +45,7 @@ int open_file(global_t *global)
     global->gameplay->mapc_vol = get_map("resource/CollisionVolc.txt",
                     global->gameplay->mapc_vol);
     global->gameplay->map = global->gameplay->wmap;
-    if (global->gameplay->wmap == NULL || 
+    if (global->gameplay->wmap == NULL ||
     global->gameplay->mapc_fcp == NULL || global->gameplay->mapc_vil == NULL)
         return (84);
     return (0);

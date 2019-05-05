@@ -10,7 +10,8 @@
 
 void move_rect_p2(gameplay_t *gameplay)
 {
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 100) {
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks))
+        > 100) {
         gameplay->rect_man.left += 48;
         sfClock_restart(gameplay->clocks);
     }
@@ -20,7 +21,8 @@ void move_rect_p2(gameplay_t *gameplay)
 
 void move_rect_p3(gameplay_t *gameplay)
 {
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 100) {
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks))
+        > 100) {
         gameplay->rect_man.left += 48;
         sfClock_restart(gameplay->clocks);
     }
@@ -30,7 +32,8 @@ void move_rect_p3(gameplay_t *gameplay)
 
 void move_rect_p4(gameplay_t *gameplay)
 {
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 100) {
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks))
+        > 100) {
         gameplay->rect_man.left += 48;
         sfClock_restart(gameplay->clocks);
     }
@@ -40,7 +43,8 @@ void move_rect_p4(gameplay_t *gameplay)
 
 void move_rect_p1(gameplay_t *gameplay)
 {
-    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks)) > 100) {
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(gameplay->clocks))
+        > 100) {
         gameplay->rect_man.left += 48;
         sfClock_restart(gameplay->clocks);
     }

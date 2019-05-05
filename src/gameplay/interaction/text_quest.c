@@ -18,10 +18,10 @@ void starting_quest(global_t *global)
 
 void display_text_quest(global_t *global)
 {
-    if (global->gameplay->pnj->p_text_d == 1) {
+    if (global->gameplay->pnj->status->p_text_d == 1) {
         set_text_box(global);
         global->gameplay->pnj->text_d = sfText_create();
-        if (global->gameplay->pnj->quest_complete == 1) {
+        if (global->gameplay->pnj->status->quest_complete == 1) {
             sfText_setString(global->gameplay->pnj->text_d,
             "Thank you !! my daughter is finally back\
             \nI am happy to see her again!");

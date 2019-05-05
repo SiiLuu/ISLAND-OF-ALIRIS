@@ -98,6 +98,26 @@ typedef struct menu {
     settings_t *settings;
 }menu_t;
 
+typedef struct status {
+    int p_text;
+    int p_text_d;
+    int p_text_ed;
+    int p_text_pech;
+    int p_text_bot;
+    int girl_quest;
+    int vil_papy;
+    int q_volc;
+    int chest_nb1;
+    int p_knight_1;
+    int p_knight_2;
+    int p_princess;
+    int p_garden;
+    int op_chest;
+    int quest_complete;
+    int next_text;
+}status_t;
+
+
 typedef struct pnj {
     sfSprite *sprite_pnj_1;
     sfTexture *pnj_1;
@@ -150,23 +170,7 @@ typedef struct pnj {
     sfText *text_princess;
     sfText *text_pnj_garden;
     sfFont *font;
-    int p_text;
-    int p_text_d;
-    int p_text_ed;
-    int p_text_pech;
-    int p_text_bot;
-    int girl_quest;
-    int vil_papy;
-    int q_volc;
-    int chest_nb1;
-    int p_knight_1;
-    int p_knight_2;
-    int p_princess;
-    int p_garden;
-    int op_chest;
-    int quest_complete;
-    int next_text;
-    char *sec_q;
+    status_t *status;
 }pnj_t;
 
 typedef struct boss {

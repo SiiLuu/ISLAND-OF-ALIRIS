@@ -23,12 +23,12 @@ void check_interaction_pnj_volc(global_t *global)
     if (sfKeyboard_isKeyPressed(sfKeyA) &&
         (global->gameplay->x > 1400 && global->gameplay->x < 1550) &&
         (global->gameplay->y > 890 && global->gameplay->y < 1150)) {
-        global->gameplay->pnj->q_volc = 1;
+        global->gameplay->pnj->status->q_volc = 1;
         }
-    if (global->gameplay->pnj->q_volc == 1 &&
+    if (global->gameplay->pnj->status->q_volc == 1 &&
         ((global->gameplay->x < 1400 || global->gameplay->x > 1550) ||
         (global->gameplay->y < 890 || global->gameplay->y > 1150))) {
-        global->gameplay->pnj->q_volc = 0;
+        global->gameplay->pnj->status->q_volc = 0;
         destroy_textures_quetes_volc(global);
         }
 }

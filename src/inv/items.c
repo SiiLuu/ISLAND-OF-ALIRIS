@@ -46,7 +46,7 @@ void create_item(global_t *global)
     global->gameplay->item->orbs = sfSprite_create();
     global->gameplay->item->orbt = sfTexture_createFromFile(
         "resource/menu/orb.jpg", NULL);
-    sfSprite_setTexture(global->gameplay->item->orbs, 
+    sfSprite_setTexture(global->gameplay->item->orbs,
         global->gameplay->item->orbt, sfTrue);
     sfSprite_setPosition(global->gameplay->item->orbs, (sfVector2f){217, 912});
     sfSprite_setScale(global->gameplay->item->orbs, (sfVector2f){1.8, 1.6});
@@ -58,7 +58,7 @@ void create_item(global_t *global)
 
 void draw_item(global_t *global)
 {
-    if (global->gameplay->pnj->op_chest == 1)
+    if (global->gameplay->pnj->status->op_chest == 1)
         sfRenderWindow_drawSprite(global->window,
             global->gameplay->item->boots, NULL);
     if (global->gameplay->boss->win_vs_final_boss == 1)
