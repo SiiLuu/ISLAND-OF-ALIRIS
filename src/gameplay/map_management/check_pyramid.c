@@ -40,8 +40,11 @@ int check_leave_in_py(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->map = global->gameplay->mapc_outpy;
             global->gameplay->x = 1000;
             global->gameplay->y = 500;
-            global->gameplay->width = 2000;
+            global->gameplay->width = 1920;
             global->gameplay->lenght = 1080;
+            sfView_reset(global->gameplay->view,
+                        (sfFloatRect){0,00,1920,1080});
+            sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
             sfSprite_setPosition(global->gameplay->sprite_man,
@@ -60,7 +63,7 @@ int check_out_py(global_t *global, int mpos_x, int mpos_y, int scn)
         if (global->gameplay->map[mpos_y][mpos_x] == 'E') {
             global->gameplay->x = 1000;
             global->gameplay->y = 900;
-            global->gameplay->width = 2000;
+            global->gameplay->width = 1920;
             global->gameplay->lenght = 1080;
             sfView_reset(global->gameplay->view,
                         (sfFloatRect){0,00,1920,1080});
