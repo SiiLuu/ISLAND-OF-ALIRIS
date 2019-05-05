@@ -65,8 +65,8 @@ void draw_item(global_t *global)
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->item->orbs, NULL);
     if (global->gameplay->boss->win_vs_desert_boss == 1)
-       sfRenderWindow_drawSprite(global->window,
-         global->gameplay->item->armors, NULL);
+        sfRenderWindow_drawSprite(global->window,
+        global->gameplay->item->armors, NULL);
     if (global->gameplay->boss->win_vs_hl_boss == 1)
         sfRenderWindow_drawSprite(global->window,
         global->gameplay->item->axes, NULL);

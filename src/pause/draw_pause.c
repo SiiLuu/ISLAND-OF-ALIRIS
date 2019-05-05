@@ -77,9 +77,9 @@ void display_pause(global_t *global)
 {
     global->pause->st_htp->loading = sfClock_create();
 
-    if( global->scn == -2)
+    if (global->scn == -2)
         draw_instruct(global);
-    if( global->scn == -1)
+    if (global->scn == -1)
         draw_instruct2(global);
     if (global->scn == 0) {
         draw_how_to_play(global);

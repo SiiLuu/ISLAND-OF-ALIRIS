@@ -24,9 +24,9 @@ void init_texts(global_t *global)
     global->pause->st_inv->eq = create_text(global->pause->st_inv->eq,
         global->pause->st_inv->eqf);
     global->pause->st_inv->eq2 = create_text(global->pause->st_inv->eq2,
-         global->pause->st_inv->eqf);
+        global->pause->st_inv->eqf);
     global->pause->st_inv->eq3 = create_text(global->pause->st_inv->eq3,
-         global->pause->st_inv->eqf);
+        global->pause->st_inv->eqf);
     sfText_setString(global->pause->st_inv->eq, "INVENTORY");
     sfText_setString(global->pause->st_inv->eq1,
         "*Click on an item to equip it.");
