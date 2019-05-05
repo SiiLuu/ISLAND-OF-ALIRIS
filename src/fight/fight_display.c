@@ -39,7 +39,7 @@ void draw_fight_info_display(global_t *global)
     sfText_setPosition(global->fight->stamina1t, (sfVector2f){1350, 1000});
     sfText_setPosition(global->fight->life1t, (sfVector2f){900, 1000});
     sfText_setPosition(global->fight->life, (sfVector2f){700, 1000});
-    sfText_setPosition(global->fight->stamina, (sfVector2f){1100,1000});
+    sfText_setPosition(global->fight->stamina, (sfVector2f){1100, 1000});
     sfRenderWindow_drawText(global->window, global->fight->stamina1t, NULL);
     sfRenderWindow_drawText(global->window, global->fight->life1t, NULL);
     sfRenderWindow_drawText(global->window, global->fight->stamina, NULL);

@@ -2,26 +2,14 @@
 ** EPITECH PROJECT, 2019
 ** my_rpg
 ** File description:
-** my_rpg, fight.c
+** my_rpg, select_enemis.c
 */
 
 #include "my.h"
 #include "rpg.h"
 
-void select_enemis(global_t *global)
+void select_enemis2(global_t *global)
 {
-    if (global->fight->enemis == 1) {
-        global->fight->boss1t = sfTexture_createFromFile(
-        "resource/fight/Darklord-final.png", NULL);
-        global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Ruins3.png", NULL);
-    }
-    if (global->fight->enemis == 2) {
-        global->fight->boss1t = sfTexture_createFromFile(
-        "resource/fight/Dragon.png", NULL);
-        global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Wasteland.png", NULL);
-    }
     if (global->fight->enemis == 3) {
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/God.png", NULL);
@@ -40,6 +28,23 @@ void select_enemis(global_t *global)
         global->fight->wp1t = sfTexture_createFromFile(
         "resource/fight/Lava2.png", NULL);
     }
+}
+
+void select_enemis(global_t *global)
+{
+    if (global->fight->enemis == 1) {
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/Darklord-final.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/Ruins3.png", NULL);
+    }
+    if (global->fight->enemis == 2) {
+        global->fight->boss1t = sfTexture_createFromFile(
+        "resource/fight/Dragon.png", NULL);
+        global->fight->wp1t = sfTexture_createFromFile(
+        "resource/fight/Wasteland.png", NULL);
+    }
+    select_enemis2(global);
 }
 
 void fight_choose_player2(global_t *global)
@@ -113,16 +118,4 @@ int check_event_fight(global_t *global, int x, int y)
         fight_display(global);
     }
     return (0);
-}
-
-void check_mouse_fight(global_t *global)
-{
-    int x = 0;
-    int y = 0;
-
-    if (global->event.type == sfEvtMouseButtonPressed) {
-        x = global->event.mouseButton.x;
-        y = global->event.mouseButton.y;
-        check_event_fight(global, x, y);
-    }
 }

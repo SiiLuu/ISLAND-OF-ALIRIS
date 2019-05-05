@@ -66,6 +66,7 @@ void sound_modif_sprite(global_t *global, int x, int y)
 
 void menu_choose_create_display(global_t *global, int i)
 {
+    sfRenderWindow_pollEvent(global->window, &global->event);
     if (i == 1)
         menu_display(global);
     else {
@@ -80,7 +81,6 @@ int menu_start(global_t *global, int i)
     int y = 0;
     int j = 0;
 
-    sfRenderWindow_pollEvent(global->window, &global->event);
     menu_choose_create_display(global, i);
     global->menu->clocks = sfClock_create();
     while (global->event.type != sfEvtClosed) {
@@ -88,7 +88,6 @@ int menu_start(global_t *global, int i)
         if (global->event.type == sfEvtMouseButtonPressed) {
             x = global->event.mouseButton.x;
             y = global->event.mouseButton.y;
-            sound_modif_sprite(global, x, y);
             if ((j = check_menu(global, x, y)) == 1)
                 return (1);
             else if (j == 0) {

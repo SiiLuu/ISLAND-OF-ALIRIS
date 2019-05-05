@@ -10,15 +10,27 @@
 
 char *reward_str(global_t *global)
 {
-    if (global->gameplay->boss->win_vs_final_boss == 1)
-        return("Cosmic orb obtained !!");
-    if (global->gameplay->boss->win_vs_winter_boss == 1)
-        return("Marauder's ax obtained !!");
-    if (global->gameplay->boss->win_vs_desert_boss == 1)
-        return("adaptive helmet obtained !!");
-    if (global->gameplay->boss->win_vs_hl_boss == 1)
-        return("enchanted breastplate obtained !!");
-    return ("ERROR");
+    static bool final = 0;
+    static bool winter = 0;
+    static bool desert = 0;
+    static bool hl = 0;
+
+    if (global->gameplay->boss->win_vs_final_boss == 1 && final == 0) {
+        final = 1;
+        return ("Cosmic orb obtained !!");
+    }
+    if (global->gameplay->boss->win_vs_winter_boss == 1 && winter == 0) {
+        winter = 1;
+        return ("Marauder's ax obtained !!");
+    }
+    if (global->gameplay->boss->win_vs_desert_boss == 1 && desert == 0) {
+        desert = 1;
+        return ("adaptive helmet obtained !!");
+    }
+    if (global->gameplay->boss->win_vs_hl_boss == 1 && hl == 0) {
+        hl = 1;
+        return ("enchanted breastplate obtained !!");
+    }
 }
 
 void reward(global_t *global)

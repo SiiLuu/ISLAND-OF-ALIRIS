@@ -291,6 +291,7 @@ void check_mouse(global_t *global);
 void menu_set_position(global_t *global);
 void menu_create2(global_t *global);
 void menu_choose_create_display(global_t *global, int i);
+void sound_modif_sprite(global_t *global, int x, int y);
 
 //In src/menu/settings.c
 int settings(global_t *global, int x, int y);
@@ -522,6 +523,10 @@ void change_rect_fight(global_t *global);
 
 // In src/fight/reward.c
 void reward(global_t *global);
+
+// In src/fight/enemis.c
+void select_enemis(global_t *global);
+void init_to_int(global_t *global);
 
 // In src/pause/draw_inv.c
 void display_inv2(global_t *global);

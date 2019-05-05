@@ -10,26 +10,6 @@
 
 void select_enemis(global_t *global);
 
-void create_all(global_t *global)
-{
-    char *res = "resource/fight/arrow.png";
-    char *res2 = "resource/fight/spe_attack.png";
-    char *res3 = "resource/fight/attack.png";
-
-    global->fight->wp1s = sfSprite_create();
-    global->fight->boss1s = sfSprite_create();
-    select_enemis(global);
-    global->fight->players = sfSprite_create();
-    choose_who_create(global);
-    global->fight->arrows = sfSprite_create();
-    global->fight->arrowt = sfTexture_createFromFile(res, NULL);
-    global->fight->arrowt = sfTexture_createFromFile(res, NULL);
-    global->fight->attack_spes = sfSprite_create();
-    global->fight->attack_spet = sfTexture_createFromFile(res2, NULL);
-    global->fight->attacks = sfSprite_create();
-    global->fight->attackt = sfTexture_createFromFile(res3, NULL);
-}
-
 void fight_textures(global_t *global)
 {
     sfSprite_setTexture(global->fight->arrows, global->fight->arrowt, sfTrue);

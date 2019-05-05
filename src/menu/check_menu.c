@@ -10,6 +10,7 @@
 
 int check_menu(global_t *global, int x, int y)
 {
+    sound_modif_sprite(global, x, y);
     if (settings(global, x, y))
         return (0);
     else
