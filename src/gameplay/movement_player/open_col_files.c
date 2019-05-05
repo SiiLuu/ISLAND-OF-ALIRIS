@@ -51,9 +51,11 @@ char **get_map(char *path, char **map)
     if (fd == -1)
         return (NULL);
     i = filepath.st_size;
-    buffer = malloc(sizeof(char) * i);
+    buffer = malloc(sizeof(char) * i + 1);
     if (buffer == NULL)
         return (NULL);
+    for (int j = 0; j != i + 1; j++)
+        buffer[j] = '\0';
     read(fd, buffer, i);
     close(fd);
     map = string_to_tab(buffer);

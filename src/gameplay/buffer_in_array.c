@@ -50,9 +50,10 @@ char **string_to_tab(char *buffer)
 {
     char **map = NULL;
     int i = 0;
-    int height = get_line_nbr(buffer);
+    int height = 0;
     int len = 0;
 
+    height = get_line_nbr(buffer);
     if (height > 1)
         len = get_len_line(buffer);
     else
