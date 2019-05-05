@@ -44,7 +44,7 @@ void player_loose(global_t *global)
     sfRenderWindow_drawText(global->window, text, NULL);
     sfRenderWindow_display(global->window);
     while (sfTime_asMilliseconds(sfClock_getElapsedTime(
-            global->fight->clocks)) < 10000);
+            global->fight->clocks)) < 5000);
     sfFont_destroy(font);
     sfText_destroy(text);
     sfClock_destroy(clocks);
@@ -78,7 +78,8 @@ int dectect_win(global_t *global)
 {
     if (global->fight->life1 <= 0) {
         player_loose(global);
-        return (0);
+        global->fight->loose = 1;
+        return (1);
     }
     if (global->fight->life2 <= 0) {
         init_to_int(global);

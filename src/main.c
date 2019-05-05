@@ -91,6 +91,7 @@ void main_function(global_t *global)
     global->scn = 0;
     global->gameplay->x = 300;
     global->gameplay->y = 600;
+    global->fight->loose = 0;
     music_game(global);
     main_loop(global);
     music_destroy(global);
