@@ -34,11 +34,11 @@ char *reward_str(global_t *global)
         return (string);
     if (global->gameplay->boss->win_vs_desert_boss == 1 && desert == 0) {
         desert = 1;
-        return ("enchanted breastplate obtained !!");
+        return ("enchanted chestplate obtained !!");
     }
     if (global->gameplay->boss->win_vs_hl_boss == 1 && hl == 0) {
         hl = 1;
-        return ("Marauder's ax obtained !!");
+        return ("Marauder's axe obtained !!");
     }
     return (NULL);
 }
