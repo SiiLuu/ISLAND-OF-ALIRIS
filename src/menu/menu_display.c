@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_defender
+** my_rpg
 ** File description:
 ** menu
 */

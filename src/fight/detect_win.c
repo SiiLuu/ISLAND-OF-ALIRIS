@@ -78,7 +78,7 @@ int dectect_win(global_t *global)
 {
     if (global->fight->life1 <= 0) {
         player_loose(global);
-        exit (0);
+        return (0);
     }
     if (global->fight->life2 <= 0) {
         init_to_int(global);

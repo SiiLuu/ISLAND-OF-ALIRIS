@@ -21,27 +21,6 @@ void wait(global_t *global)
     sfClock_destroy(clocks);
 }
 
-int fight_loop(global_t *global)
-{
-    while (1) {
-        if (dectect_win(global)) {
-            move_vue(global);
-            if (global->gameplay->boss->win_vs_volc_boss == 1)
-                global->scn = 13;
-            else
-                global->scn = 1;
-            return (0);
-        }
-        if (sfTime_asMilliseconds(sfClock_getElapsedTime(
-            global->fight->clocks)) > 100) {
-            check_mouse_fight(global);
-            sfClock_restart(global->fight->clocks);
-        }
-        sfRenderWindow_pollEvent(global->window, &global->event);
-    }
-    return (0);
-}
-
 void fight_animation_display(global_t *global)
 {
     sfSprite_setTextureRect(global->fight->players, global->fight->rect);
@@ -51,6 +30,15 @@ void fight_animation_display(global_t *global)
     sfRenderWindow_drawSprite(global->window, global->fight->boss1s, NULL);
     sfRenderWindow_drawSprite(global->window, global->fight->players, NULL);
     sfRenderWindow_display(global->window);
+}
+
+void fight_clock(global_t *global)
+{
+    if (sfTime_asMilliseconds(sfClock_getElapsedTime(
+        global->gameplay->clocks)) > 100) {
+        change_rect_fight(global);
+        sfClock_restart(global->gameplay->clocks);
+    }
 }
 
 void fight_animation(global_t *global)
@@ -63,17 +51,11 @@ void fight_animation(global_t *global)
     while (global->fight->x > 1200) {
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(clocks)) > 1) {
             global->fight->x -= 3;
-            if (sfTime_asMilliseconds(sfClock_getElapsedTime(
-                global->gameplay->clocks)) > 100) {
-                change_rect_fight(global);
-                sfClock_restart(global->gameplay->clocks);
-            }
+            fight_clock(global);
             fight_animation_display(global);
             sfClock_restart(clocks);
         }
         sfRenderWindow_pollEvent(global->window, &global->event);
-        if (sfKeyboard_isKeyPressed(sfKeyEscape))
-            exit (0);
     }
     sfClock_destroy(clocks);
 }

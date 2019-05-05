@@ -622,6 +622,7 @@ void change_rect_fight(global_t *global);
 
 // In src/fight/reward.c
 void reward(global_t *global);
+int fight_loop(global_t *global);
 
 // In src/fight/enemis.c
 void select_enemis(global_t *global);
@@ -631,5 +632,9 @@ void init_to_int(global_t *global);
 void display_inv2(global_t *global);
 void draw_instruct(global_t *global);
 void draw_instruct2(global_t *global);
+
+// In src/menu/settings_create.c
+void destroy_all_settings(global_t *global);
+void check_plus_minus(global_t *global);
 
 #endif

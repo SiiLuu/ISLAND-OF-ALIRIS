@@ -34,11 +34,11 @@ char *reward_str(global_t *global)
         return (string);
     if (global->gameplay->boss->win_vs_desert_boss == 1 && desert == 0) {
         desert = 1;
-        return ("enchanted chestplate obtained !!");
+        return ("enchanted breastplate obtained !!");
     }
     if (global->gameplay->boss->win_vs_hl_boss == 1 && hl == 0) {
         hl = 1;
-        return ("Marauder's axe obtained !!");
+        return ("Marauder's ax obtained !!");
     }
     return (NULL);
 }
@@ -54,4 +54,25 @@ void reward(global_t *global)
     sfText_setCharacterSize(text, 55);
     sfText_setPosition(text, (sfVector2f){300, 600});
     sfRenderWindow_drawText(global->window, text, NULL);
+}
+
+int fight_loop(global_t *global)
+{
+    while (1) {
+        if (dectect_win(global)) {
+            move_vue(global);
+            if (global->gameplay->boss->win_vs_volc_boss == 1)
+                global->scn = 13;
+            else
+                global->scn = 1;
+            return (0);
+        }
+        if (sfTime_asMilliseconds(sfClock_getElapsedTime(
+            global->fight->clocks)) > 100) {
+            check_mouse_fight(global);
+            sfClock_restart(global->fight->clocks);
+        }
+        sfRenderWindow_pollEvent(global->window, &global->event);
+    }
+    return (0);
 }

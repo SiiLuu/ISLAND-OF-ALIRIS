@@ -8,7 +8,9 @@
 SRC 	=	src/main.c						\
 			src/music.c						\
 			src/menu/menu.c					\
+			src/menu/menu_create.c			\
 			src/menu/menu_display.c			\
+			src/menu/setting_create.c		\
 			src/menu/settings.c				\
 			src/menu/sound_bar.c			\
 			src/menu/check_menu.c								\
