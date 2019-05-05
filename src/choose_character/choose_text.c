@@ -29,6 +29,7 @@ void string_p(global_t *global)
     \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\
     \t\t\t\t\t\t opponents.");
 }
+
 void choose_create3(global_t *global)
 {
     global->choose_char->te = create_text(

@@ -80,7 +80,7 @@ int choose_character1(global_t *global, int x, int y)
 
 void character_choose_create_display(global_t *global)
 {
-    static bool i = 0;    
+    static bool i = 0;
 
     if (i == 1)
         choose_display(global);
