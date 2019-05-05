@@ -14,19 +14,19 @@ void select_enemis2(global_t *global)
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/God.png", NULL);
         global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/IceCave.png", NULL);
+        "resource/fight/IceCave.jpg", NULL);
     }
     if (global->fight->enemis == 4) {
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/Evilgod.png", NULL);
         global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Dirt2.png", NULL);
+        "resource/fight/Dirt2.jpg", NULL);
     }
     if (global->fight->enemis == 5) {
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/Irongiant.png", NULL);
         global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Lava2.png", NULL);
+        "resource/fight/Lava2.jpg", NULL);
     }
 }
 
@@ -36,13 +36,13 @@ void select_enemis(global_t *global)
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/Darklord-final.png", NULL);
         global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Ruins3.png", NULL);
+        "resource/fight/Ruins3.jpg", NULL);
     }
     if (global->fight->enemis == 2) {
         global->fight->boss1t = sfTexture_createFromFile(
         "resource/fight/Dragon.png", NULL);
         global->fight->wp1t = sfTexture_createFromFile(
-        "resource/fight/Wasteland.png", NULL);
+        "resource/fight/Wasteland.jpg", NULL);
     }
     select_enemis2(global);
 }

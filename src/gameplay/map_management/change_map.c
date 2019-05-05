@@ -13,7 +13,7 @@ void create_map_sprites(global_t *global)
     global->gameplay->backg = sfTexture_createFromFile(
         "resource/World Map.jpg", NULL);
     global->gameplay->backg_fcp = sfTexture_createFromFile(
-        "resource/Firecamp Plaine.png", NULL);
+        "resource/Firecamp Plaine.jpg", NULL);
     global->gameplay->backg_fcn = sfTexture_createFromFile(
         "resource/FC Neige.jpg", NULL);
     global->gameplay->backg_fcf = sfTexture_createFromFile(
