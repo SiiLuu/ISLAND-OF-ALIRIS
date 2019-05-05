@@ -13,12 +13,12 @@ int main(int ac, char **av)
 
     global->gameplay = malloc(sizeof(gameplay_t) * 1);
     if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h' && av[1][2] == '\0') {
-        my_putstr("USAGE:\n        ./my_defender\n");
-        my_putstr("DESCRIPTION:\n\tto win prevent the enemies to save\n");
-        my_putstr("\tthemselves in the water. for that place turrets on\n");
-        my_putstr("\tthe map to kill enemies, attention your money is\n");
-        my_putstr("\tnot infinite and all the turrets are different\n ");
-        my_putstr("\twith different abilities. GOOD LUCK TO YOU !\n");
+        my_putstr("USAGE:\n        ./my_rpg\n");
+        my_putstr("DESCRIPTION:\n\tFollow the adventure of our hero ");
+        my_putstr("through \n\tmany events on the island of Aliris.\n");
+        my_putstr("\tFollow the quests to save the local inhabitants\n");
+        my_putstr("\tand protect them against the mythical monsters.\n ");
+        my_putstr("\tGOOD LUCK TO YOU !\n");
         return (1);
     }
     if (open_file(global) == 84)
