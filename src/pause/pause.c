@@ -29,7 +29,7 @@ void init_texts(global_t *global)
          global->pause->st_inv->eqf);
     sfText_setString(global->pause->st_inv->eq, "INVENTORY");
     sfText_setString(global->pause->st_inv->eq1,
-        "*Click on an item for equip it.");
+        "*Click on an item to equip it.");
     sfText_setString(global->pause->st_inv->eq2,
     "Main Weapon\t\t\t\t\t\t\t\t\t\t   \
     Secondary Weapon\n\n\n\n\n\n\n\nMain Defense\t\t\t\t\t\t\t\t\t\t \
