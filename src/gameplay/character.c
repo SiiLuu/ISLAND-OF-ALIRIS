@@ -93,7 +93,7 @@ int check_events(global_t *global)
             sfRenderWindow_close(global->window);
         if ((but_is_c(global->event, global->menu->start1) == 1) &&
             (global->scn == 2)) {
-            global->scn = 1;
+            global->scn = global->old_scn;
             move_vue(global);
         }
         if ((but_is_c(global->event, global->menu->quit1) == 1) &&
@@ -105,8 +105,12 @@ int check_events(global_t *global)
         if ((but_is_c(global->event, global->pause->quest) == 1) &&
             (global->scn == 2))
             global->scn = 4;
-        if (global->event.key.code == sfKeyEscape && global->scn != 0)
+        if (global->event.key.code == sfKeyEscape && global->scn != 0 &&
+            global->scn != 2) {
+            if (global->scn != 4 && global->scn != 3)    
+                global->old_scn = global->scn;
             global->scn = 2;
+        }
         if ((item_is_c(global->event, global->gameplay->item->boots) == 1) &&
             (global->scn == 3)) {
             sfSprite_setPosition(global->gameplay->item->boots,
@@ -365,18 +369,15 @@ void sprites_creation(global_t *global)
 
 void create_sprite(global_t *global)
 {
+    global->gameplay->backg_outpy = sfTexture_createFromFile(
+        "resource/Out Pyramid.jpg", NULL);
+    global->gameplay->backg_fcas = sfTexture_createFromFile(
+        "resource/Flying Castle.jpg", NULL);
+    global->gameplay->backg_inpy = sfTexture_createFromFile(
+        "resource/In Pyramid.jpg", NULL);
     sprites_creation(global);
     textures_creation(global);
-    global->gameplay->backg = sfTexture_createFromFile(
-        "resource/World Map.jpg", NULL);
-    global->gameplay->backg_fcp = sfTexture_createFromFile(
-        "resource/Firecamp Plaine.png", NULL);
-    global->gameplay->backg_vil = sfTexture_createFromFile(
-        "resource/Village de départ.jpg", NULL);
-    global->gameplay->backg_cas = sfTexture_createFromFile(
-        "resource/Castle.jpg", NULL);
-    global->gameplay->backg_vol = sfTexture_createFromFile(
-        "resource/Volcano.jpg", NULL);
+    create_map_sprites(global);
     create_item(global);
 }
 
@@ -397,7 +398,7 @@ void init_gameplay_action(global_t *global)
     global->gameplay->pnj->status->q_volc = 0;
     global->gameplay->boss->win_vs_hl_boss = 0;
     global->gameplay->boss->win_vs_volc_boss = 0;
-    global->gameplay->boss->quest_fboss = 0;
+    global->gameplay->boss->quest_fboss = 4;
     global->gameplay->pnj->status->vil_papy = 0;
 }
 
@@ -560,7 +561,7 @@ void which_scn(global_t *global)
         scn_1(global);
     if (global->scn == 11)
         scn_11(global);
-    if (global->scn == 10)
+    if (global->scn == 20)
         scn_10(global);
     if (global->scn == 12)
         scn_12(global);
@@ -572,8 +573,7 @@ void draw_sprites(global_t *global)
 {
     set_cursor(global);
     global->scn = check_map_change(global, global->scn);
-    if (global->scn == 1 || global->scn == 10 || global->scn == 11 ||
-        global->scn == 12 || global->scn == 13) {
+    if (check_scn_nbr(global->scn) == true) {
         sfSprite_setPosition(global->gameplay->sprite_man,
         (sfVector2f){global->gameplay->x, global->gameplay->y});
         sfSprite_setTextureRect(global->gameplay->sprite_man,
