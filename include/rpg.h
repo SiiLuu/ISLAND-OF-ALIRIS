@@ -321,6 +321,14 @@ typedef struct global {
 void music_game(global_t *global);
 void music_destroy(global_t *global);
 
+//In src/main_function.c
+int main_loop(global_t *global);
+void destroy_all(global_t *global);
+void clean_bytes(global_t *global, char status);
+void main_function(global_t *global);
+void game_parameters(global_t *global);
+int game_in_clock(global_t *global);
+
 //In src/menu/menu.c
 int menu_start(global_t *global, int i);
 void menu_create(global_t *global);

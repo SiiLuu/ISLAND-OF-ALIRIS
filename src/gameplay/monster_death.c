@@ -22,10 +22,12 @@ void check_other_events(global_t *global)
     if (global->gameplay->boss->quest_fboss == 4 &&
         global->gameplay->boss->s_last_quest == 1)
         global->gameplay->map[9][14] = '0';
-    if (global->gameplay->pnj->status->girl_quest == 0)
-        global->gameplay->map[50][50] = '0';
-    else
-        global->gameplay->map[50][50] = '5';
+    if (global->fight->loose != 1) {
+        if (global->gameplay->pnj->status->girl_quest == 0)
+            global->gameplay->map[50][50] = '0';
+        else
+            global->gameplay->map[50][50] = '5';
+    }
 }
 
 void check_monster_dead(global_t *global)

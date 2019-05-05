@@ -6,6 +6,8 @@
 ##
 
 SRC 	=	src/main.c						\
+            src/main_clock.c				\
+			src/main_function.c				\
 			src/music.c						\
 			src/menu/menu.c					\
 			src/menu/menu_create.c			\
