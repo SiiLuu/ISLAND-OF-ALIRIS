@@ -105,7 +105,7 @@ int check_events(global_t *global)
         if ((but_is_c(global->event, global->pause->quest) == 1) &&
             (global->scn == 2))
             global->scn = 4;
-        if (global->event.key.code == sfKeyEscape && global->scn != 0 &&
+        if (global->event.key.code == sfKeyEscape && global->scn > 0 &&
             global->scn != 2) {
             if (global->scn != 4 && global->scn != 3)    
                 global->old_scn = global->scn;
