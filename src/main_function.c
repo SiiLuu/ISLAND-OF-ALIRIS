@@ -49,6 +49,22 @@ void destroy_all(global_t *global)
     sfTexture_destroy(global->menu->settings->settingst);
 }
 
+void free_all(global_t *global)
+{
+    free(global->menu);
+    free(global->pause);
+    free(global->gameplay->item);
+    free(global->pause->st_inv);
+    free(global->pause->st_quest);
+    free(global->pause->st_htp);
+    free(global->choose_char);
+    free(global->menu->settings);
+    free(global->gameplay->pnj);
+    free(global->gameplay->pnj->status);
+    free(global->gameplay->boss);
+    free(global->fight);
+}
+
 void clean_bytes(global_t *global, char status)
 {
     if (status == 'm') {
@@ -66,9 +82,7 @@ void clean_bytes(global_t *global, char status)
         global->fight = malloc(sizeof(fight_t) * 1);
     }
     if (status == 'f') {
-        free(global->menu->settings);
-        free(global->menu);
-        free(global);
+        free_all(global);
     }
 }
 
