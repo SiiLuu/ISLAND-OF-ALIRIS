@@ -31,17 +31,7 @@ void check_interaction_4(global_t *global)
         global->gameplay->pnj->p_text_bot = 0;
         destroy_textures_quetes_bot(global);
         }
-    if (sfKeyboard_isKeyPressed(sfKeyA) &&
-        (global->gameplay->x > 1400 && global->gameplay->x < 1550) &&
-        (global->gameplay->y > 890 && global->gameplay->y < 1150)) {
-        global->gameplay->pnj->q_volc = 1;
-        }
-    if (global->gameplay->pnj->q_volc == 1 &&
-        ((global->gameplay->x < 1400 || global->gameplay->x > 1550) ||
-        (global->gameplay->y < 890 || global->gameplay->y > 1150))) {
-        global->gameplay->pnj->q_volc = 0;
-        destroy_textures_quetes_volc(global);
-        }
+    check_interaction_pnj_volc(global);
 }
 
 void check_interaction_3(global_t *global)

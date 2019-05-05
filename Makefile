@@ -14,15 +14,23 @@ SRC 	=	src/main.c						\
 			src/menu/check_menu.c								\
 			src/gameplay/check_collision.c						\
 			src/gameplay/manage_collision.c						\
+			src/gameplay/init_rect_pnj.c						\
 			src/gameplay/character.c							\
 			src/gameplay/interaction/pnj_interaction.c			\
 			src/gameplay/interaction/fight_interaction.c		\
-			src/gameplay/interaction/fcp_interaction.c		\
+			src/gameplay/interaction/fcp_interaction.c			\
 			src/gameplay/interaction/destroy_sprites.c			\
 			src/gameplay/interaction/display_pnj_text.c			\
 			src/gameplay/interaction/text_settings.c			\
 			src/gameplay/interaction/text_box_settings.c		\
+			src/gameplay/interaction/pnj_interaction_volc.c		\
 			src/gameplay/interaction/pnj_interaction_vil.c		\
+			src/gameplay/interaction/pnj_interaction_castel.c	\
+			src/gameplay/interaction/destroy_textures_castel.c	\
+			src/gameplay/interaction/text_in_castel.c			\
+			src/gameplay/interaction/text_quest.c				\
+			src/gameplay/interaction/set_text_castel.c	\
+			src/gameplay/interaction/set_text_village.c	\
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\
 			src/gameplay/buffer_in_array.c						\

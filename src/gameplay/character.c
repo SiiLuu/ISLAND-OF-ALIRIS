@@ -83,6 +83,7 @@ int check_events(global_t *global)
         check_interaction(global);
         check_interaction_village(global);
         check_interaction_fcp(global);
+        check_interaction_castel(global);
         if (global->event.type == sfEvtClosed)
             sfRenderWindow_close(global->window);
         if ((but_is_c(global->event, global->menu->start1) == 1) &&
@@ -147,73 +148,7 @@ int check_events(global_t *global)
     return (0);
 }
 
-void init_pnj_rect(global_t *global)
-{
-    global->gameplay->pnj->rect_pnj_volc.height = 48;
-    global->gameplay->pnj->rect_pnj_volc.width = 48;
-    global->gameplay->pnj->rect_pnj_volc.left = 48;
-    global->gameplay->pnj->rect_pnj_volc.top = 240;
-    global->gameplay->pnj->rect_chest_1.height = 48;
-    global->gameplay->pnj->rect_chest_1.width = 48;
-    global->gameplay->pnj->rect_chest_1.left = 48;
-    global->gameplay->pnj->rect_chest_1.top = 0;
-    global->gameplay->boss->rect_volc_boss.height = 96;
-    global->gameplay->boss->rect_volc_boss.width = 96;
-    global->gameplay->boss->rect_volc_boss.left = 96;
-    global->gameplay->boss->rect_volc_boss.top = 192;
-}
-
-void init_rect_boss(global_t *global)
-{
-    global->gameplay->boss->rect_final_boss.height = 120;
-    global->gameplay->boss->rect_final_boss.width = 120;
-    global->gameplay->boss->rect_final_boss.left = 120;
-    global->gameplay->boss->rect_final_boss.top = 240;
-    global->gameplay->boss->rect_winter_boss.height = 120;
-    global->gameplay->boss->rect_winter_boss.width = 120;
-    global->gameplay->boss->rect_winter_boss.left = 120;
-    global->gameplay->boss->rect_winter_boss.top = 120;
-    global->gameplay->boss->rect_desert_boss.height = 120;
-    global->gameplay->boss->rect_desert_boss.width = 120;
-    global->gameplay->boss->rect_desert_boss.left = 120;
-    global->gameplay->boss->rect_desert_boss.top = 0;
-    global->gameplay->boss->rect_hl_boss.height = 120;
-    global->gameplay->boss->rect_hl_boss.width = 120;
-    global->gameplay->boss->rect_hl_boss.left = 120;
-    global->gameplay->boss->rect_hl_boss.top = 360;
-    global->gameplay->pnj->rect_vil_old.height = 48;
-    global->gameplay->pnj->rect_vil_old.width = 48;
-    global->gameplay->pnj->rect_vil_old.left = 336;
-    global->gameplay->pnj->rect_vil_old.top = 192;
-    init_pnj_rect(global);
-}
-
-void init_rect_pnj(global_t *global)
-{
-    global->gameplay->pnj->rect_pnj_1.height = 48;
-    global->gameplay->pnj->rect_pnj_1.width = 48;
-    global->gameplay->pnj->rect_pnj_1.left = 480;
-    global->gameplay->pnj->rect_pnj_1.top = 144;
-    global->gameplay->pnj->rect_pnj_d.height = 48;
-    global->gameplay->pnj->rect_pnj_d.width = 48;
-    global->gameplay->pnj->rect_pnj_d.left = 336;
-    global->gameplay->pnj->rect_pnj_d.top = 192;
-    global->gameplay->pnj->rect_pnj_ed.height = 48;
-    global->gameplay->pnj->rect_pnj_ed.width = 48;
-    global->gameplay->pnj->rect_pnj_ed.left = 48;
-    global->gameplay->pnj->rect_pnj_ed.top = 96;
-    global->gameplay->pnj->rect_pnj_pech.height = 48;
-    global->gameplay->pnj->rect_pnj_pech.width = 48;
-    global->gameplay->pnj->rect_pnj_pech.left = 48;
-    global->gameplay->pnj->rect_pnj_pech.top = 192;
-    global->gameplay->pnj->rect_pnj_bot.height = 48;
-    global->gameplay->pnj->rect_pnj_bot.width = 48;
-    global->gameplay->pnj->rect_pnj_bot.left = 480;
-    global->gameplay->pnj->rect_pnj_bot.top = 240;
-    init_rect_boss(global);
-}
-
-void set_position_2(global_t *global)
+void set_position_boss(global_t *global)
 {
     sfSprite_setTextureRect(global->gameplay->boss->sp_final_boss, global->gameplay->boss->rect_final_boss);
     sfSprite_setPosition(global->gameplay->boss->sp_final_boss, (sfVector2f){2310, 490});
@@ -232,6 +167,38 @@ void set_position_2(global_t *global)
     sfSprite_setScale(global->gameplay->boss->sp_volc_boss, (sfVector2f){1.5, 1.5});
 }
 
+void set_pnj_position(global_t *global)
+{
+    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){5010, 5000});
+    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_d, (sfVector2f){1790, 1900});
+    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_ed, (sfVector2f){2790, 2095});
+    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_pech, (sfVector2f){3710, 2000});
+    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_bot, (sfVector2f){4310, 4600});
+    sfSprite_setPosition(global->gameplay->pnj->sp_vil_old, (sfVector2f){600, 600});
+    sfSprite_setPosition(global->gameplay->pnj->sp_pnj_volc, (sfVector2f){1500, 1000});
+    sfSprite_setPosition(global->gameplay->pnj->sp_chest_1, (sfVector2f){1305, 600});
+    sfSprite_setPosition(global->gameplay->pnj->sp_knight_1, (sfVector2f){1800, 2700});
+    sfSprite_setPosition(global->gameplay->pnj->sp_knight_2, (sfVector2f){2100, 2700});
+    sfSprite_setPosition(global->gameplay->pnj->sp_princess, (sfVector2f){2200, 1400});
+    sfSprite_setPosition(global->gameplay->pnj->sp_pnj_garden, (sfVector2f){2500, 900});
+}
+
+void set_pnj_scale(global_t *global)
+{
+    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_d, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_ed, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_pech, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_bot, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_vil_old, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_pnj_volc, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_chest_1, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_knight_1, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_knight_2, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_princess, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setScale(global->gameplay->pnj->sp_pnj_garden, (sfVector2f){2.08333, 2.08333});
+}
+
 void set_position(global_t *global)
 {
     init_rect_pnj(global);
@@ -242,25 +209,15 @@ void set_position(global_t *global)
     sfSprite_setTextureRect(global->gameplay->pnj->sprite_pnj_bot, global->gameplay->pnj->rect_pnj_bot);
     sfSprite_setTextureRect(global->gameplay->pnj->sp_vil_old, global->gameplay->pnj->rect_vil_old);
     sfSprite_setTextureRect(global->gameplay->pnj->sp_pnj_volc, global->gameplay->pnj->rect_pnj_volc);
-    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){5010, 5000});
-    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_d, (sfVector2f){1790, 1900});
-    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_ed, (sfVector2f){2790, 2095});
-    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_pech, (sfVector2f){3710, 2000});
-    sfSprite_setPosition(global->gameplay->pnj->sprite_pnj_bot, (sfVector2f){4310, 4600});
-    sfSprite_setPosition(global->gameplay->pnj->sp_vil_old, (sfVector2f){600, 600});
-    sfSprite_setPosition(global->gameplay->pnj->sp_pnj_volc, (sfVector2f){1500, 1000});
-    sfSprite_setPosition(global->gameplay->pnj->sp_chest_1, (sfVector2f){1305, 600});
-    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_d, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_1, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_ed, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_pech, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sprite_pnj_bot, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sp_vil_old, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sp_pnj_volc, (sfVector2f){2.08333, 2.08333});
-    sfSprite_setScale(global->gameplay->pnj->sp_chest_1, (sfVector2f){2.08333, 2.08333});
+    sfSprite_setTextureRect(global->gameplay->pnj->sp_knight_1, global->gameplay->pnj->rect_knight_1);
+    sfSprite_setTextureRect(global->gameplay->pnj->sp_knight_2, global->gameplay->pnj->rect_knight_2);
+    sfSprite_setTextureRect(global->gameplay->pnj->sp_princess, global->gameplay->pnj->rect_princess);
+    sfSprite_setTextureRect(global->gameplay->pnj->sp_pnj_garden, global->gameplay->pnj->rect_pnj_garden);
+    set_pnj_position(global);
+    set_pnj_scale(global);
     sfSprite_setPosition(global->gameplay->sprite_man, (sfVector2f){global->gameplay->x, global->gameplay->y});
     sfSprite_setScale(global->gameplay->sprite_man, (sfVector2f){2.08333, 2.08333});
-    set_position_2(global);
+    set_position_boss(global);
 }
 
 void create_sprite(global_t *global)
@@ -280,6 +237,10 @@ void create_sprite(global_t *global)
     global->gameplay->boss->sp_hl_boss = sfSprite_create();
     global->gameplay->boss->sp_volc_boss = sfSprite_create();
     global->gameplay->pnj->sp_chest_1 = sfSprite_create();
+    global->gameplay->pnj->sp_knight_1 = sfSprite_create();
+    global->gameplay->pnj->sp_knight_2 = sfSprite_create();
+    global->gameplay->pnj->sp_princess = sfSprite_create();
+    global->gameplay->pnj->sp_pnj_garden = sfSprite_create();
     global->gameplay->pnj->pnj_d = sfTexture_createFromFile("resource/Sprite player/Actor3.png", NULL);
     global->gameplay->pnj->pnj_1 = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
     global->gameplay->pnj->pnj_ed = sfTexture_createFromFile("resource/Sprite player/player2and3.png", NULL);
@@ -292,6 +253,10 @@ void create_sprite(global_t *global)
     global->gameplay->boss->volc_boss = sfTexture_createFromFile("resource/fight/Boss.png", NULL);
     global->gameplay->pnj->vil_old = sfTexture_createFromFile("resource/Sprite player/People1.png", NULL);
     global->gameplay->pnj->pnj_volc = sfTexture_createFromFile("resource/Sprite player/People3.png", NULL);
+    global->gameplay->pnj->knight_1 = sfTexture_createFromFile("resource/Sprite player/People3.png", NULL);
+    global->gameplay->pnj->knight_2 = sfTexture_createFromFile("resource/Sprite player/People3.png", NULL);
+    global->gameplay->pnj->princess = sfTexture_createFromFile("resource/Sprite player/People3.png", NULL);
+    global->gameplay->pnj->pnj_garden = sfTexture_createFromFile("resource/Sprite player/People1.png", NULL);
     global->gameplay->pnj->chest_1 = sfTexture_createFromFile("resource/Sprite player/Chest.png", NULL);
     global->gameplay->backg = sfTexture_createFromFile(
         "resource/World Map.jpg", NULL);
@@ -339,6 +304,10 @@ void set_textures(global_t *global)
     sfSprite_setTexture(global->gameplay->pnj->sp_pnj_volc, global->gameplay->pnj->pnj_volc, sfTrue);
     sfSprite_setTexture(global->gameplay->pnj->sp_vil_old, global->gameplay->pnj->vil_old, sfTrue);
     sfSprite_setTexture(global->gameplay->pnj->sp_chest_1, global->gameplay->pnj->chest_1, sfTrue);
+    sfSprite_setTexture(global->gameplay->pnj->sp_knight_1, global->gameplay->pnj->knight_1, sfTrue);
+    sfSprite_setTexture(global->gameplay->pnj->sp_knight_2, global->gameplay->pnj->knight_2, sfTrue);
+    sfSprite_setTexture(global->gameplay->pnj->sp_princess, global->gameplay->pnj->princess, sfTrue);
+    sfSprite_setTexture(global->gameplay->pnj->sp_pnj_garden, global->gameplay->pnj->pnj_garden, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_final_boss, global->gameplay->boss->final_boss, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_volc_boss, global->gameplay->boss->volc_boss, sfTrue);
     sfSprite_setTexture(global->gameplay->boss->sp_winter_boss, global->gameplay->boss->winter_boss, sfTrue);
@@ -404,7 +373,20 @@ void scn_11(global_t *global)
 {
     sfRenderWindow_drawSprite(global->window,
     global->gameplay->pnj->sp_vil_old, NULL);
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->pnj->sp_pnj_garden, NULL);
     display_text_vill(global);
+}
+
+void scn_12(global_t *global)
+{
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->pnj->sp_knight_1, NULL);
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->pnj->sp_knight_2, NULL);
+    sfRenderWindow_drawSprite(global->window,
+    global->gameplay->pnj->sp_princess, NULL);
+    display_text_castel(global);
 }
 
 void scn_13(global_t *global)
@@ -438,6 +420,8 @@ void draw_sprites(global_t *global)
             scn_11(global);
         if (global->scn == 10)
             scn_10(global);
+        if (global->scn == 12)
+            scn_12(global);
         if (global->scn == 13)
             scn_13(global);
         sfRenderWindow_display(global->window);

@@ -115,6 +115,14 @@ typedef struct pnj {
     sfTexture *pnj_volc;
     sfSprite *sp_chest_1;
     sfTexture *chest_1;
+    sfSprite *sp_knight_1;
+    sfTexture *knight_1;
+    sfSprite *sp_knight_2;
+    sfTexture *knight_2;
+    sfSprite *sp_princess;
+    sfTexture *princess;
+    sfSprite *sp_pnj_garden;
+    sfTexture *pnj_garden;
     sfIntRect rect_pnj_d;
     sfIntRect rect_pnj_1;
     sfIntRect rect_pnj_ed;
@@ -123,6 +131,10 @@ typedef struct pnj {
     sfIntRect rect_vil_old;
     sfIntRect rect_pnj_volc;
     sfIntRect rect_chest_1;
+    sfIntRect rect_knight_1;
+    sfIntRect rect_knight_2;
+    sfIntRect rect_princess;
+    sfIntRect rect_pnj_garden;
     sfTexture *text_box;
     sfSprite *s_text_box;
     sfText *text;
@@ -133,6 +145,10 @@ typedef struct pnj {
     sfText *text_papy;
     sfText *text_volc;
     sfText *text_chest_1;
+    sfText *text_knight_1;
+    sfText *text_knight_2;
+    sfText *text_princess;
+    sfText *text_pnj_garden;
     sfFont *font;
     int p_text;
     int p_text_d;
@@ -143,6 +159,10 @@ typedef struct pnj {
     int vil_papy;
     int q_volc;
     int chest_nb1;
+    int p_knight_1;
+    int p_knight_2;
+    int p_princess;
+    int p_garden;
     int op_chest;
     int quest_complete;
     int next_text;
@@ -321,6 +341,9 @@ void move_up(global_t *global);
 void move_down(global_t *global);
 void move_left(global_t *global);
 
+//In src/gameplay/init_rect_pnj.c
+void init_rect_pnj(global_t *global);
+
 //In src/gameplay/camera_border.c
 void camera_center(global_t *global);
 void camera_horizontal(global_t *global);
@@ -411,6 +434,10 @@ void check_interaction(global_t *global);
 void display_text(global_t *global);
 
 //In src/gameplay/interaction/pnj_interaction.c
+void check_interaction(global_t *global);
+void display_text(global_t *global);
+
+//In src/gameplay/interaction/pnj_interaction.c
 void switch_in_fight(global_t *global);
 
 //In src/gameplay/interaction/pnj_interaction_vil.c
@@ -436,6 +463,41 @@ void destroy_textures_quetes_pech(global_t *global);
 void destroy_textures_quetes_ed(global_t *global);
 void destroy_textures_quetes_d(global_t *global);
 void destroy_textures_quetes_volc(global_t *global);
+
+//In src/gameplay/interaction/pnj_interaction_castel.c
+void check_interaction_castel(global_t *global);
+void display_text_castel(global_t *global);
+
+//In src/gameplay/interaction/text_quest.c
+void starting_quest(global_t *global);
+void display_text_quest(global_t *global);
+void fight_final_boss(global_t *global);
+
+//In src/gameplay/interaction/text_in_castel.c
+void display_text_knight(global_t *global);
+void display_text_princess(global_t* global);
+void display_text_castel(global_t *global);
+
+//In src/gameplay/interaction/destroy_textures_castel.c
+void destroy_textures_knight_1(global_t *global);
+void destroy_textures_knight_2(global_t *global);
+void destroy_textures_princess(global_t *global);
+
+//In src/gameplay/interaction/set_text_castel.c
+void set_knight_1_text(global_t *global);
+void set_knight_2_text(global_t *global);
+void set_princess_text(global_t *global);
+
+//In src/gameplay/interaction/set_text_village.c
+void set_vil_papy_text(global_t *global);
+void set_vil_garden_text(global_t *global);
+void set_garden_text(global_t *global);
+void set_text_papy(global_t *global);
+void set_text_papy_1(global_t *global);
+
+//In src/gameplay/interaction/pnj_interaction_volc.c
+void check_interaction_pnj_volc(global_t *global);
+void set_volc_text(global_t *global);
 
 //In src/gameplay/interaction/display_pnj_settings.c
 void display_text_quest(global_t *global);

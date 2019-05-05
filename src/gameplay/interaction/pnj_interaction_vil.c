@@ -15,14 +15,26 @@ void destroy_textures_papy_vil(global_t *global)
     sfTexture_destroy(global->gameplay->pnj->text_box);
 }
 
-void set_vil_papy_text(global_t *global)
+void destroy_textures_garden_vil(global_t *global)
 {
-    sfText_setFont(global->gameplay->pnj->text_papy,
-    global->gameplay->pnj->font);
-    sfText_setCharacterSize(global->gameplay->pnj->text_papy, 35);
-    sfText_setColor(global->gameplay->pnj->text_papy, sfWhite);
-    sfText_setPosition(global->gameplay->pnj->text_papy,
-    (sfVector2f){610, global->gameplay->y + 405});
+    sfText_destroy(global->gameplay->pnj->text_pnj_garden);
+    sfSprite_destroy(global->gameplay->pnj->s_text_box);
+    sfTexture_destroy(global->gameplay->pnj->text_box);
+}
+
+void check_gardin_interaction(global_t *global)
+{
+    if (sfKeyboard_isKeyPressed(sfKeyA) &&
+        (global->gameplay->x > 2450 && global->gameplay->x < 2600) &&
+        (global->gameplay->y > 900 && global->gameplay->y < 1020)) {
+        global->gameplay->pnj->p_garden = 1;
+        }
+    if (global->gameplay->pnj->p_garden == 1 &&
+        ((global->gameplay->x < 2450 || global->gameplay->x > 2600) ||
+        (global->gameplay->y < 900 || global->gameplay->y > 1020))) {
+        global->gameplay->pnj->p_garden = 0;
+        destroy_textures_garden_vil(global);
+        }
 }
 
 void check_interaction_village(global_t *global)
@@ -39,14 +51,7 @@ void check_interaction_village(global_t *global)
         global->gameplay->pnj->next_text = 0;
         destroy_textures_papy_vil(global);
         }
-}
-
-void set_text_papy(global_t *global)
-{
-    sfText_setString(global->gameplay->pnj->text_papy,
-    "I come every day to pay tribute to these men\
-    \nwho are beaten to try to restore calm on\
-    \nthe island of aliris.\n\t\t\t\t\t\t\t\t\t\t\t\t\t(Press tab)");
+    check_gardin_interaction(global);
 }
 
 void display_text_vill(global_t *global)
@@ -56,12 +61,8 @@ void display_text_vill(global_t *global)
         global->gameplay->pnj->text_papy = sfText_create();
         if (sfKeyboard_isKeyPressed(sfKeyTab))
             global->gameplay->pnj->next_text = 1;
-        if (global->gameplay->pnj->next_text == 1) {
-            sfText_setString(global->gameplay->pnj->text_papy,
-            "They all lost their lives in battle against the\
-            \nhorrible monsters which occupe the island\
-            \nI trust in you ! We need help");
-        }
+        if (global->gameplay->pnj->next_text == 1)
+            set_text_papy_1(global);
         else
             set_text_papy(global);
         set_vil_papy_text(global);
@@ -72,4 +73,5 @@ void display_text_vill(global_t *global)
         sfRenderWindow_drawText(global->window,
         global->gameplay->pnj->text_papy, NULL);
     }
+    set_garden_text(global);
 }

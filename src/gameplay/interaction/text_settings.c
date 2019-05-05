@@ -46,16 +46,6 @@ void set_pech_text(global_t *global)
     (sfVector2f){3660, 2000 + 500});
 }
 
-void set_volc_text(global_t *global)
-{
-    sfText_setFont(global->gameplay->pnj->text_volc,
-    global->gameplay->pnj->font);
-    sfText_setCharacterSize(global->gameplay->pnj->text_volc, 35);
-    sfText_setColor(global->gameplay->pnj->text_volc, sfWhite);
-    sfText_setPosition(global->gameplay->pnj->text_volc,
-    (sfVector2f){1370, global->gameplay->y + 410});
-}
-
 void set_bot_text(global_t *global)
 {
     sfText_setFont(global->gameplay->pnj->text_bot,
