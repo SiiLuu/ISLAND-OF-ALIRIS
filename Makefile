@@ -39,6 +39,7 @@ SRC 	=	src/main.c						\
 			src/gameplay/map_management/check_leaving_builds.c	\
 			src/gameplay/map_management/check_leave_dungeons.c	\
 			src/gameplay/map_management/check_enter_dungeons.c	\
+			src/gameplay/map_management/check_pyramid.c			\
 			src/gameplay/map_management/check_enter_fc.c		\
 			src/gameplay/map_management/check_leaving_fc.c		\
 			src/gameplay/movement_player/open_col_files.c		\

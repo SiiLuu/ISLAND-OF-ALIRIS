@@ -218,7 +218,14 @@ typedef struct gameplay {
     sfTexture *backg_vil;
     sfTexture *backg_cas;
     sfTexture *backg_vol;
+    sfTexture *backg_inpy;
+    sfTexture *backg_outpy;
     sfTexture *backg_fcp;
+    sfTexture *backg_fcn;
+    sfTexture *backg_fcf;
+    sfTexture *backg_casn;
+    sfTexture *backg_fcas;
+    sfTexture *backg_viln;
     sfSprite *sprite_backg;
     sfTexture *man;
     sfSprite *sprite_man;
@@ -227,10 +234,17 @@ typedef struct gameplay {
     sfView * view;
     char **map;
     char **wmap;
+    char **mapc_inpy;
+    char **mapc_outpy;
     char **mapc_fcp;
+    char **mapc_fcn;
+    char **mapc_fcf;
     char **mapc_cas;
     char **mapc_vol;
     char **mapc_vil;
+    char **mapc_casn;
+    char **mapc_fcas;
+    char **mapc_viln;
     int x;
     int y;
     int camera_x;
@@ -298,6 +312,7 @@ typedef struct global {
     choose_char_t *choose_char;
     fight_t *fight;
     int scn;
+    int old_scn;
 }global_t;
 
 
@@ -551,28 +566,46 @@ char **get_map(char *path, char **map);
 
 //In src/gameplay/map_management/change_map.c
 int check_map_change(global_t *global, int scn);
+void create_map_sprites(global_t *global);
+bool check_scn_nbr(int scn);
 
 //In src/gameplay/map_management/check_enter_builds.c
+int check_enter_builds(global_t *global, int mpos_x, int mpos_y, int scn);
 int check_village(global_t *global, int mpos_x, int mpos_y, int scn);
 int check_castle(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_fcastle(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_ncastle(global_t *global, int mpos_x, int mpos_y, int scn);
 
 //In src/gameplay/map_management/check_leaving_builds.c
 int check_leave_cas(global_t *global, int mpos_x, int mpos_y, int scn);
 int check_leave_vil(global_t *global, int mpos_x, int mpos_y, int scn);
 int check_leave_builds(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_ncas(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_svil(global_t *global, int mpos_x, int mpos_y, int scn);
 
 //In src/gameplay/map_management/check_enter_dungeons.c
 int check_volcano(global_t *global, int mpos_x, int mpos_y, int scn);
 
 //In src/gameplay/map_management/check_leave_dungeon.c
 int check_leave_vol(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_fcas(global_t *global, int mpos_x, int mpos_y, int scn);
 
 //In src/gameplay/map_management/check_enter_fc.c
 int check_firecamp(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_nfirecamp(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_tfirecamp(global_t *global, int mpos_x, int mpos_y, int scn);
+
+//In src/gameplay/map_management/check_pyramid.c
+int check_out_py(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_in_py(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_in_py(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_out_py(global_t *global, int mpos_x, int mpos_y, int scn);
 
 //In src/gameplay/map_management/check_leaving_fc.c
 int check_leave_pfc(global_t *global, int mpos_x, int mpos_y, int scn);
 int check_leave_firecamps(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_fcf(global_t *global, int mpos_x, int mpos_y, int scn);
+int check_leave_fcn(global_t *global, int mpos_x, int mpos_y, int scn);
 
 // In src/gameplay/inv/items.c
 void create_item(global_t *global);
