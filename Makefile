@@ -36,6 +36,14 @@ SRC 	=	src/main.c						\
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\
 			src/gameplay/buffer_in_array.c						\
+			src/gameplay/set_view.c								\
+			src/gameplay/pnj_settings.c							\
+			src/gameplay/monster_death.c						\
+			src/gameplay/init_players.c							\
+			src/gameplay/draw_sprite_scn.c						\
+			src/gameplay/differents_scn.c						\
+			src/gameplay/create_texture_file.c					\
+			src/gameplay/boss_settings.c						\
 			src/gameplay/map_management/change_map.c			\
 			src/gameplay/map_management/check_enter_builds.c	\
 			src/gameplay/map_management/check_leaving_builds.c	\

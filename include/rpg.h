@@ -363,6 +363,51 @@ void move_left(global_t *global);
 //In src/gameplay/init_rect_pnj.c
 void init_rect_pnj(global_t *global);
 
+//In src/gameplay/pnj_settings.c
+void pnj_textures(global_t *global);
+void set_pnj_position(global_t *global);
+void set_textures(global_t *global);
+void set_pnj_scale(global_t *global);
+void apply_rect_pnj(global_t *global);
+
+//In src/gameplay/boss_settings.c
+void set_position(global_t *global);
+void set_pnj_scale_castle(global_t *global);
+void set_pnj_position_wm(global_t *global);
+void set_position_boss(global_t *global);
+
+//In src/gameplay/differents_scn.c
+void scn_1(global_t *global);
+void scn_10(global_t *global);
+void scn_11(global_t *global);
+void scn_12(global_t *global);
+void scn_13(global_t *global);
+
+//In src/gameplay/draw_sprite_scn.c
+void which_scn(global_t *global);
+void draw_sprites(global_t *global);
+void draw_sprites_scn_1(global_t *global);
+void set_cursor(global_t *global);
+
+//In src/gameplay/monster_death.c
+void check_other_events(global_t *global);
+void check_monster_dead(global_t *global);
+void set_position_boss_volc(global_t *global);
+void init_gameplay_action(global_t *global);
+void create_sprite(global_t *global);
+
+
+//In src/gameplay/init_players.c
+void player_1(global_t *global);
+void player_2(global_t *global);
+void player_3(global_t *global);
+void player_4(global_t *global);
+void init_texture(global_t *global);
+
+//In src/gameplay/set_view.c
+void bottom_left_corner(global_t *global);
+void move_vue(global_t *global);
+
 //In src/gameplay/camera_border.c
 void camera_center(global_t *global);
 void camera_horizontal(global_t *global);
