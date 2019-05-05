@@ -62,7 +62,8 @@ int check_village(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->lenght = 2000;
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
-            sfView_reset(global->gameplay->view, (sfFloatRect){0,00,1920,1080});
+            sfView_reset(global->gameplay->view,
+                        (sfFloatRect){0,00,1920,1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_man,
                                 (sfVector2f){2000, 1800});
@@ -71,7 +72,7 @@ int check_village(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->map = global->gameplay->mapc_vil;
             global->gameplay->camera_y = 960 - 48;
             move_vue(global);
-            scn = 11;                          
+            scn = 11;
         }
     return (scn);
 }
@@ -86,7 +87,8 @@ int check_svillage(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->lenght = 2000;
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
-            sfView_reset(global->gameplay->view, (sfFloatRect){0,00,1920,1080});
+            sfView_reset(global->gameplay->view,
+                        (sfFloatRect){0,00,1920,1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_man,
                                 (sfVector2f){2000, 1800});

@@ -25,7 +25,7 @@ void player_2(global_t *global)
 void player_3(global_t *global)
 {
     global->gameplay->man = sfTexture_createFromFile(
-                           "resource/Sprite player/player2and3.png", NULL);
+                            "resource/Sprite player/player2and3.png", NULL);
     set_my_rect_p3(global);
 }
 

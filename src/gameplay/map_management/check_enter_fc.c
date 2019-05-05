@@ -18,7 +18,8 @@ int check_firecamp(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->lenght = 1080;
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
-            sfView_reset(global->gameplay->view, (sfFloatRect){0,0,1920,1080});
+            sfView_reset(global->gameplay->view,
+                        (sfFloatRect){0,0,1920,1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_man,
                                 (sfVector2f){900, 900});
@@ -40,7 +41,8 @@ int check_nfirecamp(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->lenght = 1080;
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
-            sfView_reset(global->gameplay->view, (sfFloatRect){0,0,1920,1080});
+            sfView_reset(global->gameplay->view,
+                        (sfFloatRect){0,0,1920,1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_man,
                                 (sfVector2f){1100, 900});
@@ -62,7 +64,8 @@ int check_tfirecamp(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->lenght = 1080;
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
-            sfView_reset(global->gameplay->view, (sfFloatRect){0,0,1920,1080});
+            sfView_reset(global->gameplay->view,
+                        (sfFloatRect){0,0,1920,1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_man,
                                 (sfVector2f){1100, 900});

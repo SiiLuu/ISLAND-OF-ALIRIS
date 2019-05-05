@@ -24,6 +24,7 @@ void display_text_bottom(global_t *global)
         global->gameplay->pnj->text_bot, NULL);
     }
 }
+
 void display_text_pech(global_t *global)
 {
     if (global->gameplay->pnj->status->p_text_pech == 1) {

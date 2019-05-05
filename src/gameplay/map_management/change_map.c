@@ -29,6 +29,7 @@ void create_map_sprites(global_t *global)
     global->gameplay->backg_casn = sfTexture_createFromFile(
         "resource/Snow Castle.jpg", NULL);
 }
+
 bool check_scn_nbr(int scn)
 {
     if (scn == 1 || scn == 10 || scn == 11 || scn == 12 || scn == 13

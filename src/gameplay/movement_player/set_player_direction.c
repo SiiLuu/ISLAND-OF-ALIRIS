@@ -8,7 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-
 void set_rect_left(global_t *global)
 {
     if (global->gameplay->player_nb == 1)

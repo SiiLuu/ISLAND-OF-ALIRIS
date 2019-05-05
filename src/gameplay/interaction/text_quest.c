@@ -15,7 +15,6 @@ void starting_quest(global_t *global)
     \ncould you help me to find her?");
 }
 
-
 void display_text_quest(global_t *global)
 {
     if (global->gameplay->pnj->status->p_text_d == 1) {

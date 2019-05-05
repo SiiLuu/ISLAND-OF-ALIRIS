@@ -26,7 +26,7 @@ void display_text_knight(global_t *global)
     }
 }
 
-void display_text_princess(global_t* global)
+void display_text_princess(global_t *global)
 {
     if (global->gameplay->pnj->status->p_princess == 1) {
         set_text_box(global);

@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** 
+** rect_in_movement.c
 ** File description:
-** 
+** set the rect of the player in movement
 */
 
 #include "my.h"

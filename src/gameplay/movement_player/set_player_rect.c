@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** 
+** set_player_rect.c
 ** File description:
-** 
+** set the rect of the player
 */
 
 #include "my.h"

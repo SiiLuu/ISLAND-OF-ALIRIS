@@ -8,7 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-
 void int_pnj_rect_castel(global_t *global)
 {
     global->gameplay->pnj->rect_princess.height = 48;
