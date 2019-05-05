@@ -47,6 +47,7 @@ int check_leave_svil(global_t *global, int mpos_x, int mpos_y, int scn)
                                 global->gameplay->backg, sfTrue);
             scn = 1;
             global->gameplay->camera_y = 4920;
+            global->gameplay->camera_x = 4080;
             move_vue(global);
         }
     return (scn);
