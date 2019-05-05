@@ -582,6 +582,7 @@ void set_volc_text(global_t *global);
 // In src/fight/fight.c
 int fight(global_t *global);
 void wait(global_t *global);
+void check_scn_after_fight(global_t *global);
 
 // In src/fight/detect_win.c
 int dectect_win(global_t *global);
