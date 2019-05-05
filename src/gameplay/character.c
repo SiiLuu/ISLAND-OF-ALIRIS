@@ -22,7 +22,7 @@ void check_next_events(global_t *global)
     if ((item_is_c(global->event, global->gameplay->item->boots) == 1) &&
         (global->scn == 3)) {
         sfSprite_setPosition(global->gameplay->item->boots,
-            (sfVector2f){1045,320});
+            (sfVector2f){1045, 320});
         sfSprite_setScale(global->gameplay->item->boots,
             (sfVector2f){3.45, 3.45});
     }
@@ -40,7 +40,7 @@ void check_events_scn(global_t *global)
     if ((item_is_c(global->event, global->gameplay->item->armors) == 1) &&
         (global->scn == 3)) {
         sfSprite_setPosition(global->gameplay->item->armors,
-            (sfVector2f){1045,320});
+            (sfVector2f){1045, 320});
         sfSprite_setScale(global->gameplay->item->armors,
             (sfVector2f){1.98, 2.1});
     }

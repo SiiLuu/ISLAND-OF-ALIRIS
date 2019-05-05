@@ -34,8 +34,8 @@ SRC 	=	src/main.c						\
 			src/gameplay/interaction/destroy_textures_castel.c	\
 			src/gameplay/interaction/text_in_castel.c			\
 			src/gameplay/interaction/text_quest.c				\
-			src/gameplay/interaction/set_text_castel.c	\
-			src/gameplay/interaction/set_text_village.c	\
+			src/gameplay/interaction/set_text_castel.c	        \
+			src/gameplay/interaction/set_text_village.c	        \
 			src/gameplay/map_border.c							\
 			src/gameplay/camera_border.c						\
 			src/gameplay/buffer_in_array.c						\

@@ -10,7 +10,7 @@
 
 void string_p(global_t *global)
 {
-    sfText_setString(global->choose_char->te2, 
+    sfText_setString(global->choose_char->te2,
     "Agile warrior, endowed\t\t\t Bloody sorceress, NEBULLA has\t\t  \
     Old mage, despite his\t\t\t\t  Knight of the Trooper of\t\t\t\t\t\
     \nwith a resistance and a\t\t    a lot of damage, however\t\t\t \
@@ -34,7 +34,7 @@ void choose_create3(global_t *global)
 {
     global->choose_char->te = create_text(
         global->choose_char->te, global->pause->st_inv->eqf);
-    sfText_setString(global->choose_char->te, 
+    sfText_setString(global->choose_char->te,
     "VENOS\t\t\tNEBULLA\t\t\tTWISTO\t\t\t    LORD");
     sfText_setCharacterSize(global->choose_char->te, 60);
     sfText_setPosition(global->choose_char->te, (sfVector2f){100, 200});

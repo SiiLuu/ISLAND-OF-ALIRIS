@@ -17,7 +17,7 @@ int check_in_py(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->width = 1920;
             global->gameplay->lenght = 2500;
             sfView_reset(global->gameplay->view,
-                        (sfFloatRect){0,00,1920,1080});
+                        (sfFloatRect){0, 0, 1920, 1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
@@ -63,7 +63,7 @@ int check_out_py(global_t *global, int mpos_x, int mpos_y, int scn)
             global->gameplay->width = 2000;
             global->gameplay->lenght = 1080;
             sfView_reset(global->gameplay->view,
-                        (sfFloatRect){0,00,1920,1080});
+                        (sfFloatRect){0, 0, 1920, 1080});
             sfRenderWindow_setView(global->window, global->gameplay->view);
             sfSprite_setPosition(global->gameplay->sprite_backg,
                                 (sfVector2f){0, 0});
