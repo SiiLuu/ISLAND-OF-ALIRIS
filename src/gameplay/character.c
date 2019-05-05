@@ -44,7 +44,7 @@ void check_other_events(global_t *global)
     if (global->gameplay->boss->win_vs_desert_boss == 1) {
         sfSprite_setColor(global->gameplay->boss->sp_desert_boss,
                         sfTransparent);
-        global->gameplay->map[32][4] = '0';
+        global->gameplay->map[33][4] = '0';
     }
     if (global->gameplay->boss->win_vs_hl_boss == 1) {
         sfSprite_setColor(global->gameplay->boss->sp_hl_boss, sfTransparent);
