@@ -8,6 +8,13 @@
 #include "rpg.h"
 #include "my.h"
 
+static int check_backn(char c, int k)
+{
+    if (c == '\n')
+        return (k + 1);
+    return (k);
+}
+
 static int get_len_line(char *buffer)
 {
     int i = 0;
@@ -36,8 +43,7 @@ static char **set_line(char *buffer, char **map, int height, int len)
 
     for (i = 0; i != height; i++) {
         for (j = 0; j != len; j++) {
-            if (buffer[k] == '\n')
-                k++;
+            k = check_backn(buffer[k], k);
             map[i][j] = buffer[k];
             k++;
         }
