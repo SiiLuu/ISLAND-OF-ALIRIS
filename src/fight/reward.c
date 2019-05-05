@@ -61,10 +61,7 @@ int fight_loop(global_t *global)
     while (1) {
         if (dectect_win(global)) {
             move_vue(global);
-            if (global->gameplay->boss->win_vs_volc_boss == 1)
-                global->scn = 13;
-            else
-                global->scn = 1;
+            check_scn_after_fight(global);
             return (0);
         }
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(

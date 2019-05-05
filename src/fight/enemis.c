@@ -61,3 +61,11 @@ void init_to_int(global_t *global)
     if (global->fight->enemis == 5)
         global->gameplay->boss->win_vs_volc_boss = 1;
 }
+
+void check_scn_after_fight(global_t *global)
+{
+    if (global->gameplay->boss->win_vs_volc_boss == 1)
+        global->scn = 13;
+    else
+        global->scn = 1;
+}
