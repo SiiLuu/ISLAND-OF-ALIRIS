@@ -6,3 +6,5 @@ Developed in C thanks to the CSFML lib.
   ./my_rpg to start the game (fullscreen).
 ```
 Have Fun !
+
+![]https://github.com/SiiLuu/ISLAND-OF-ALIRIS/blob/master/resource/m.jpg
